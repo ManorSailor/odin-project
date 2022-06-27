@@ -11,3 +11,117 @@
   list-style: none;
   text-decoration: none;
 }
+
+:root {
+  --bg-clr: #323639;
+  --accent-clr: #b1a569;
+  --accent-alt: #f2d8b8;
+  --text-clr: #f6f7fb;
+  --icon-clr: #79838b;
+
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
+  --fs-xxl: 2.25rem;
+
+  --icon-size: 125px;
+}
+
+body {
+  color: var(--text-clr);
+  background-color: var(--bg-clr);
+  font-family: 'Montserrat Alternates', sans-serif;
+  letter-spacing: 0.75px;
+}
+
+/* =============== Typography =============== */
+svg {
+  color: var(--icon-clr); 
+  vertical-align: middle;
+}
+
+p {
+  display: inline-block;
+}
+
+/* =============== Utility Classes =============== */
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1100px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+/* =============== Header =============== */
+.scores-header {
+  min-height: 100px;
+  padding: 0.5rem;
+}
+
+.scores-title {
+  font-weight: 600;
+  text-align: center;
+  font-size: var(--fs-xxl);
+  margin-bottom: 0.75rem;
+}
+
+.score-table {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-right: 0.65rem;
+}
+
+.score-table > * {
+  gap: 0.225rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: var(--fs-xl);
+  font-weight: 400;
+}
+
+/* =============== Play-area =============== */
+.play-area {
+  gap: 2rem;
+  flex: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =============== Footer =============== */
+.rps {
+  gap: 2rem;
+  flex: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 250ms ease-in-out;
+  box-shadow: 0 0 10px rgba(19, 21, 23, 0.5);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card:hover svg {
+  color: var(--accent-clr);
+}
+
+.rock,
+.paper,
+.scissors {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  transition: color 250ms ease-in-out;
+}

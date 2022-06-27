@@ -102,4 +102,4 @@ function declareResult(userScore, computerScore) {
     }
 }
 
-playGame();
+// playGame();
