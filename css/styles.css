@@ -166,7 +166,7 @@ a {
 /* =============== Creator =============== */
 .creator {
   position: absolute;
-  top: 94%; left: 50%;
+  top: 95%; left: 50%;
   transform: translateX(-50%);
 }
 
