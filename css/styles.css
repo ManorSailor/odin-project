@@ -112,6 +112,15 @@ a {
 }
 
 /* Following class will be applied through JavaScript */
+.vs {
+  font-weight: 600;
+  animation: slide-up 600ms ease;
+}
+
+.result {
+  animation: slide-up 900ms ease;
+}
+
 .match-result {
   transform: translateY(-250%);
   font-size: var(--fs-xxl);
@@ -126,10 +135,6 @@ a {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.vs {
-  font-weight: 600;
 }
 
 /* =============== Footer =============== */

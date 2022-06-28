@@ -17,7 +17,7 @@
 
                 As you can see, rock beats Scissors. Thus, if the computer chose Scissors as their choice. They are losing the round
                 Because, in this game, given a pair of elements can ONLY have one winner & one loser
-*/                  
+*/
 
 // Array containing winners of each pair
 const RPS_WINNERS = ["Rock", "Paper", "Scissors"];
@@ -43,13 +43,13 @@ cards.forEach(card => {
     card.addEventListener('click', (e) => {
         let playerChoice = e.target.getAttribute('data-key');
         let computerChoice = getComputerChoice();
-        
+
         // Ensure that user has not messed with data-key attributes value
         if (!isValid(playerChoice)) return;
 
         const newCards = createCards(playerChoice, computerChoice);
-        let result = playRound(playerChoice, computerChoice);
-        console.log(cards);
+        const result = playRound(playerChoice, computerChoice);
+        const newTags = createTags(result, 'VS');
     });
 });
 
@@ -119,6 +119,44 @@ function removeCards() {
     });
 }
 
+// Create p tags in memory & return references to them
+function createTags(...tags) {
+    // Call the removeTags function
+    removeTags();
+
+    // Create a new tags array for containing new tags
+    let newTags = [];
+
+    // For each tag in tags
+    tags.forEach(tag => {
+        // Create a new p Tag
+        const pTag = document.createElement('p');
+
+        // Add classes & textContent to each of the tags
+        (tag === 'VS') ? (pTag.classList.add('vs'), pTag.textContent = tag) :
+                         (pTag.classList.add('result'), pTag.textContent = tag);
+
+        // Append it to newTags array
+        newTags.push(pTag);
+    });
+
+    return newTags;
+}
+
+// Remove p tags from the DOM if they exist
+function removeTags() {
+    // Query all p elements from the DOM which are inside the playArea container
+    let playAreaTags = playArea.querySelectorAll('p');
+
+    // If no p tags exist on the DOM, return
+    if (playAreaTags.length === 0) return;
+
+    // Otherwise, remove each p tag from the playArea container
+    [...playAreaTags].forEach(pTag => {
+        pTag.remove();
+    });
+}
+
 // Start the game
 function playGame() {
     let gameCount = 0;
@@ -126,7 +164,7 @@ function playGame() {
 
     while (gameCount < MAX_GAMES) {
         let matchResult = playRound(playerChoice(), computerChoice())
-                
+
         if (matchResult.includes("You won!")) {
             playerScore++;
         } else if (matchResult.includes("You lost!")) {
