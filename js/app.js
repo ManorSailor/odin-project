@@ -37,17 +37,17 @@ cards.forEach(card => {
         let playerChoice = e.target.getAttribute('data-key');
         let computerChoice = getComputerChoice();
         
-        // TODO: Add checks for nefarious users messing with HTML
-        // if (!playerChoice || !RPS_WINNERS.includes(playerChoice)) return;
+        // Ensure that user has not messed with data-key attributes value
+        if (!isValid(playerChoice)) return;
 
         let result = playRound(playerChoice, computerChoice);
         console.log(result);
     });
 });
 
-// Function for validating player input
+// Ensure that the passed value exists in our array, otherwise, return false.
 function isValid(choice) {
-    return (choice === "ROCK" || choice === "Paper" || choice === "Scissors") ? true : false;
+    return (RPS_WINNERS.includes(choice)) ? true : false;
 }
 
 // Get computer choice
