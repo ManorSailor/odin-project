@@ -31,6 +31,13 @@ const MAX_GAMES = 5;
 // Select all the RPS cards from the DOM
 const cards = document.querySelectorAll(".rps > *");
 
+// Select the play-area from the DOM, we will append our new elements to it
+const playArea = document.getElementById('play-area');
+
+// Create a playBox container & add a class to it. We will append it to playa-area later
+const playBox = document.createElement('div');
+playBox.classList.add('play-box');
+
 // Apply event listeners to each of the cards
 cards.forEach(card => {
     card.addEventListener('click', (e) => {
@@ -40,8 +47,9 @@ cards.forEach(card => {
         // Ensure that user has not messed with data-key attributes value
         if (!isValid(playerChoice)) return;
 
+        const newCards = createCards(playerChoice, computerChoice);
         let result = playRound(playerChoice, computerChoice);
-        console.log(result);
+        console.log(cards);
     });
 });
 
@@ -70,6 +78,45 @@ function playRound(playerChoice, computerChoice) {
     } else {
         return `You lost! ${computerChoice} beats ${playerChoice}`;
     }
+}
+
+// Create cards in memory & return references to those cards
+function createCards(...choices) {
+    // Call the removeCards function
+    removeCards();
+
+    // Create a newCards array for containing new cards
+    let newCards = [];
+
+    // For each choice in choices...
+    choices.forEach(choice => {
+        // Create an img element
+        const card = document.createElement('img');
+
+        // Add attributes & classes to it
+        card.src = `./img/${choice}.svg`;
+        card.alt = `${choice} image`
+        card.classList.add('card');
+
+        // Append it to the newCards array
+        newCards.push(card);
+    })
+
+    return newCards;
+}
+
+// Remove cards from the DOM if they exist
+function removeCards() {
+    // Query all img elements from the DOM which are inside the playBox container
+    let playBoxCards = playBox.querySelectorAll("img");
+
+    // If no cards exist on the DOM, return
+    if (playBoxCards.length === 0) return;
+
+    // Otherwise, remove each card from the playBox container
+    [...playBoxCards].forEach(card => {
+        playBox.removeChild(card);
+    });
 }
 
 // Start the game
