@@ -33,6 +33,8 @@ body {
   background-color: var(--bg-clr);
   font-family: 'Montserrat Alternates', sans-serif;
   letter-spacing: 0.75px;
+  padding: 1rem;
+  overflow: hidden;
 }
 
 /* =============== Typography =============== */
@@ -41,7 +43,8 @@ svg {
   vertical-align: middle;
 }
 
-p {
+p,
+a {
   display: inline-block;
   font-size: var(--fs-lg);
 }
@@ -58,7 +61,6 @@ p {
 /* =============== Header =============== */
 .scores-header {
   min-height: 100px;
-  padding: 0.5rem;
 }
 
 .scores-title {
@@ -143,4 +145,21 @@ p {
   width: var(--icon-size);
   height: var(--icon-size);
   transition: color 250ms ease-in-out;
+}
+
+/* =============== Creator =============== */
+.creator {
+  position: absolute;
+  top: 94%; left: 50%;
+  transform: translateX(-50%);
+}
+
+.creator > a {
+  color: var(--accent-alt);
+  opacity: 0.5;
+  transition: opacity 200ms ease-in;
+}
+
+.creator > a:hover {
+  opacity: 1;
 }
