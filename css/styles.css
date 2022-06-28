@@ -105,6 +105,9 @@ a {
 
 .play-box .card {
   cursor: auto;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  transition: none;
   animation: slide-up 750ms ease;
 }
 
