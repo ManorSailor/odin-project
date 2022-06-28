@@ -88,18 +88,32 @@ a {
 
 /* =============== Play-area =============== */
 .play-area {
-  gap: 2rem;
+  gap: 1rem;
   flex: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  flex-direction: column;
 }
 
-.play-area .card {
+.play-box {
+  flex: auto;
+  gap: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.play-box .card {
   cursor: auto;
   opacity: 0;
   transform: translateY(100%);
   /* animation: slide-up 1s ease infinite; */
+}
+
+/* Following class will be applied through JavaScript */
+.match-result {
+  transform: translateY(-250%);
+  font-size: var(--fs-xxl);
 }
 
 @keyframes slide-up {
