@@ -145,6 +145,8 @@ a {
   width: var(--icon-size);
   height: var(--icon-size);
   transition: color 250ms ease-in-out;
+  /* Fixes svgs from getting targeted on click */
+  pointer-events: none; 
 }
 
 /* =============== Creator =============== */
