@@ -105,9 +105,7 @@ a {
 
 .play-box .card {
   cursor: auto;
-  opacity: 0;
-  transform: translateY(100%);
-  /* animation: slide-up 1s ease infinite; */
+  animation: slide-up 750ms ease;
 }
 
 /* Following class will be applied through JavaScript */
@@ -117,9 +115,13 @@ a {
 }
 
 @keyframes slide-up {
-  to {
-    transform: translateY(0);
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
