@@ -43,6 +43,7 @@ svg {
 
 p {
   display: inline-block;
+  font-size: var(--fs-lg);
 }
 
 /* =============== Utility Classes =============== */
@@ -92,6 +93,24 @@ p {
   justify-content: center;
 }
 
+.play-area .card {
+  cursor: auto;
+  opacity: 0;
+  transform: translateY(100%);
+  /* animation: slide-up 1s ease infinite; */
+}
+
+@keyframes slide-up {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.vs {
+  font-weight: 600;
+}
+
 /* =============== Footer =============== */
 .rps {
   gap: 2rem;
@@ -110,11 +129,11 @@ p {
   box-shadow: 0 0 10px rgba(19, 21, 23, 0.5);
 }
 
-.card:hover {
+.rps .card:hover {
   transform: translateY(-10px);
 }
 
-.card:hover svg {
+.rps .card:hover svg {
   color: var(--accent-clr);
 }
 
