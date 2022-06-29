@@ -232,6 +232,7 @@ function declareResult() {
 // Function for resetting the game
 function resetGame() {
     removeChildNodes(playArea);
+    playArea.appendChild(playBox);
     playerScore = computerScore = gameCount = 0;
 
     [...scoreTable].forEach(scorer => {
