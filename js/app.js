@@ -34,9 +34,10 @@ const cards = document.querySelectorAll(".rps > *");
 // Select the play-area from the DOM, we will append our new elements to it
 const playArea = document.getElementById('play-area');
 
-// Create a playBox container & add a class to it. We will append it to playa-area later
+// Create a playBox container, add a class to it and append it to the DOM.
 const playBox = document.createElement('div');
 playBox.classList.add('play-box');
+playArea.appendChild(playBox);
 
 // Apply event listeners to each of the cards
 cards.forEach(card => {
@@ -50,6 +51,8 @@ cards.forEach(card => {
         const newCards = createCards(playerChoice, computerChoice);
         const result = playRound(playerChoice, computerChoice);
         const newTags = createTags(result, 'VS');
+
+        appendNodes(newCards, newTags);
     });
 });
 
@@ -154,6 +157,17 @@ function removeTags() {
     // Otherwise, remove each p tag from the playArea container
     [...playAreaTags].forEach(pTag => {
         pTag.remove();
+    });
+}
+
+// Append all the passed nodes to the DOM
+function appendNodes(newCards, newTags) {
+    newCards.forEach(card => {
+        newTags.forEach(tag => {
+            // Appends <p> to play-area, then appends card[0] to play-box, then append p tag to play-box, then the final card to play-box
+            (tag.className === 'result') ? playArea.appendChild(tag) : playBox.appendChild(tag);
+            playBox.appendChild(card);
+        });
     });
 }
 
