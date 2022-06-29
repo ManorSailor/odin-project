@@ -113,7 +113,8 @@ function createCards(...choices) {
         const card = document.createElement('img');
 
         // Add attributes & classes to it
-        card.src = `./img/${choice}.svg`;
+        // lowercasing the choice here, otherwise, images break on website due to case sensitivity
+        card.src = `./img/${choice.toLowerCase()}.svg`;
         card.alt = `${choice} image`
         card.classList.add('card');
 
