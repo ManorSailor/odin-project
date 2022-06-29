@@ -101,8 +101,8 @@ function playRound(playerChoice, computerChoice) {
 
 // Create cards in memory & return references to those cards
 function createCards(...choices) {
-    // Call the removeCards function
-    removeCards();
+    // Remove all cards from playBox container
+    removeChildNodes(playBox, 'img');
 
     // Create a newCards array for containing new cards
     let newCards = [];
@@ -124,24 +124,10 @@ function createCards(...choices) {
     return newCards;
 }
 
-// Remove cards from the DOM if they exist
-function removeCards() {
-    // Query all img elements from the DOM which are inside the playBox container
-    let playBoxCards = playBox.querySelectorAll("img");
-
-    // If no cards exist on the DOM, return
-    if (playBoxCards.length === 0) return;
-
-    // Otherwise, remove each card from the playBox container
-    [...playBoxCards].forEach(card => {
-        playBox.removeChild(card);
-    });
-}
-
 // Create p tags in memory & return references to them
 function createTags(...tags) {
-    // Call the removeTags function
-    removeTags();
+    // Remove all p tags from playArea container
+    removeChildNodes(playArea, 'p');
 
     // Create a new tags array for containing new tags
     let newTags = [];
@@ -162,20 +148,6 @@ function createTags(...tags) {
     return newTags;
 }
 
-// Remove p tags from the DOM if they exist
-function removeTags() {
-    // Query all p elements from the DOM which are inside the playArea container
-    let playAreaTags = playArea.querySelectorAll('p');
-
-    // If no p tags exist on the DOM, return
-    if (playAreaTags.length === 0) return;
-
-    // Otherwise, remove each p tag from the playArea container
-    [...playAreaTags].forEach(pTag => {
-        pTag.remove();
-    });
-}
-
 // Append all the passed nodes to the DOM
 function appendNodes(newCards, newTags) {
     newCards.forEach(card => {
@@ -186,6 +158,22 @@ function appendNodes(newCards, newTags) {
         });
     });
 }
+
+// Function which takes a parent node & remove all child nodes from it
+// Optionally, takes a parameter to remove only specific elements. Note: Removes all elements by default
+function removeChildNodes(parentNode, elements="*") {
+    // Query the DOM for all of the child nodes of parentNode & convert it into an array
+    const childNodes = [...parentNode.querySelectorAll(elements)];
+
+    // If the parent has no children, simply return
+    if (childNodes.length === 0) return;
+
+    // For each node in childNodes... remove child
+    childNodes.forEach(node => {
+        node.remove();
+    });
+}
+
 
 // Compute the game score
 function computeScore(matchResult) {
@@ -214,8 +202,7 @@ function setScores(party, score) {
 // Function for declaring the winner
 function declareResult() {
     // Clear the play-area
-    removeCards();
-    removeTags();
+    removeChildNodes(playArea);
 
     // Create a new pTag & add a class
     const result = document.createElement('p');
