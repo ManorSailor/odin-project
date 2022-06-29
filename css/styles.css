@@ -122,8 +122,8 @@ a {
 }
 
 .match-result {
-  transform: translateY(-250%);
   font-size: var(--fs-xxl);
+  animation: slide-up 500ms ease;
 }
 
 @keyframes slide-up {
