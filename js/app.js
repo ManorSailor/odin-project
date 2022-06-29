@@ -49,18 +49,26 @@ let playerScore = 0, computerScore = 0;
 // Apply event listeners to each of the cards
 cards.forEach(card => {
     card.addEventListener('click', (e) => {
-        let playerChoice = e.target.getAttribute('data-key');
-        let computerChoice = getComputerChoice();
+        if (gameCount < MAX_GAMES) {
+            let playerChoice = e.target.getAttribute('data-key');
+            let computerChoice = getComputerChoice();
 
-        // Ensure that user has not messed with data-key attributes value
-        if (!isValid(playerChoice)) return;
+            // Ensure that user has not messed with data-key attributes value
+            if (!isValid(playerChoice)) return;
 
-        const newCards = createCards(playerChoice, computerChoice);
-        const result = playRound(playerChoice, computerChoice);
-        const newTags = createTags(result, 'VS');
+            const newCards = createCards(playerChoice, computerChoice);
+            const result = playRound(playerChoice, computerChoice);
+            const newTags = createTags(result, 'VS');
 
-        appendNodes(newCards, newTags);
-        computeScore(result);
+            appendNodes(newCards, newTags);
+            computeScore(result);
+
+            gameCount++;
+
+            if (gameCount === 5) {
+                declareResult();
+            }
+        }
     });
 });
 
@@ -182,18 +190,15 @@ function appendNodes(newCards, newTags) {
 // Compute the game score
 function computeScore(matchResult) {
     if (matchResult.includes("You won!")) {
-        let playerScore = getScores('player') + 1;
+        playerScore = getScores('player') + 1;
         setScores('player', playerScore);
     } else if (matchResult.includes("You lost!")) {
-        let computerScore = getScores('computer') + 1;
+        computerScore = getScores('computer') + 1;
         setScores('computer', computerScore);
     } else {
         let tieCount = getScores('ties') + 1;
         setScores('ties', tieCount);
     }
-    gameCount++;
-    return;
-    // declareResult(playerScore, computerScore);
 }
 
 // Function which returns the score of passed party in integer format
@@ -204,16 +209,27 @@ function getScores(party) {
 // Function which sets the scores of passed party
 function setScores(party, score) {
     document.querySelector(`.score-table > .${party} > .score`).textContent = score;
-    return;
 }
 
 // Function for declaring the winner
-function declareResult(playerScore, computerScore) {
+function declareResult() {
+    // Clear the play-area
+    removeCards();
+    removeTags();
+
+    // Create a new pTag & add a class
+    const result = document.createElement('p');
+    result.classList.add('match-result');
+
+    // Check who won & set text content appropriately
     if (playerScore > computerScore) {
-        console.log("You won the game!")
+        result.textContent = 'You Won! Good Job!';
     } else if (computerScore > playerScore) {
-        console.log("You lost the game!")
+        result.textContent = 'You Lost! Try Again!';
     } else {
-        console.log("Game has tied!")
+        result.textContent = 'Tie Game!';
     }
+
+    // Append the newNode to the playArea container
+    playArea.appendChild(result);
 }
