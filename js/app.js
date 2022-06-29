@@ -31,6 +31,9 @@ const MAX_GAMES = 5;
 // Select all the RPS cards from the DOM
 const cards = document.querySelectorAll(".rps > *");
 
+// Select the scoreTable from the DOM
+const scoreTable = document.querySelectorAll(".scores-header > .score-table");
+
 // Select the play-area from the DOM, we will append our new elements to it
 const playArea = document.getElementById('play-area');
 
@@ -38,6 +41,10 @@ const playArea = document.getElementById('play-area');
 const playBox = document.createElement('div');
 playBox.classList.add('play-box');
 playArea.appendChild(playBox);
+
+// Initialize a game counter & score variables
+let gameCount = 0;
+let playerScore = 0, computerScore = 0;
 
 // Apply event listeners to each of the cards
 cards.forEach(card => {
@@ -53,6 +60,7 @@ cards.forEach(card => {
         const newTags = createTags(result, 'VS');
 
         appendNodes(newCards, newTags);
+        computeScore(result);
     });
 });
 
@@ -171,26 +179,32 @@ function appendNodes(newCards, newTags) {
     });
 }
 
-// Start the game
-function playGame() {
-    let gameCount = 0;
-    let playerScore = 0, computerScore = 0;
-
-    while (gameCount < MAX_GAMES) {
-        let matchResult = playRound(playerChoice(), computerChoice())
-
-        if (matchResult.includes("You won!")) {
-            playerScore++;
-        } else if (matchResult.includes("You lost!")) {
-            computerScore++;
-        }
-
-        console.log(matchResult);
-        console.log(`Current Scores: Player: ${playerScore} | Computer: ${computerScore}`);
-        gameCount++;
+// Compute the game score
+function computeScore(matchResult) {
+    if (matchResult.includes("You won!")) {
+        let playerScore = getScores('player') + 1;
+        setScores('player', playerScore);
+    } else if (matchResult.includes("You lost!")) {
+        let computerScore = getScores('computer') + 1;
+        setScores('computer', computerScore);
+    } else {
+        let tieCount = getScores('ties') + 1;
+        setScores('ties', tieCount);
     }
+    gameCount++;
+    return;
+    // declareResult(playerScore, computerScore);
+}
 
-    declareResult(playerScore, computerScore);
+// Function which returns the score of passed party in integer format
+function getScores(party) {
+    return parseInt(document.querySelector(`.score-table > .${party} > .score`).textContent);
+}
+
+// Function which sets the scores of passed party
+function setScores(party, score) {
+    document.querySelector(`.score-table > .${party} > .score`).textContent = score;
+    return;
 }
 
 // Function for declaring the winner
@@ -203,5 +217,3 @@ function declareResult(playerScore, computerScore) {
         console.log("Game has tied!")
     }
 }
-
-// playGame();
