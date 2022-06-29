@@ -32,7 +32,7 @@ const MAX_GAMES = 5;
 const cards = document.querySelectorAll(".rps > *");
 
 // Select the scoreTable from the DOM
-const scoreTable = document.querySelectorAll(".scores-header > .score-table");
+const scoreTable = document.querySelectorAll(".score-table > *");
 
 // Select the play-area from the DOM, we will append our new elements to it
 const playArea = document.getElementById('play-area');
@@ -207,6 +207,13 @@ function declareResult() {
     // Create a new pTag & add a class
     const result = document.createElement('p');
     result.classList.add('match-result');
+    
+    // Create a button for resetting the game
+    const button = document.createElement('div');
+    button.classList.add('card');
+    button.textContent = 'Play Again';
+
+    button.addEventListener('click', resetGame), {once : true};
 
     // Check who won & set text content appropriately
     if (playerScore > computerScore) {
@@ -217,6 +224,17 @@ function declareResult() {
         result.textContent = 'Tie Game!';
     }
 
-    // Append the newNode to the playArea container
+    // Append the newNode & button to the playArea container
     playArea.appendChild(result);
+    playArea.appendChild(button);
+}
+
+// Function for resetting the game
+function resetGame() {
+    removeChildNodes(playArea);
+    playerScore = computerScore = gameCount = 0;
+
+    [...scoreTable].forEach(scorer => {
+        setScores(scorer.className, 0);
+    });
 }
