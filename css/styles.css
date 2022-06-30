@@ -131,16 +131,36 @@ p {
   align-items: center;
   gap: 0.75rem;
   margin: 0;
+  font-size: var(--fs-lg);
 }
 
 .tools-list > *:nth-child(3) > input {
   border: none;
   overflow: hidden;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 /* ================ Canvas ================ */
+.canvas-box {
+  gap: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
 
+.canvas {
+  width: 500px;
+  aspect-ratio: 1;
+  box-shadow: 0 0 10px rgba(12, 31, 60, 0.5);
+}
+
+.canvas-slider {
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-lg);
+}
 
 /* ================ Creator ================ */
 .creator {
@@ -148,6 +168,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 }
 
 .creator > a {
