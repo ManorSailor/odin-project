@@ -23,6 +23,10 @@
   --fs-lg: 1.25rem;
   --fs-xl: 1.5rem;
   --fs-xxl: 2.25rem;
+
+  --font-text: 'Montserrat Alternates', sans-serif;
+
+  --btn-border: 1px solid var(--accent-clr);
 }
 
 body {
@@ -31,7 +35,7 @@ body {
   letter-spacing: 0.75px;
   min-height: 100vh;
   color: var(--text-clr);
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: var(--font-text);
   background-image: linear-gradient(130deg, var(--bg-clr), var(--accent-alt));
   overflow: hidden;
 }
@@ -46,12 +50,46 @@ p {
 
 /* ================ Utility Classes ================ */
 .container {
+  flex: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  max-width: 1300px;
   padding: 1rem;
-  /* border: 2px solid red; */
 }
 
+.btn {
+  color: var(--text-clr);
+  font-size: var(--fs-lg);
+  font-family: var(--font-text);
+  background-color: transparent;
+  border-radius: 8px;
+  border: var(--btn-border);
+  padding: 0.5em 1.25em;
+  cursor: pointer;
+  position: relative;
+  transition: color 250ms ease-in-out;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background-color: var(--accent-clr);
+  z-index: -1;
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: transform 250ms ease-in-out;
+}
+
+.btn:hover::before {
+  transform: scale(1);
+}
 
 /* ================ Header ================ */
 .nav-header {
@@ -68,6 +106,41 @@ p {
 .nav-header > a:hover {
   color: var(--accent-clr);
 }
+
+/* ================ Tools ================ */
+.tools-box {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 8px;
+  background-image: linear-gradient(deg, var(--bg-clr), var(--accent-alt));
+  box-shadow: 0 0 15px rgba(12, 31, 60, 0.5);
+}
+
+.tools-title {
+  font-size: var(--fs-xl);
+}
+
+.tools-list > * {
+  margin-bottom: 1rem;
+}
+
+.tools-list > *:nth-child(3) {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.tools-list > *:nth-child(3) > input {
+  border: none;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* ================ Canvas ================ */
+
 
 /* ================ Creator ================ */
 .creator {
