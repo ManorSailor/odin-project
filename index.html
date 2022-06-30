@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://api.fonts.coollabs.io">
+    <link href="https://api.fonts.coollabs.io/css2?family=Montserrat+Alternates:wght@100;400;600;800&display=swap" rel="stylesheet"> 
+
     <!-- CSS -->
     <link rel="stylesheet" href="./css/styles.css">
 
@@ -13,9 +17,39 @@
     <script src="./js/app.js" defer></script>
 
     <!-- Title -->
-    <title>Etch-A-Sketch</title>
+    <title>Retro Sketch</title>
 </head>
 <body>
-    
+    <!-- Header -->
+    <header class="nav-header">
+        <a href="#" class="header">Retro Sketch</a>
+    </header>
+
+    <!-- Main -->
+    <main class="container">
+        <!-- Tools Section -->
+        <section class="tools-box">
+            <h3 class="tools-title">Tools</h3>
+            <ul class="tools-list">
+                <li><button class="btn">Pen</button></li>
+                <li><button class="btn">Shader</button></li>
+                <li>
+                    <label for="picker">Pen Color</label>
+                    <input type="color" name="picker" id="picker">
+                </li>
+            </ul>
+        </section>
+        
+        <!-- Canvas Section -->
+        <div class="canvas-box">
+            <section class="canvas"></section>
+            <div class="canvas-size">Grid Size</div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="creator">
+        <a href="http://" target="_blank" rel="noopener noreferrer">Created By Sars</a>
+    </footer>
 </body>
 </html>

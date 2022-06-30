@@ -11,3 +11,60 @@
   list-style: none;
   text-decoration: none;
 }
+
+:root {
+  --bg-clr: #0c203d;
+  --accent-clr: #6cb4d1;
+  --accent-alt: #33506b;
+  --text-clr: #dddde1;
+
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
+  --fs-xxl: 2.25rem;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 0.75px;
+  min-height: 100vh;
+  color: var(--text-clr);
+  font-family: 'Montserrat Alternates', sans-serif;
+  background-image: linear-gradient(130deg, var(--bg-clr), var(--accent-alt));
+  overflow: hidden;
+}
+
+/* ================ Typography ================ */
+a,
+p {
+  display: inline-block;
+  color: var(--text-clr);
+  font-size: var(--fs-md);
+}
+
+/* ================ Utility Classes ================ */
+.container {
+  margin: 0 auto;
+  max-width: 1300px;
+  padding: 1rem;
+  /* border: 2px solid red; */
+}
+
+
+/* ================ Header ================ */
+.nav-header {
+  padding: 1rem;
+  min-height: 80px;
+  text-align: center;
+}
+
+.nav-header > a {
+  font-size: var(--fs-xl);
+  transition: color 250ms ease;
+}
+
+.nav-header > a:hover {
+  color: var(--accent-clr);
+}
