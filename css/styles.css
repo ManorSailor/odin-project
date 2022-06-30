@@ -68,3 +68,15 @@ p {
 .nav-header > a:hover {
   color: var(--accent-clr);
 }
+
+/* ================ Creator ================ */
+.creator {
+  flex: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.creator > a {
+  color: var(--accent-clr);
+}
