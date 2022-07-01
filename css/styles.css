@@ -17,6 +17,7 @@
   --accent-clr: #6cb4d1;
   --accent-alt: #33506b;
   --text-clr: #dddde1;
+  --box-clr: rgba(221, 221, 225, 0.2);
 
   --fs-sm: 0.875rem;
   --fs-md: 1rem;
@@ -149,9 +150,13 @@ p {
 }
 
 .canvas {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-size), 1fr);
+  grid-template-rows: repeat(var(--grid-size), 1fr);
   width: 500px;
   aspect-ratio: 1;
   box-shadow: 0 0 10px rgba(12, 31, 60, 0.5);
+  overflow: hidden;
 }
 
 .canvas-slider {
@@ -160,6 +165,17 @@ p {
   align-items: center;
   justify-content: center;
   font-size: var(--fs-lg);
+}
+
+/* Following class will be added via JS */
+.grid {
+  border-radius: 4px;
+  transition: background-color 200ms ease;
+  border: 0.25px solid rgba(255, 255, 255, 0.3);
+}
+
+.grid:hover {
+  background-color: var(--box-clr);
 }
 
 /* ================ Creator ================ */
