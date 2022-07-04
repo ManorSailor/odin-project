@@ -157,6 +157,7 @@ p {
   aspect-ratio: 1;
   box-shadow: 0 0 10px rgba(12, 31, 60, 0.5);
   overflow: hidden;
+  user-select: none;
 }
 
 .canvas > * {
