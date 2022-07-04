@@ -10,7 +10,7 @@ let oldValue = slider.getAttribute('value');
 
 // Generate a square grid of the default size
 // Note: oldValue is a string. All arithmetical ops except '+' will convert the string to a number--provided the string is a valid no
-createGrid(oldValue * oldValue);
+createGrids(oldValue * oldValue);
 
 // Listen to changes on slider. 
 // Note: 'change' only listens to changes, i.e, if the user simply click on the slider. This listener won't be triggered, use 'input' for that
@@ -21,10 +21,10 @@ slider.addEventListener('change', (e) => {
 
     if (newGrid > oldGrid) {
         const newValue = (newGrid - oldGrid);
-        createGrid(newValue);
+        createGrids(newValue);
     } else if (newGrid < oldGrid) {
         const newValue = (oldGrid - newGrid);
-        removeBox(newValue);
+        removeGrids(newValue);
     }
 
     oldValue = curValue; // Store the last grid value, we need it to compare to the current value
@@ -33,7 +33,7 @@ slider.addEventListener('change', (e) => {
 });
 
 // Function which generates a grid of size 'size' on canvas
-function createGrid(size) {
+function createGrids(size) {
     for (let i = 0; i < size; i++) {
         const grid = document.createElement('div');
         grid.classList.add('grid');
@@ -42,7 +42,7 @@ function createGrid(size) {
 }
 
 // Function which removes boxes of size 'size' from the grid
-function removeBox(size) {
+function removeGrids(size) {
     const boxes = [...canvas.children];
 
     for (let i = 0; i < size; i++) {
