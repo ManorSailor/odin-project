@@ -5,19 +5,20 @@ const canvas = document.querySelector('.canvas');
 const slider = document.querySelector('.canvas-slider > #slider'); 
 
 // Get the default grid value from the slider
-// let oldValue = canvas.style.cssText.slice(-3, -1); // Typical way to do the same thing, fetch default value from the inline style on canvas
-let oldValue = slider.getAttribute('value');
+// let oldGrid = canvas.style.cssText.slice(-3, -1); // Typical way to do the same thing, fetch default value from the inline style on canvas
+let oldGrid = slider.getAttribute('value');
+
+// Note: oldGrid is a string. All arithmetical ops except '+' will convert the string to a number--provided the string is a valid no
+oldGrid *= oldGrid;
 
 // Generate a square grid of the default size
-// Note: oldValue is a string. All arithmetical ops except '+' will convert the string to a number--provided the string is a valid no
-createGrids(oldValue * oldValue);
+createGrids(oldGrid);
 
 // Listen to changes on slider. 
 // Note: 'change' only listens to changes, i.e, if the user simply click on the slider. This listener won't be triggered, use 'input' for that
 slider.addEventListener('change', (e) => {
     const curValue = e.target.value; // New value user wants their grid to be
     const newGrid = curValue * curValue; // Calculate the total elements current grid will have
-    const oldGrid = oldValue * oldValue; // Calculate the total elements previous grid had
 
     if (newGrid > oldGrid) {
         const newValue = (newGrid - oldGrid);
@@ -27,7 +28,7 @@ slider.addEventListener('change', (e) => {
         removeGrids(newValue);
     }
 
-    oldValue = curValue; // Store the last grid value, we need it to compare to the current value
+    oldGrid = newGrid; // Update oldGrid value to newGrid, we need to store the last grid value to be able to decide
     slider.setAttribute('value', curValue); // Update slider to reflect current value
     canvas.style.cssText = `--grid-size: ${curValue};` // Update inline style with the current value
 });
