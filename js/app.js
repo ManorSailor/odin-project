@@ -51,6 +51,9 @@ function removeGrids(size) {
 }
 
 /* =================== Tools & Colors =================== */
+
+/* ============ Color Picker ============ */
+
 // Get the color picker
 const picker = document.getElementById('picker');
 
@@ -61,3 +64,39 @@ let currentColor = picker.getAttribute('value');
 picker.addEventListener('change', (e) => {
     currentColor = e.target.value;
 });
+
+/* ============ Canvas ============ */
+
+// Tools default state
+let penState = false;
+
+// Listen to click events on canvas
+canvas.addEventListener('click', () => {
+    // If pen is disabled, enable it & add a mousemove event & pass fillColor as a callback func. Otherwise, remove the mousemove listener
+    if (!penState) {
+        togglePen();
+        canvas.addEventListener('mousemove', fillColor);
+    } else {
+        togglePen();
+        canvas.removeEventListener('mousemove', fillColor);
+    }
+});
+
+// Function to change the background color of passed target
+function fillColor(e) {
+    e.target.style.backgroundColor = currentColor;
+}
+
+// Function which toggles the pen state
+function togglePen() {
+    const pen = document.getElementById('pen');
+    const state = pen.getAttribute('toggled');
+
+    if (state === 'false') {
+        pen.setAttribute('toggled', true);
+        penState = true;
+    } else {
+        pen.setAttribute('toggled', false);
+        penState = false;
+    }
+}
