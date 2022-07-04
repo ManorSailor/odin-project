@@ -90,8 +90,8 @@ canvas.addEventListener('click', () => {
 
 // Function to change the background color of passed target
 function fillColor(e) {
-    e.target.style.backgroundColor = currentColor;
     boxes.add(e.target);
+    e.target.style.backgroundColor = currentColor;
 }
 
 // Function which toggles the pen state
@@ -110,9 +110,14 @@ function togglePen() {
 
 // Function which clears the grid
 function clearGrid() {
+    // If the boxes are empty, no grid box has been filled, simply return
     if (boxes.length === 0) return;
+
+    // otherwise, for each box, change their backgroundColor to transparent
     boxes.forEach(box => {
         box.style.backgroundColor = 'transparent';
     });
+    
+    // Clear the boxes set after running it once
     boxes.clear();
 }
