@@ -37,7 +37,6 @@ slider.addEventListener('change', (e) => {
 function createGrids(size) {
     for (let i = 0; i < size; i++) {
         const grid = document.createElement('div');
-        grid.classList.add('grid');
         canvas.appendChild(grid);
     }
 }

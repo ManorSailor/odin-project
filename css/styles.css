@@ -159,23 +159,21 @@ p {
   overflow: hidden;
 }
 
+.canvas > * {
+  transition: background-color 200ms ease;
+  border: 0.25px solid var(--box-clr);
+}
+
+.canvas > *:hover {
+  background-color: var(--box-clr);
+}
+
 .canvas-slider {
   gap: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: var(--fs-lg);
-}
-
-/* Following class will be added via JS */
-.grid {
-  /* border-radius: 4px; */
-  transition: background-color 200ms ease;
-  border: 0.25px solid var(--box-clr);
-}
-
-.grid:hover {
-  background-color: var(--box-clr);
 }
 
 /* ================ Creator ================ */
