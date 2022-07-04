@@ -49,3 +49,15 @@ function removeGrids(size) {
         canvas.removeChild(boxes[i]);
     }
 }
+
+/* =================== Tools & Colors =================== */
+// Get the color picker
+const picker = document.getElementById('picker');
+
+// Store the current color
+let currentColor = picker.getAttribute('value');
+
+// Apply listener to the picker to track color changes
+picker.addEventListener('change', (e) => {
+    currentColor = e.target.value;
+});
