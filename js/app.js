@@ -19,6 +19,9 @@ createGrids(oldGrid);
 slider.addEventListener('change', (e) => {
     const curValue = e.target.value; // New value user wants their grid to be
     const newGrid = curValue * curValue; // Calculate the total elements current grid will have
+    
+    // Clear the grid of filled grid boxes
+    clearGrid();
 
     if (newGrid > oldGrid) {
         const newValue = (newGrid - oldGrid);
@@ -67,6 +70,9 @@ picker.addEventListener('change', (e) => {
 
 /* ============ Canvas ============ */
 
+// Index of boxes which have been filled
+let boxes = new Set();
+
 // Tools default state
 let penState = false;
 
@@ -85,6 +91,7 @@ canvas.addEventListener('click', () => {
 // Function to change the background color of passed target
 function fillColor(e) {
     e.target.style.backgroundColor = currentColor;
+    boxes.add(e.target);
 }
 
 // Function which toggles the pen state
@@ -99,4 +106,13 @@ function togglePen() {
         pen.setAttribute('toggled', false);
         penState = false;
     }
+}
+
+// Function which clears the grid
+function clearGrid() {
+    if (boxes.length === 0) return;
+    boxes.forEach(box => {
+        box.style.backgroundColor = 'transparent';
+    });
+    boxes.clear();
 }
