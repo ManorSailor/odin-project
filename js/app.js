@@ -96,9 +96,8 @@ canvas.addEventListener('mousedown', (e) => {
             break;
 
         case 'eraser':
-            currentColor = 'transparent';
-            activeFunction = fillColor(e);
-            canvas.addEventListener('mousemove', fillColor);
+            activeFunction = eraser(e);
+            canvas.addEventListener('mousemove', eraser);
             break;
     
         default:
@@ -115,6 +114,13 @@ function fillColor(e) {
     boxes.add(e.target);
     e.target.style.backgroundColor = currentColor;
     return fillColor;
+}
+
+// Eraser function which just erases stuff off of the grid
+function eraser(e) {
+    boxes.delete(e.target);
+    e.target.removeAttribute('style');
+    return eraser;
 }
 
 // Function which clears the grid
