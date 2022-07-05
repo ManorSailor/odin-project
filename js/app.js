@@ -56,6 +56,9 @@ function removeGrids(size) {
 /* =================== Tools & Colors =================== */
 const tools = document.querySelectorAll('.tools-list > *:not(:last-child)');
 
+/* ========== Store currently active function ========== */
+let activeFunction;
+
 /* ========== Default Active Tool ========== */
 let activeTool = 'pen';
 
@@ -88,13 +91,15 @@ let boxes = new Set();
 canvas.addEventListener('mousedown', (e) => {
     switch (activeTool) {
         case 'pen':
-            fillColor(e);
+            activeFunction = fillColor(e);
             canvas.addEventListener('mousemove', fillColor);
             break;
 
         case 'eraser':
             currentColor = 'transparent';
+            activeFunction = fillColor(e);
             canvas.addEventListener('mousemove', fillColor);
+            break;
     
         default:
             break;
@@ -102,13 +107,14 @@ canvas.addEventListener('mousedown', (e) => {
 });
 
 canvas.addEventListener('mouseup', () => {
-    canvas.removeEventListener('mousemove', fillColor);
+    canvas.removeEventListener('mousemove', activeFunction);
 });
 
 // Function to change the background color of passed target
 function fillColor(e) {
     boxes.add(e.target);
     e.target.style.backgroundColor = currentColor;
+    return fillColor;
 }
 
 // Function which clears the grid
