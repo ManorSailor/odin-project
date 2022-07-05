@@ -54,6 +54,17 @@ function removeGrids(size) {
 }
 
 /* =================== Tools & Colors =================== */
+const tools = document.querySelectorAll('.tools-list > *:not(:last-child)');
+
+/* ========== Default Active Tool ========== */
+let activeTool = 'pen';
+
+// Listen for clicks on each tool & update activeTool to the clicked tool
+[...tools].forEach(tool => {
+    tool.addEventListener('click', (e) => {
+        activeTool = e.target.id;
+    });
+});
 
 /* ============ Color Picker ============ */
 
@@ -73,39 +84,31 @@ picker.addEventListener('change', (e) => {
 // Index of boxes which have been filled
 let boxes = new Set();
 
-// Tools default state
-let penState = false;
-
 // Listen to click events on canvas
-canvas.addEventListener('click', () => {
-    // If pen is disabled, enable it & add a mousemove event & pass fillColor as a callback func. Otherwise, remove the mousemove listener
-    if (!penState) {
-        togglePen();
-        canvas.addEventListener('mousemove', fillColor);
-    } else {
-        togglePen();
-        canvas.removeEventListener('mousemove', fillColor);
+canvas.addEventListener('mousedown', (e) => {
+    switch (activeTool) {
+        case 'pen':
+            fillColor(e);
+            canvas.addEventListener('mousemove', fillColor);
+            break;
+
+        case 'eraser':
+            currentColor = 'transparent';
+            canvas.addEventListener('mousemove', fillColor);
+    
+        default:
+            break;
     }
+});
+
+canvas.addEventListener('mouseup', () => {
+    canvas.removeEventListener('mousemove', fillColor);
 });
 
 // Function to change the background color of passed target
 function fillColor(e) {
     boxes.add(e.target);
     e.target.style.backgroundColor = currentColor;
-}
-
-// Function which toggles the pen state
-function togglePen() {
-    const pen = document.getElementById('pen');
-    const state = pen.getAttribute('toggled');
-
-    if (state === 'false') {
-        pen.setAttribute('toggled', true);
-        penState = true;
-    } else {
-        pen.setAttribute('toggled', false);
-        penState = false;
-    }
 }
 
 // Function which clears the grid
