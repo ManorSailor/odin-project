@@ -130,7 +130,7 @@ function clearGrid() {
 
     // otherwise, for each box, change their backgroundColor to transparent
     boxes.forEach(box => {
-        box.style.backgroundColor = 'transparent';
+        box.removeAttribute('style');
     });
     
     // Clear the boxes set after running it once
