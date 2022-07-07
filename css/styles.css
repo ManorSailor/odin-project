@@ -198,7 +198,7 @@ p {
 }
 
 .canvas > *:hover {
-  background-color: var(--box-clr) !important;
+  background-color: var(--box-clr);
 }
 
 .canvas-slider {
