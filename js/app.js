@@ -97,11 +97,11 @@ picker.addEventListener('change', (e) => {
 let boxes = new Set();
 
 // For each event...add the event to canvas. On mousedown. activate the selected tool. On mouseup, remove the mousemove listener from canvas
-['mousedown', 'mouseup'].forEach(eve => {
+['mousedown', 'mouseup', 'mouseleave'].forEach(eve => {
     canvas.addEventListener(eve, (e) => {
         if (e.type === 'mousedown') {
             activateTool(e);
-        } else if (e.type === 'mouseup') {
+        } else if (e.type === 'mouseup' || e.type === 'mouseleave') {
             canvas.removeEventListener('mousemove', activeFunction);
         }
     });
