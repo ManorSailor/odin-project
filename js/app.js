@@ -34,6 +34,7 @@ slider.addEventListener('change', (e) => {
     oldGrid = newGrid; // Update oldGrid value to newGrid, we need to store the last grid value to be able to decide
     slider.setAttribute('value', curValue); // Update slider to reflect current value
     canvas.style.cssText = `--grid-size: ${curValue};` // Update inline style with the current value
+    canvas.setAttribute('data-grids', curValue); // Update the data-grids attr to reflect current value
 });
 
 // Function which generates a grid of size 'size' on canvas

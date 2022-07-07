@@ -161,8 +161,35 @@ p {
   width: 500px;
   aspect-ratio: 1;
   box-shadow: 0 0 10px rgba(12, 31, 60, 0.5);
-  overflow: hidden;
   user-select: none;
+  position: relative;
+}
+
+.canvas::before, 
+.canvas::after {
+  content: attr(data-grids);
+  color: var(--accent-clr);
+  font-size: var(--fs-lg);
+  position: absolute;
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  border: 2px solid var(--box-clr);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+
+.canvas::before {
+  top: -12%;
+  left: 45%;
+}
+
+.canvas::after {
+  top: 45%;
+  left: 102%;
 }
 
 .canvas > * {
