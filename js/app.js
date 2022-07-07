@@ -56,10 +56,10 @@ function removeGrids(size) {
 /* =================== Tools & Colors =================== */
 const tools = document.querySelectorAll('.tools-list > *:not(:last-child)');
 
-/* ========== Store currently active function ========== */
+// Variable for storing the active callback function
 let activeFunction;
 
-/* ========== Default Active Tool ========== */
+// Default active tool
 let activeTool = 'pen';
 
 // Listen for clicks on each tool & update activeTool to the clicked tool
@@ -87,8 +87,21 @@ picker.addEventListener('change', (e) => {
 // Index of boxes which have been filled
 let boxes = new Set();
 
-// Listen to click events on canvas
-canvas.addEventListener('mousedown', (e) => {
+// For each event...add the event to canvas. On mousedown. activate the selected tool. On mouseup, remove the mousemove listener from canvas
+['mousedown', 'mouseup'].forEach(eve => {
+    canvas.addEventListener(eve, (e) => {
+        if (e.type === 'mousedown') {
+            activateTool(e);
+        } else if (e.type === 'mouseup') {
+            canvas.removeEventListener('mousemove', activeFunction);
+        }
+    });
+});
+
+// Function which activates the selected tool. This was we can keep adding tools to our app by adding extra cases
+// We call the func once because we want to allow the user to click & fill/erase depending on the tool
+// Storing the called func in a variable so that we can pass it later to the removeEventListener func
+function activateTool(e) {
     switch (activeTool) {
         case 'pen':
             activeFunction = fillColor(e);
@@ -99,15 +112,13 @@ canvas.addEventListener('mousedown', (e) => {
             activeFunction = eraser(e);
             canvas.addEventListener('mousemove', eraser);
             break;
-    
+
+        // TODO: Add more tools here
+        
         default:
             break;
     }
-});
-
-canvas.addEventListener('mouseup', () => {
-    canvas.removeEventListener('mousemove', activeFunction);
-});
+}
 
 // Function to change the background color of passed target
 function fillColor(e) {
@@ -128,7 +139,7 @@ function clearGrid() {
     // If the boxes are empty, no grid box has been filled, simply return
     if (boxes.length === 0) return;
 
-    // otherwise, for each box, change their backgroundColor to transparent
+    // Otherwise, for each box, remove their style attribute
     boxes.forEach(box => {
         box.removeAttribute('style');
     });
