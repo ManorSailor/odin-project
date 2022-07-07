@@ -209,6 +209,13 @@ p {
   font-size: var(--fs-lg);
 }
 
+.canvas-slider > input {
+  -webkit-appearance: none;
+  height: 10px;
+  border-radius: 4px;
+  background-color: var(--bg-clr);
+}
+
 /* ================ Creator ================ */
 .creator {
   flex: auto;
