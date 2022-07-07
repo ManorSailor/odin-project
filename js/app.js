@@ -64,11 +64,16 @@ let activeTool = document.getElementById('pen');
 activeTool.classList.toggle('active');
 
 // Listen for clicks on each tool & update activeTool to the clicked tool
+// TODO: Improve this code. This is not an extendable implementation
 [...tools].forEach(tool => {
     tool.addEventListener('click', (e) => {
-        activeTool.classList.toggle('active');
-        activeTool = e.target;
-        activeTool.classList.toggle('active');
+        if (e.target.id === 'pen' || e.target.id === 'eraser') {
+            activeTool.classList.toggle('active');
+            activeTool = e.target;
+            activeTool.classList.toggle('active');
+        } else {
+            clearGrid();
+        }
     });
 });
 
