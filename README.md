@@ -19,6 +19,8 @@ I had trouble in coupling tools with the canvas. I wanted the tool to work on th
 I will be revisiting this project in the future & making improvements to it. I want to create an easily extendable codebase which allows easy integration of new tools & features. 
 
 ### Todo/Future Goals
+- [ ] Adding an option to turn off grid lines
+- [ ] Adding an option to lock the grid size to avoid accidental grid changes
 - [ ] Adding an option to change background color of the canvas
 - [ ] Adding an option to resize the grid manually & allowing rectangular canvas
 - [ ] Adding localStorage support to store user settings
