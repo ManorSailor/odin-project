@@ -59,13 +59,16 @@ const tools = document.querySelectorAll('.tools-list > *:not(:last-child)');
 // Variable for storing the active callback function
 let activeFunction;
 
-// Default active tool
-let activeTool = 'pen';
+// Get the default active tool & add class of active to it
+let activeTool = document.getElementById('pen');
+activeTool.classList.toggle('active');
 
 // Listen for clicks on each tool & update activeTool to the clicked tool
 [...tools].forEach(tool => {
     tool.addEventListener('click', (e) => {
-        activeTool = e.target.id;
+        activeTool.classList.toggle('active');
+        activeTool = e.target;
+        activeTool.classList.toggle('active');
     });
 });
 
@@ -102,7 +105,8 @@ let boxes = new Set();
 // We call the func once because we want to allow the user to click & fill/erase depending on the tool
 // Storing the called func in a variable so that we can pass it later to the removeEventListener func
 function activateTool(e) {
-    switch (activeTool) {
+    let currentTool = activeTool.id;
+    switch (currentTool) {
         case 'pen':
             activeFunction = fillColor(e);
             canvas.addEventListener('mousemove', fillColor);

@@ -71,7 +71,8 @@ p {
   padding: 0.5em 1.25em;
   cursor: pointer;
   position: relative;
-  transition: color 250ms ease-in-out;
+  transition: color 250ms ease-in-out,
+              background-color 250ms ease-in-out;
 }
 
 .btn::before {
@@ -90,6 +91,10 @@ p {
 
 .btn:hover::before {
   transform: scale(1);
+}
+
+.active {
+  background-color: var(--accent-clr);
 }
 
 /* ================ Header ================ */
