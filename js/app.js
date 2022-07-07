@@ -15,11 +15,12 @@ oldGrid *= oldGrid;
 createGrids(oldGrid);
 
 // Listen to changes on slider. 
-// Note: 'change' only listens to changes, i.e, if the user simply click on the slider. This listener won't be triggered, use 'input' for that
-slider.addEventListener('change', (e) => {
+// Note: 'change' listens for changes & acts on them when they are committed i.e, submitted via button. It doesn't listen to changes in real time
+// Whereas, input listens to changes in real time. That's how we get our grid to generate as the user slides the slider
+slider.addEventListener('input', (e) => {
     const curValue = e.target.value; // New value user wants their grid to be
     const newGrid = curValue * curValue; // Calculate the total elements current grid will have
-    
+
     // Clear the grid of filled grid boxes
     clearGrid();
 
