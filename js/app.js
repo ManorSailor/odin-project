@@ -24,6 +24,8 @@ slider.addEventListener('input', (e) => {
     // Clear the grid of filled grid boxes
     clearGrid();
 
+    // Generate/remove only the required number of grid boxes 
+    // If newGrid has more 'boxes' means user wants to increase their grid size. On the contrary, lesser boxes means they want to decease their grid size
     if (newGrid > oldGrid) {
         const newValue = (newGrid - oldGrid);
         createGrids(newValue);
@@ -49,7 +51,6 @@ function createGrids(size) {
 // Function which removes boxes of size 'size' from the grid
 function removeGrids(size) {
     const boxes = [...canvas.children];
-
     for (let i = 0; i < size; i++) {
         canvas.removeChild(boxes[i]);
     }
