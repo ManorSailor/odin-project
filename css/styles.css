@@ -20,3 +20,7 @@
   --alt-clr: #152d40;
   --text-clr: #000000;
 }
+
+body {
+  background-color: var(--bg-clr);
+}
