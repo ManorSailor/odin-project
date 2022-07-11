@@ -88,7 +88,7 @@ span {
   flex: auto;
   background-color: var(--fg-clr);
   padding: 1rem;
-  border-radius: var(--calc-radius) 0 var(--calc-radius) 0;
+  border-radius: var(--calc-radius);
   box-shadow: 4px 4px 10px rgba(48, 47, 47, 0.1);
 }
 
