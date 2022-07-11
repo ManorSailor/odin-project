@@ -46,6 +46,9 @@ body {
 }
 
 /* ================ Typography ================ */
+span {
+  display: inline-block;
+}
 
 /* ================ Utility Classes ================ */
 .container {
@@ -81,11 +84,33 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
   flex: auto;
   background-color: var(--fg-clr);
   padding: 1rem;
   border-radius: var(--calc-radius) 0 var(--calc-radius) 0;
   box-shadow: 4px 4px 10px rgba(48, 47, 47, 0.1);
+}
+
+/* ================ Screen ================ */
+.calc-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  width: 100%;
+  min-height: 150px;
+  padding: 0 0.5rem;
+}
+
+.highlight {
+  font-weight: 400;
+  font-size: var(--fs-lg);
+}
+
+.result {
+  font-weight: 500;
+  font-size: var(--fs-xl);
 }
 
 /* ================ Buttons ================ */
