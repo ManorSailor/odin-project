@@ -61,8 +61,8 @@ body {
   font-size: var(--fs-lg);
   font-family: var(--ff-text);
   text-align: center;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   cursor: pointer;
   background-color: var(--fg-clr);
@@ -77,8 +77,40 @@ body {
 
 /* ================ Main ================ */
 .wrapper {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex: auto;
   background-color: var(--fg-clr);
   padding: 1rem;
   border-radius: var(--calc-radius) 0 var(--calc-radius) 0;
+  box-shadow: 4px 4px 10px rgba(48, 47, 47, 0.1);
+}
+
+/* ================ Buttons ================ */
+.calc-btns {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.btn-nums {
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* .btn-nums > *:nth-child(10) {
+  width: 100%;
+  border-radius: 10px;
+  grid-column: span 2;
+} */
+
+.btn-ops {
+  gap: 1rem;
+  display: grid;
+  align-self: flex-start;
+  grid-template-columns: repeat(2, 1fr);
 }
