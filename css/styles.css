@@ -27,9 +27,10 @@
   --fs-xxl: 3rem;
 
   --ff-text: 'Montserrat Alternates', sans-serif;
-  --ff-500: 500;
+  --ff-600: 600;
 
   --calc-radius: 1.75rem;
+  --btn-radius: 16px;
 }
 
 body {
@@ -37,7 +38,7 @@ body {
   align-items: center;
   min-height: 100vh;
   font-family: var(--ff-text);
-  font-weight: var(--ff-500);
+  font-weight: var(--ff-600);
   font-size: var(--fs-lg);
   color: var(--alt-clr);
   background-color: var(--bg-clr);
@@ -53,6 +54,25 @@ body {
   min-height: 80vh;
   margin: 0 auto;
   max-width: 400px;
+}
+
+.btn {
+  border: none;
+  font-size: var(--fs-lg);
+  font-family: var(--ff-text);
+  text-align: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: var(--fg-clr);
+  box-shadow: 8px 8px 16px rgba(203, 203, 203, 0.5),
+              -8px -8px 16px rgba(255, 255, 255, 0.5);
+}
+
+.btn:active {
+  box-shadow: 8px 8px 16px 0 rgba(203, 203, 203, 0.5) inset,
+              -8px -8px 16px 0 rgba(255, 255, 255, 0.5) inset;
 }
 
 /* ================ Main ================ */
