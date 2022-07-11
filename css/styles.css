@@ -11,3 +11,12 @@
   list-style: none;
   text-decoration: none;
 }
+
+:root {
+  --bg-clr: #d8e6e9;
+  --fg-clr: #eaf9fd;
+  --accent-clr: #8f7bcd;
+  --accent-alt: #424798;
+  --alt-clr: #152d40;
+  --text-clr: #000000;
+}
