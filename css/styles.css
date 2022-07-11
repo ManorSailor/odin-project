@@ -19,8 +19,46 @@
   --accent-alt: #424798;
   --alt-clr: #152d40;
   --text-clr: #000000;
+
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 2rem;
+  --fs-xxl: 3rem;
+
+  --ff-text: 'Montserrat Alternates', sans-serif;
+  --ff-500: 500;
+
+  --calc-radius: 1.75rem;
 }
 
 body {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  font-family: var(--ff-text);
+  font-weight: var(--ff-500);
+  font-size: var(--fs-lg);
+  color: var(--alt-clr);
   background-color: var(--bg-clr);
+  padding: 1rem;
+}
+
+/* ================ Typography ================ */
+
+/* ================ Utility Classes ================ */
+.container {
+  flex: auto;
+  display: flex;
+  min-height: 80vh;
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+/* ================ Main ================ */
+.wrapper {
+  flex: auto;
+  background-color: var(--fg-clr);
+  padding: 1rem;
+  border-radius: var(--calc-radius) 0 var(--calc-radius) 0;
 }
