@@ -69,6 +69,7 @@ span {
   border-radius: 50%;
   cursor: pointer;
   background-color: var(--fg-clr);
+  transition: color 200ms ease-in-out;
   box-shadow: 8px 8px 16px rgba(203, 203, 203, 0.5),
               -8px -8px 16px rgba(255, 255, 255, 0.5);
 }
@@ -76,6 +77,10 @@ span {
 .btn:active {
   box-shadow: 8px 8px 16px 0 rgba(203, 203, 203, 0.5) inset,
               -8px -8px 16px 0 rgba(255, 255, 255, 0.5) inset;
+}
+
+.btn:hover {
+  color: var(--accent-clr);
 }
 
 /* ================ Main ================ */
