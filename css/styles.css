@@ -54,6 +54,7 @@ span {
 .container {
   flex: auto;
   display: flex;
+  justify-content: center;
   min-height: 80vh;
   margin: 0 auto;
   max-width: 400px;
