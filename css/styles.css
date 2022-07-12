@@ -95,6 +95,9 @@ span {
   padding: 1rem;
   border-radius: var(--calc-radius);
   box-shadow: 4px 4px 10px rgba(48, 47, 47, 0.1);
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 }
 
 /* ================ Screen ================ */
