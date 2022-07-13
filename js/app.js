@@ -5,32 +5,33 @@ const buttons = document.querySelectorAll('.btn');
 
 // Array for storing numbers
 let num = '';
-let operator;
+let operator = '';
 let numbers = [];
 
 buttons.forEach(btn => {
     btn.addEventListener('click', (e) => {
-        // Get the user input
         const eq = e.target.textContent;
 
-        if (eq === 'AC' || eq === 'C') {
-            operate(eq);
-            return;
-        }
-
         showEquation(eq);
-        if (numbers.length === 2) {
-            console.log(operate(operator, numbers));
-            return;
-        } else if (!isNaN(eq)) {
-            num += eq
-        } else if (isNaN(eq) && num !== '') {
-            operator = eq;
-            numbers.push(parseFloat(num));
-            num = '';
+
+        if (!isNaN(eq)) {
+            num += eq;
+            result.textContent = num;
+        } else {
+            if (operator === '') operator = eq;
+            if (operator !== eq && !num) operator = eq;
+            if (num) {
+                numbers.push(parseFloat(num));
+                const ans = operate(operator, numbers);
+                if (numbers.length === 2) {
+                    numbers = [];
+                    numbers.push(ans);
+                } 
+                result.textContent = ans;
+                num = '';
+                operator = eq;
+            }
         }
-        // console.log(num);
-        // console.log(numbers);
     });
 });
 
@@ -47,7 +48,7 @@ function showEquation(newItem) {
     // If the newItem is NOT an operator, show it on screen
     if (!isNaN(newItem)) {
         equation.textContent += newItem;
-    } else if (isNaN(newItem)) {
+    } else {
         const lastIndex = curEquation.length - 1;
         const lastItem = curEquation[lastIndex];
 
