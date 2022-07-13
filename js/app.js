@@ -16,7 +16,9 @@ buttons.forEach(btn => {
         if (eq === 'AC' || eq === 'C') {
             operate(eq);
             return;
-        } 
+        }
+
+        showEquation(eq);
         if (numbers.length === 2) {
             console.log(operate(operator, numbers));
             return;
@@ -24,15 +26,54 @@ buttons.forEach(btn => {
             num += eq
         } else if (isNaN(eq) && num !== '') {
             operator = eq;
-            numbers.push(parseInt(num));
+            numbers.push(parseFloat(num));
             num = '';
         }
-        console.log(num);
-        console.log(numbers);
-
-        equation.textContent += `${eq}`;
+        // console.log(num);
+        // console.log(numbers);
     });
 });
+
+// Function which displays the currentEquation on screen
+function showEquation(newItem) {
+    // Get the currentEquation trimming any trailing whitespace from it.
+    // Need to remove it otherwise we will have whitespace on accessing last element of the string. 
+    let curEquation = equation.textContent.trim();
+
+    // If the curEquation is empty & passed item is an operator, return
+    // Because, we don't want to allow any operator when there are no nums on screen
+    if (curEquation === '' && isNaN(newItem)) return;
+    
+    // If the newItem is NOT an operator, show it on screen
+    if (!isNaN(newItem)) {
+        equation.textContent += newItem;
+    } else if (isNaN(newItem)) {
+        const lastIndex = curEquation.length - 1;
+        const lastItem = curEquation[lastIndex];
+
+        // lastItem is an Operator & last operator (lastItem) is NOT the same as newItem.
+        // Because we want to allow users to replace their last operator.
+        const isDiffOpr = isNaN(lastItem) && lastItem !== newItem;
+        
+        // If operators are different, means that user wants to change their operator
+        if (isDiffOpr) {
+            // Slice the string just before lastItem. String don't have pop(). Thus, slice it is.
+            // Why? Don't want to convert it into an array & don't care about the last item
+            curEquation = curEquation.slice(0, lastIndex);
+
+            // Append the new Operator with a trailing whitespace which trim() removed above
+            // Because without the whitespace, our equations will look like this: 28 +36
+            curEquation += newItem + ' ';
+
+            // Finally update the equation on screen
+            equation.textContent = curEquation;
+        } 
+        // If lastItem is a number, we can simply append the passed operator to screen. Yay!
+        else if (!isNaN(lastItem)) {
+            equation.textContent += ' ' + newItem + ' ';
+        }
+    }
+}
 
 // Function for choosing operation type on passed input
 function operate(operator, numbers) {
