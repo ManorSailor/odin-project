@@ -29,6 +29,7 @@
   --ff-text: 'Montserrat Alternates', sans-serif;
   --ff-600: 600;
 
+  --calc-width: 400px;
   --calc-radius: 1.75rem;
   --btn-radius: 16px;
 }
@@ -57,7 +58,7 @@ span {
   justify-content: center;
   min-height: 80vh;
   margin: 0 auto;
-  max-width: 400px;
+  max-width: var(--calc-width);
 }
 
 .btn {
@@ -110,6 +111,8 @@ span {
   width: 100%;
   min-height: 150px;
   padding: 0 0.5rem;
+  max-width: var(--calc-width);
+  overflow: hidden;
 }
 
 .equation {
