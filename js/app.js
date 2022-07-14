@@ -4,32 +4,32 @@ const result   = document.querySelector('.result > span');
 const buttons  = document.querySelectorAll('.btn');
 
 // Array for storing numbers
-let num      = '';
+let curNum   = result.textContent;
 let numbers  = [];
 let operator = '';
 
 buttons.forEach(btn => {
     btn.addEventListener('click', (e) => {
-        const eq = e.target.textContent;
+        const newItem = e.target.textContent;
 
-        showEquation(eq);
+        showEquation(newItem);
 
-        if (!isNaN(eq)) {
-            num += eq;
-            result.textContent = num;
+        if (!isNaN(newItem)) {
+            (curNum === '0') ? curNum = newItem : curNum += newItem;
+            result.textContent = curNum;
         } else {
-            if (operator === '') operator = eq;
-            if (operator !== eq && !num) operator = eq;
-            if (num) {
-                numbers.push(parseFloat(num));
+            if (operator === '') operator = newItem;
+            if (operator !== newItem && !curNum) operator = newItem;
+            if (curNum) {
+                numbers.push(parseFloat(curNum));
                 if (numbers.length === 2) {
                     const ans = operate(operator, numbers);
                     numbers = [];
                     numbers.push(ans);
                     result.textContent = ans;
                 } 
-                num = '';
-                operator = eq;
+                curNum = '';
+                operator = newItem;
             }
         }
     });
