@@ -1,12 +1,12 @@
 /* ============ Constants ============ */
 const equation = document.querySelector('.equation > span');
-const result = document.querySelector('.result > span');
-const buttons = document.querySelectorAll('.btn');
+const result   = document.querySelector('.result > span');
+const buttons  = document.querySelectorAll('.btn');
 
 // Array for storing numbers
-let num = '';
+let num      = '';
+let numbers  = [];
 let operator = '';
-let numbers = [];
 
 buttons.forEach(btn => {
     btn.addEventListener('click', (e) => {
