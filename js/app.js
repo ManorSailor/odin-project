@@ -22,12 +22,12 @@ buttons.forEach(btn => {
             if (operator !== eq && !num) operator = eq;
             if (num) {
                 numbers.push(parseFloat(num));
-                const ans = operate(operator, numbers);
                 if (numbers.length === 2) {
+                    const ans = operate(operator, numbers);
                     numbers = [];
                     numbers.push(ans);
+                    result.textContent = ans;
                 } 
-                result.textContent = ans;
                 num = '';
                 operator = eq;
             }
