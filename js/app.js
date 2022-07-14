@@ -20,6 +20,10 @@ buttons.forEach(btn => {
             (curNum === '0') ? curNum = newItem : curNum += newItem;
             result.textContent = curNum;
         } else {
+            if (newItem === 'AC' || newItem === 'C') {
+                operate(newItem);
+                return;
+            }
             if (operator === '') operator = newItem;
             if (operator !== newItem && !curNum) operator = newItem;
             if (curNum) {
@@ -145,6 +149,8 @@ function clear() {
     // If there are more than 1 element, slice it off from first to just before the last element. Otherwise, set the content to 0
     (len > 1) ? content = content.slice(0, len - 1) : content = 0;
     
+    curNum = content;
+
     // Update the result on screen
     result.textContent = content;
 }
