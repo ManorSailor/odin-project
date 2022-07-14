@@ -15,6 +15,8 @@ buttons.forEach(btn => {
         showEquation(newItem);
 
         if (!isNaN(newItem)) {
+            // If currentNum is 0, OVERWRITE it with newNum. Otherwise, APPEND newNum to it
+            // Helps in ignoring multiple 0s without any preceding numbers i.e, 000000 etc
             (curNum === '0') ? curNum = newItem : curNum += newItem;
             result.textContent = curNum;
         } else {
