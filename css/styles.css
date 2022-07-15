@@ -139,11 +139,9 @@ span {
   grid-template-columns: repeat(3, 1fr);
 }
 
-/* .btn-nums > *:nth-child(10) {
-  width: 100%;
-  border-radius: 10px;
-  grid-column: span 2;
-} */
+.btn-nums > *:nth-child(10) {
+  grid-column-start: -3;
+}
 
 .btn-ops {
   gap: 1rem;
