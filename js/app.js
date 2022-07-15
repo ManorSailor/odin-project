@@ -3,61 +3,86 @@ const equation = document.querySelector('.equation > span');
 const result   = document.querySelector('.result > span');
 const buttons  = document.querySelectorAll('.btn');
 
-// Array for storing numbers
+/* ============ Global Variables ============ */
 let curNum   = result.textContent;
-let numbers  = [];
+let operands = [];
 let operator = '';
+let ans      = '';
 
-buttons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        const newItem = e.target.textContent;
-
-        showEquation(newItem);
-
-        if (!isNaN(newItem)) {
-            // If currentNum is 0, OVERWRITE it with newNum. Otherwise, APPEND newNum to it
-            // Helps in ignoring multiple 0s without any preceding numbers i.e, 000000 etc
-            (curNum === '0') ? curNum = newItem : curNum += newItem;
-            result.textContent = curNum;
-        } else {
-            if (newItem === 'AC' || newItem === 'C') {
-                operate(newItem);
-                return;
-            }
-            if (operator === '') operator = newItem;
-            if (operator !== newItem && !curNum) operator = newItem;
-            if (curNum) {
-                numbers.push(parseFloat(curNum));
-                if (numbers.length === 2) {
-                    const ans = operate(operator, numbers);
-                    numbers = [];
-                    numbers.push(ans);
-                    result.textContent = ans;
-                } 
-                curNum = '';
-                operator = newItem;
-            }
-        }
-    });
+// For each button in buttons, assign a click listener
+buttons.forEach(button => {
+    button.addEventListener('click', performMath);
 });
 
-// Function which displays the currentEquation on screen
+// Function which decides how the program will play out
+function performMath(e) {
+    const newItem = e.target.textContent;
+
+    // Check if these are special operators, call them & return
+    if (newItem === 'AC' || newItem === 'C') {
+        operate(newItem);
+        return;
+    }
+
+    // If its a number, store it. 
+    if (!isNaN(newItem)) {
+        // If currentNum is 0, OVERWRITE it with newNum. Otherwise, APPEND newNum to it
+        // Helps in ignoring multiple 0s without any preceding operands i.e, 000000
+        (curNum === '0') ? curNum = newItem : curNum += newItem;
+        result.textContent = curNum;
+    } else {
+        // Check if operator is empty, store the operator. (It will only be empty when running for the 1st time)
+        if (operator === '') operator = newItem;
+        else if (!curNum) operator = newItem;
+        
+        // Only push to array if curNum exists
+        if (curNum) {
+            operands.push(parseFloat(curNum));
+            curNum = '';
+            // We need a pair of numbers & one operator to perform math
+            if (operands.length === 2) {
+                ans = operate(operator, operands);
+                result.textContent = ans;
+                operands = [];
+                operands.push(ans);
+            }
+            // Update the operator at last, because we don't want to forget the original operator
+            operator = newItem;
+        }
+    }
+    showEquation(newItem);
+}
+
+// Function which displays the currentEquation on screen in realtime
 function showEquation(newItem) {
     // Get the currentEquation trimming any trailing whitespace from it.
     // Need to remove it otherwise we will have whitespace on accessing last element of the string. 
     let curEquation = equation.textContent.trim();
+    const lastIndex = curEquation.length - 1;
+    const lastItem = curEquation[lastIndex];
 
     // If the curEquation is empty & passed item is an operator, return
     // Because, we don't want to allow any operator when there are no nums on screen
     if (curEquation === '' && isNaN(newItem)) return;
     
+    // If there is an answer, append it to the equation And overwrite ans
+    if (ans !== '') {
+        curEquation += ` = ${ans}`;
+        ans = '';
+        equation.textContent = curEquation;
+    }
+    
     // If the newItem is NOT an operator, show it on screen
     if (!isNaN(newItem)) {
-        equation.textContent += newItem;
-    } else {
-        const lastIndex = curEquation.length - 1;
-        const lastItem = curEquation[lastIndex];
+        const isSameNum = !isNaN(lastItem) && lastItem === newItem && lastItem !== '0';
 
+        if (isSameNum) {
+            curEquation = curEquation.slice(0, lastIndex);
+            equation.textContent = curEquation;
+        } else {
+            equation.textContent += newItem;
+        }
+    } else {
         // lastItem is an Operator & last operator (lastItem) is NOT the same as newItem.
         // Because we want to allow users to replace their last operator.
         const isDiffOpr = isNaN(lastItem) && lastItem !== newItem;
@@ -83,18 +108,18 @@ function showEquation(newItem) {
 }
 
 // Function for choosing operation type on passed input
-function operate(operator, numbers) {
+function operate(operator, operands) {
     switch(operator) {
         case '+':
-            return add(numbers);
+            return add(operands);
         case '-':
-            return subtract(numbers);
+            return subtract(operands);
         case '*':
-            return multiply(numbers);
+            return multiply(operands);
         case '/':
-            return divide(numbers[0], numbers[1]);
+            return divide(operands[0], operands[1]);
         case '%':
-            return percent(numbers[0], numbers[1]);
+            return percent(operands[0], operands[1]);
         case 'AC':
             allClear();
             return;
@@ -106,20 +131,20 @@ function operate(operator, numbers) {
     }
 }
 
-function add(numbers) {
-    return numbers.reduce((sum, num) => sum + num, 0);
+function add(operands) {
+    return operands.reduce((sum, num) => sum + num, 0);
 }
 
-function subtract(numbers) {
+function subtract(operands) {
     let result = 0;
-    for (let i = 0; i < numbers.length - 1; i++) {
-        result = numbers[i] - numbers[i + 1];
+    for (let i = 0; i < operands.length - 1; i++) {
+        result = operands[i] - operands[i + 1];
     }
     return result;
 }
 
-function multiply(numbers) {
-    return numbers.reduce((sum, num) => sum * num, 1);
+function multiply(operands) {
+    return operands.reduce((sum, num) => sum * num, 1);
 }
 
 function divide(number, divisor) {
@@ -134,9 +159,10 @@ function percent(percent, number) {
 function allClear() {
     result.textContent = 0;
     equation.textContent = '';
-    num = '';
+    ans = '';
+    curNum = '';
     operator = '';
-    numbers = [];
+    operands = [];
 }
 
 function clear() {
@@ -146,8 +172,11 @@ function clear() {
     
     const len = content.length;
     
+    const lastItem = content[len - 1];
+    showEquation(lastItem);
+
     // If there are more than 1 element, slice it off from first to just before the last element. Otherwise, set the content to 0
-    (len > 1) ? content = content.slice(0, len - 1) : content = 0;
+    (len > 1) ? content = content.slice(0, len - 1) : content = '0';
     
     curNum = content;
 
