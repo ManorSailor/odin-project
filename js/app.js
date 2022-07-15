@@ -149,7 +149,7 @@ function multiply(operands) {
 }
 
 function divide(number, divisor) {
-    if (divisor === 0) return `Big Brain Time: ${number} / 0 = ${Infinity}`;
+    if (divisor === 0) return `${Infinity}`;
     return Math.floor(number / divisor * 100) / 100; // Limits the number of decimals to 100ths place
 }
 
