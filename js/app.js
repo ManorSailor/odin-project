@@ -65,13 +65,6 @@ function showEquation(newItem) {
     // Because, we don't want to allow any operator when there are no nums on screen
     if (curEquation === '' && isNaN(newItem)) return;
     
-    // If there is an answer, append it to the equation And overwrite ans
-    if (ans !== '') {
-        curEquation += ` = ${ans}`;
-        ans = '';
-        equation.textContent = curEquation;
-    }
-    
     // If the newItem is NOT an operator, show it on screen
     if (!isNaN(newItem)) {
         const isSameNum = !isNaN(lastItem) && lastItem === newItem && lastItem !== '0';
@@ -83,6 +76,14 @@ function showEquation(newItem) {
             equation.textContent += newItem;
         }
     } else {
+        // If there is an ans & user pressed equals, append equals and ans to equation & overwrite ans
+        if (ans !== '' && newItem === '=') {
+            curEquation += ` = ${ans}`;
+            ans = '';
+            equation.textContent = curEquation;
+            return;
+        }
+
         // lastItem is an Operator & last operator (lastItem) is NOT the same as newItem.
         // Because we want to allow users to replace their last operator.
         const isDiffOpr = isNaN(lastItem) && lastItem !== newItem;
