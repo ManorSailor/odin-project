@@ -4,9 +4,10 @@
     Comments:
             C1: Get a random value between 0 & 2 inclusive
                 Math.floor rounds off the number. Math.random returns a random number b/w 0 & 1 (floating point) 
-                RPS_WINNERS.length/RPS_LOSERS.length returns the length of array i.e, 3 which means we have 3 elements. Rock, Paper & scissor
+                RPS.length/RPS_LOSERS.length returns the length of array i.e, 3 which means we have 3 elements. Rock, Paper & scissor
                 Now, don't ask me why multiplying a floating point value with 3 works returns a no b/w 0 & 3. I am not good at maths.
 
+            // Deprecated Comment
             C2: We have two arrays. One containing elements & one containing their loser counterparts.
                 In other words, both arrays have been hardcoded to co-relate with each other. (Using a hashmap could be better, however, choosing a random value from a hashmap is not as simple as array)
                 As per MDN, indexOf() returns the index of an element if it exists inside of a given array.
@@ -19,11 +20,12 @@
                 Because, in this game, given a pair of elements can ONLY have one winner & one loser
 */
 
-// Array containing winners of each pair
-const RPS_WINNERS = ["Rock", "Paper", "Scissors"];
-
-//  Array containing losers of each pair. Rock = 0; Beats Scissors. And so on.
-const RPS_LOSERS = ["Scissors", "Rock", "Paper"];
+// Object literal containing winner & loser of each pair
+const RPS = {
+    "Rock": "Scissors",
+    "Paper": "Rock",
+    "Scissors": "Paper"
+};
 
 // Maximum games allowed
 const MAX_GAMES = 5;
@@ -72,27 +74,27 @@ cards.forEach(card => {
     });
 });
 
-// Ensure that the passed value exists in our array, otherwise, return false.
+// Ensure that the passed value exists in our object, otherwise, return false.
 function isValid(choice) {
-    return (RPS_WINNERS.includes(choice)) ? true : false;
+    return (RPS[choice]) ? true : false;
 }
 
 // Get computer choice
 function getComputerChoice() {
-    // See Comment C1
-    let random = Math.floor(Math.random() * RPS_WINNERS.length);
+    // We need to get the object keys array (which will be rock, paper, scissors) to be able access random
+    const keys = Object.keys(RPS);
+    
+    // Turns out objects do not have a length property, thus, this will have to come later
+    const random = Math.floor(Math.random() * keys.length);
 
-    return RPS_WINNERS[random];
+    return keys[random];
 }
 
 // Play a round between Pc & player
-function playRound(playerChoice, computerChoice) {
-    // See comment C2
-    let playerChoiceLoser = RPS_LOSERS[RPS_WINNERS.indexOf(playerChoice)];
-
+function playRound(playerChoice, computerChoice) {  
     if (playerChoice === computerChoice) {
         return "Game Tied!";
-    } else if (playerChoiceLoser === computerChoice) {
+    } else if (RPS[playerChoice] === computerChoice) {
         return `You won! ${playerChoice} beats ${computerChoice}`;
     } else {
         return `You lost! ${computerChoice} beats ${playerChoice}`;
