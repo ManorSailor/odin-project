@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://api.fonts.coollabs.io">
+    <link href="https://api.fonts.coollabs.io/css2?family=Montserrat+Alternates:wght@100;400;600;800&display=swap" rel="stylesheet"> 
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <!-- JavaScript -->
+    <script src="./js/app.js" defer></script>
+
+    <!-- Title -->
+    <title>Pixel Sketch</title>
+</head>
+<body>
+    <!-- Header -->
+    <header class="nav-header">
+        <a href="#" class="header">Pixel Sketch</a>
+    </header>
+
+    <!-- Main -->
+    <main class="container">
+        <!-- Tools Section -->
+        <section class="tools-box">
+            <h3 class="tools-title">Tools</h3>
+            <ul class="tools-list">
+                <li><button class="btn" id="pen">Pen</button></li>
+                <li><button class="btn" id="eraser">Erase</button></li>
+                <li><button class="btn" id="clear">Clear Grid</button></li>
+                <li> <!-- Keep this picker last item of the list. CSS & JS work on this picker assuming it will be last -->
+                    <label for="picker">Pen Color</label>
+                    <input type="color" name="picker" id="picker" value="#000000">
+                </li>
+            </ul>
+        </section>
+        
+        <!-- Canvas Section --> 
+        <section class="canvas-box">
+            <!-- Canvas -->         <!-- This inline style will be modified through JS -->
+            <section class="canvas" style="--grid-size: 16;" data-grids="16"></section>
+            <!-- Canvas Slider -->
+            <div class="canvas-slider">
+                <label for="slider">Grid Size</label>
+                <input type="range" name="slider" id="slider" min="1" max="64" value="16">
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="creator">
+        <a href="https://github.com/ManorSailor/pixel-sketch" target="_blank" rel="noopener noreferrer">Created By Sars</a>
+    </footer>
+</body>
+</html>
