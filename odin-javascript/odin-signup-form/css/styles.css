@@ -11,3 +11,15 @@
   list-style: none;
   text-decoration: none;
 }
+
+:root {
+    --bg-clr: #eaeeee;
+    --acc-clr: #51b573;
+    --bg-clr-alt: #292e36;
+
+    --fs-xs: 0.75rem;
+    --fs-sm: 0.875rem;
+    --fs-md: 1rem;
+    --fs-lg: 1.25rem;
+    --fs-xl: 2rem;
+}
