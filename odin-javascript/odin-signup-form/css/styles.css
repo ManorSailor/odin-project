@@ -74,6 +74,12 @@ a {
   min-height: inherit;
 }
 
+.img-wrapper {
+  padding: 0.5rem;
+  text-align: center;
+  font-size: var(--fs-sm);
+}
+
 .join-img {
   width: 450px;
 }
