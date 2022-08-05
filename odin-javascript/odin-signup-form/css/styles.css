@@ -13,13 +13,71 @@
 }
 
 :root {
-    --bg-clr: #eaeeee;
-    --acc-clr: #51b573;
-    --bg-clr-alt: #292e36;
+  --bg-clr: #eaeeee;
+  --acc-clr: #51b573;
+  --bg-clr-alt: #292e36;
 
-    --fs-xs: 0.75rem;
-    --fs-sm: 0.875rem;
-    --fs-md: 1rem;
-    --fs-lg: 1.25rem;
-    --fs-xl: 2rem;
+  --ff-text: 'Montserrat Alternates', sans-serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 2rem;
+
+  --ff-100: 100;
+  --ff-400: 400;
+  --ff-600: 600;
+
+  --logo-size: 80px;
+}
+
+body {
+  min-height: 100vh;
+  font-size: var(--fs-md);
+  font-family: var(--ff-text);
+  background-color: var(--bg-clr);
+  padding: 1rem;
+  overflow: hidden;
+}
+
+/* ================ Navbar ================ */
+svg,
+img,
+p,
+a {
+  display: inline-block;
+}
+
+/* ================ Navbar ================ */
+.nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 2rem;
+  position: fixed;
+  width: 100%;
+}
+
+.logo {
+  width: var(--logo-size);
+  height: var(--logo-size);
+  margin-left: 1rem;
+}
+
+/* ================ Main ================ */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 80%;
+  min-height: inherit;
+}
+
+.join-img {
+  width: 450px;
+}
+
+.signup-card {
+  flex: auto;
 }
