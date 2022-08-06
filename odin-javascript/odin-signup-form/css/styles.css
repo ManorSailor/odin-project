@@ -30,6 +30,7 @@
   --ff-600: 600;
 
   --logo-size: 80px;
+  --border: 1px solid grey;
 }
 
 body {
@@ -39,6 +40,7 @@ body {
   background-color: var(--bg-clr);
   padding: 1rem;
   overflow: hidden;
+  line-height: 1.15;
 }
 
 /* ================ Navbar ================ */
@@ -110,9 +112,38 @@ a {
   gap: 0.25rem;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .info-list > li:nth-child(3),
 .info-list > li:nth-child(4) {
   grid-column: 1 / -1;
 }
+
+.info-list label {
+  position: absolute;
+  top: -25%;
+  font-size: var(--fs-sm);
+  background-color: var(--bg-clr);
+  pointer-events: none;
+  margin: 0 0.5rem;
+  padding: 0 0.25em;
+  transform: translateY(100%);
+  transition: all 200ms ease-in-out;
+}
+
+.info-list li:focus-within label {
+  font-size: var(--fs-xs);
+  transform: translateY(0);
+}
+
+.info-list input {
+  border: var(--border);
+  outline: none;
+  appearance: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-family: var(--ff-text);
+  background-color: transparent;
+}
+
