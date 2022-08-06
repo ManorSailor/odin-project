@@ -58,6 +58,17 @@ a {
   display: inline-block;
 }
 
+a {
+  color: var(--acc-clr);
+}
+
+a:hover,
+a:focus {
+  outline: none;
+  font-weight: var(--ff-600);
+  text-decoration: underline;
+}
+
 /* ================ Main ================ */
 .container {
   display: flex;
@@ -184,4 +195,9 @@ a {
 .btn:focus {
   color: var(--acc-clr);
   background-color: transparent;
+}
+
+.login {
+  font-size: var(--fs-sm);
+  margin-top: 0.5rem;
 }
