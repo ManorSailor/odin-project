@@ -155,6 +155,7 @@ a {
 }
 
 .btn {
+  outline: none;
   appearance: none;
   background-color: transparent;
   border: var(--border);
