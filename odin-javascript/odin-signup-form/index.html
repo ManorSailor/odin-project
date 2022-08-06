@@ -43,30 +43,31 @@
 
             <!-- Sign-up Form -->
             <form action="/" class="signup-card" method="post">
+                <!-- Note: Placeholder with an empty space is required to check if the input is empty or not via CSS -->
                 <ul class="info-list">
                     <li>
                         <label for="first-name">FIRST NAME<span>*</span></label>
-                        <input id="first-name" class="name" type="text" minlength="3" maxlength="20" required>
+                        <input id="first-name" class="name" type="text" minlength="3" maxlength="20" placeholder=" " required>
                     </li>
                     <li>
                         <label for="last-name">LAST NAME<span>*</span></label>
-                        <input id="last-name" class="name" type="text" minlength="3" maxlength="20" required>
+                        <input id="last-name" class="name" type="text" minlength="3" maxlength="20" placeholder=" " required>
                     </li>
                     <li>
                         <label for="phone">PHONE NUMBER<span>*</span></label>
-                        <input id="phone" class="phone" type="tel" required>
+                        <input id="phone" class="phone" type="tel" placeholder=" " required>
                     </li>
                     <li>
                         <label for="mail">Email<span>*</span></label>
-                        <input id="mail" class="mail" type="email" required>
+                        <input id="mail" class="mail" type="email" placeholder=" " required>
                     </li>
                     <li>
                         <label for="Password">PASSWORD<span>*</span></label>
-                        <input id="pass" class="pass" type="password" required>
+                        <input id="pass" class="pass" type="password" placeholder=" " required>
                     </li>
                     <li>
                         <label for="conf-pass">CONFIRM PASSWORD<span>*</span></label>
-                        <input id="conf-pass" class="pass" type="password" required>
+                        <input id="conf-pass" class="pass" type="password" placeholder=" " required>
                     </li>
                 </ul>
                 <button class="btn" type="submit">Create Account</button>

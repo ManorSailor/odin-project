@@ -143,3 +143,12 @@ a {
   background-color: transparent;
 }
 
+/* If the input is valid, apply a green border color */
+.info-list input:valid {
+  border-color: var(--acc-clr);
+}
+
+/* Apply a red border color to input when the input is invalid & placeholder is NOT visible */
+.info-list input:invalid:not(:placeholder-shown) {
+  border-color: red;
+}
