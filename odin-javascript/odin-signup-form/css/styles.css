@@ -70,27 +70,26 @@ a {
 /* ================ Main ================ */
 .container {
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
-  max-width: 80%;
+  max-width: 90%;
   min-height: inherit;
   margin: 0 auto;
 }
 
 .img-wrapper {
-  flex: auto;
   padding: 0.5rem;
   text-align: center;
   font-size: var(--fs-sm);
 }
 
 .join-img {
-  width: 450px;
+  width: 400px;
 }
 
 
 /* ================ Join Us ================ */
 .join-us {
-  flex: auto;
   display: flex;
   flex-direction: column;
 }
