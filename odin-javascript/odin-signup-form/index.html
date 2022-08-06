@@ -42,11 +42,37 @@
         <!-- Join Us Section-->
         <section class="join-us">
             <!-- Intro Text -->
-            <p class="intro-text">Join us! And become a part of nothing!</p>
+            <p class="intro-text">Join us, and become a part of something special!</p>
 
             <!-- Sign-up Form -->
             <form action="/" class="signup-card" method="post">
-
+                <ul class="info-list">
+                    <li>
+                        <label for="first-name">FIRST NAME<span>*</span></label>
+                        <input id="first-name" class="name" type="text" minlength="3" maxlength="20" placeholder="John" required>
+                    </li>
+                    <li>
+                        <label for="last-name">LAST NAME<span>*</span></label>
+                        <input id="last-name" class="name" type="text" minlength="3" maxlength="20" placeholder="Doe" required>
+                    </li>
+                    <li>
+                        <label for="phone">PHONE NUMBER<span>*</span></label>
+                        <input id="phone" class="phone" type="tel" placeholder="+1234567890" required>
+                    </li>
+                    <li>
+                        <label for="mail">Email<span>*</span></label>
+                        <input id="mail" class="mail" type="email" placeholder="john@example.com" required>
+                    </li>
+                    <li>
+                        <label for="Password">PASSWORD<span>*</span></label>
+                        <input id="pass" class="pass" type="password" required>
+                    </li>
+                    <li>
+                        <label for="conf-pass">CONFIRM PASSWORD<span>*</span></label>
+                        <input id="conf-pass" class="pass" type="password" required>
+                    </li>
+                </ul>
+                <button class="btn" type="submit">Create Account</button>
             </form>
         </section>
     </main>

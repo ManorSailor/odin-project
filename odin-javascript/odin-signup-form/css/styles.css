@@ -69,12 +69,13 @@ a {
 .container {
   display: flex;
   align-items: center;
-  justify-content: center;
   max-width: 80%;
   min-height: inherit;
+  margin: 0 auto;
 }
 
 .img-wrapper {
+  flex: auto;
   padding: 0.5rem;
   text-align: center;
   font-size: var(--fs-sm);
@@ -84,6 +85,34 @@ a {
   width: 450px;
 }
 
-.signup-card {
+
+/* ================ Join Us ================ */
+.join-us {
   flex: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-card {
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-list {
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 1rem;
+}
+
+.info-list > li {
+  gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-list > li:nth-child(3),
+.info-list > li:nth-child(4) {
+  grid-column: 1 / -1;
 }
