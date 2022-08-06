@@ -30,6 +30,7 @@
   --ff-600: 600;
 
   --logo-size: 80px;
+  --border-radius: 6px;
   --border: 1px solid grey;
 }
 
@@ -93,7 +94,7 @@ a {
 
 .signup-card {
   padding: 1rem;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -138,7 +139,7 @@ a {
   outline: none;
   appearance: none;
   padding: 0.75rem;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   font-family: var(--ff-text);
   background-color: transparent;
 }
@@ -151,4 +152,25 @@ a {
 /* Apply a red border color to input when the input is invalid & placeholder is NOT visible */
 .info-list input:invalid:not(:placeholder-shown) {
   border-color: red;
+}
+
+.btn {
+  appearance: none;
+  background-color: transparent;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  font-size: var(--fs-md);
+  font-family: var(--ff-text);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  transition: color 200ms ease-in-out,
+              border-color 200ms ease-in-out,
+              background-color 200ms ease-in-out;
+}
+
+.btn:hover,
+.btn:focus {
+  color: white;
+  border-color: var(--acc-clr);
+  background-color: var(--acc-clr);
 }
