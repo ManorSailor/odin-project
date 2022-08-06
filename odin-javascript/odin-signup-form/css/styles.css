@@ -90,8 +90,21 @@ a {
 
 /* ================ Join Us ================ */
 .join-us {
+  gap: 2rem;
+  max-width: 50%;
+  min-height: inherit;
   display: flex;
+  justify-content: center;
   flex-direction: column;
+}
+
+/* Apply styles to every direct child of intro-text except the last one */
+.intro-text > *:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.intro-text > hr {
+  max-width: 50%;
 }
 
 .signup-card {
