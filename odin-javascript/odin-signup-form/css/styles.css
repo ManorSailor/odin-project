@@ -13,7 +13,7 @@
 }
 
 :root {
-  --bg-clr: #eaeeee;
+  --bg-clr: #ffffff;
   --acc-clr: #51b573;
   --bg-clr-alt: #292e36;
 
@@ -43,28 +43,12 @@ body {
   line-height: 1.15;
 }
 
-/* ================ Navbar ================ */
+/* ================ Typography ================ */
 svg,
 img,
 p,
 a {
   display: inline-block;
-}
-
-/* ================ Navbar ================ */
-.nav-header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0 2rem;
-  position: fixed;
-  width: 100%;
-}
-
-.logo {
-  width: var(--logo-size);
-  height: var(--logo-size);
-  margin-left: 1rem;
 }
 
 /* ================ Main ================ */
