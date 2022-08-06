@@ -101,7 +101,7 @@ a {
 .signup-card {
   padding: 1rem;
   border-radius: var(--border-radius);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .info-list {
