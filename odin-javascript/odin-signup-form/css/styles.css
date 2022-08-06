@@ -171,7 +171,6 @@ a {
   padding: 0.5em 1em;
   cursor: pointer;
   transition: color 200ms ease-in-out,
-              border-color 200ms ease-in-out,
               background-color 200ms ease-in-out;
 }
 
