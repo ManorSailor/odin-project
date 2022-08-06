@@ -105,19 +105,18 @@ a {
   margin-bottom: 1rem;
 }
 
-.info-list > li {
-  gap: 0.25rem;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
 .info-list > li:nth-child(3),
 .info-list > li:nth-child(4) {
   grid-column: 1 / -1;
 }
 
 .info-list label {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.info-list label > span {
   position: absolute;
   top: -15%;
   font-size: var(--fs-sm);
@@ -129,7 +128,9 @@ a {
   transition: all 200ms ease-in-out;
 }
 
-.info-list li:focus-within label {
+/* If something is focused within label OR if the input field is NOT empty, apply styles to span */
+.info-list label:focus-within span,
+.info-list input:not(:placeholder-shown) + span {
   font-size: var(--fs-xs);
   transform: translateY(0);
 }
@@ -142,6 +143,7 @@ a {
   border-radius: var(--border-radius);
   font-family: var(--ff-text);
   background-color: transparent;
+  transition: border 200ms ease-in-out;
 }
 
 /* If the input is valid, apply a green border color */
@@ -149,8 +151,10 @@ a {
   border-color: var(--acc-clr);
 }
 
-/* Apply a red border color to input when the input is invalid & placeholder is NOT visible */
-.info-list input:invalid:not(:placeholder-shown) {
+/* Apply a red color to border & text when the input is invalid & placeholder is NOT visible */
+.info-list input:invalid:not(:placeholder-shown),
+.info-list input:invalid:not(:placeholder-shown) + span {
+  color: red;
   border-color: red;
 }
 
