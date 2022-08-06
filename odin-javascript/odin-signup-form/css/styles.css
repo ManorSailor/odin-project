@@ -121,13 +121,13 @@ a {
 
 .info-list label {
   position: absolute;
-  top: -25%;
+  top: -15%;
   font-size: var(--fs-sm);
   background-color: var(--bg-clr);
   pointer-events: none;
   margin: 0 0.5rem;
   padding: 0 0.25em;
-  transform: translateY(100%);
+  transform: translateY(115%);
   transition: all 200ms ease-in-out;
 }
 
@@ -140,7 +140,7 @@ a {
   border: var(--border);
   outline: none;
   appearance: none;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border-radius: 6px;
   font-family: var(--ff-text);
   background-color: transparent;
