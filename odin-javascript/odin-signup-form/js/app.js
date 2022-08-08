@@ -9,7 +9,7 @@ function validatePassword(e) {
     obj[e.target.id] = e.target.value;
     
     if (obj["pass"] && obj["conf-pass"]) {
-        const isSame = obj["pass"].includes(obj["conf-pass"]);
+        const isSame = obj["pass"].includes(obj["conf-pass"]) && obj["conf-pass"].includes(obj["pass"]);
 
         if (isSame) {
             confPassLabel.classList.remove('error');
