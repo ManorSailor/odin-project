@@ -81,7 +81,8 @@ a:focus {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  max-width: 90%;
+  width: 90%;
+  max-width: 1600px;
   min-height: inherit;
   margin: 0 auto;
 }
@@ -107,13 +108,18 @@ a:focus {
   flex-direction: column;
 }
 
+.intro-text {
+  max-width: 600px;
+}
+
 /* Apply styles to every direct child of intro-text except the last one */
 .intro-text > *:not(:last-child) {
   margin-bottom: 0.5rem;
 }
 
 .intro-text > hr {
-  max-width: 50%;
+  width: 50%;
+  max-width: 400px;
 }
 
 .signup-card {
