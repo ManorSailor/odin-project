@@ -164,14 +164,13 @@ a:focus {
 }
 
 /* If the input is valid, apply a green border color */
-/* Note: li:not(:nth-last-child(-n+2)) excludes the last two li elements  */
-.info-list li:not(:nth-last-child(-n+2)) input:valid {
+.info-list input:valid {
   border-color: var(--acc-clr);
 }
 
 /* Apply a red color to border & text when the input is invalid & placeholder is NOT visible */
-.info-list li:not(:nth-last-child(-n+2)) input:invalid:not(:placeholder-shown),
-.info-list li:not(:nth-last-child(-n+2)) input:invalid:not(:placeholder-shown) + span {
+.info-list input:invalid:not(:placeholder-shown),
+.info-list input:invalid:not(:placeholder-shown) + span {
   color: red;
   border-color: red;
 }
