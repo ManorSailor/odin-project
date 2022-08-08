@@ -17,6 +17,7 @@
   --txt-clr: #ffffff;
   --acc-clr: #51b573;
   --bg-clr-alt: #292e36;
+  --error-clr: #ff0000;
 
   --ff-text: 'Montserrat Alternates', sans-serif;
 
@@ -71,8 +72,8 @@ a:focus {
 
 /* ================ Utility Classes ================ */
 .error {
-  color: red;
-  --acc-clr: red; /* Override accent clr because border-color property doesn't inherit */
+  color: var(--error-clr);
+  --acc-clr: var(--error-clr); /* Override accent clr because border-color property doesn't inherit */
 }
 
 /* ================ Main ================ */
@@ -174,15 +175,15 @@ a:focus {
   border-color: var(--acc-clr);
 }
 
-/* Apply a red color to border & text when the input is invalid & placeholder is NOT visible */
+/* Apply a var(--error-clr) color to border & text when the input is invalid & placeholder is NOT visible */
 .info-list input:invalid:not(:placeholder-shown),
 .info-list input:invalid:not(:placeholder-shown) + span {
-  color: red;
-  border-color: red;
+  color: var(--error-clr);
+  border-color: var(--error-clr);
 }
 
 .info {
-  color: red;
+  color: var(--error-clr);
   font-size: var(--fs-xs);
 }
 
