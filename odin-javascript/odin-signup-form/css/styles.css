@@ -45,8 +45,8 @@ body {
   min-height: 100vh;
   font-size: var(--fs-md);
   font-family: var(--ff-text);
-  background-color: var(--bg-clr);
-  padding: 1rem;
+  background-color: var(--bg-clr-alt);
+  padding: 0 1rem;
   overflow: hidden;
   line-height: 1.15;
 }
@@ -86,6 +86,8 @@ a:focus {
   max-width: 1600px;
   min-height: inherit;
   margin: 0 auto;
+  border-radius: var(--border-radius);
+  background-color: var(--bg-clr);
 }
 
 .img-wrapper {
