@@ -69,6 +69,12 @@ a:focus {
   text-decoration: underline;
 }
 
+/* ================ Utility Classes ================ */
+.error {
+  color: red;
+  --acc-clr: red; /* Override accent clr because border-color property doesn't inherit */
+}
+
 /* ================ Main ================ */
 .container {
   display: flex;
@@ -173,6 +179,11 @@ a:focus {
 .info-list input:invalid:not(:placeholder-shown) + span {
   color: red;
   border-color: red;
+}
+
+.info {
+  color: red;
+  font-size: var(--fs-xs);
 }
 
 .btn {

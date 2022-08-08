@@ -1,9 +1,9 @@
-const password = document.getElementsByClassName('pass');
+const confPassLabel = document.querySelector('label[for="conf-pass"]');
+const confPassInfo = document.getElementById('pass-info');
+const passwordFields = document.getElementsByClassName('pass');
 let obj = {};
 
-[...password].forEach(pass => {
-    pass.addEventListener('input', validatePassword);
-});
+[...passwordFields].forEach(field => field.addEventListener('input', validatePassword));
 
 function validatePassword(e) {
     obj[e.target.id] = e.target.value;
@@ -12,9 +12,12 @@ function validatePassword(e) {
         const isSame = obj["pass"].includes(obj["conf-pass"]);
 
         if (isSame) {
+            confPassLabel.classList.remove('error');
+            confPassInfo.textContent = '';
             return;
         } else {
-            console.log("Passwords don't match!");
+            confPassLabel.classList.add('error');
+            confPassInfo.textContent = '* Passwords do not match!';
         }
     }
 }
