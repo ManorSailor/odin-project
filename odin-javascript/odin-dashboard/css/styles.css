@@ -1,0 +1,34 @@
+/* ================ Globals ================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+:root {
+  --bg-clr: #f7fafe;
+  --acc-clr: #a2cadc;
+  --txt-clr: #2e353d;
+  --bg-clr-alt: #f3f1f0;
+  --acc-clr-alt: #71adc1;
+
+  --ff-text: 'Montserrat Alternates', sans-serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 2rem;
+
+  --fw-100: 100;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+}
