@@ -31,12 +31,15 @@
   --fw-400: 400;
   --fw-500: 500;
   --fw-600: 600;
+
+  --icons: 30px;
 }
 
 body {
   line-height: 1.5;
   font-size: var(--fs-md);
   font-family: var(--ff-text);
+  background-color: var(--bg-clr);
 }
 
 /* ================ Typography ================ */

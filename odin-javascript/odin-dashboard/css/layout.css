@@ -1,0 +1,17 @@
+/* ================ Global Layout ================ */
+img {
+  width: var(--icons);
+  height: var(--icons);
+  vertical-align: middle;
+}
+
+img[class$="-avatar"] {
+  width: auto;
+  height: auto;
+  border-radius: 50%;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 2fr 3fr;
+}
