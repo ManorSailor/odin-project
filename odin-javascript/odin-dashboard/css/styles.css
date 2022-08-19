@@ -25,10 +25,44 @@
   --fs-sm: 0.875rem;
   --fs-md: 1rem;
   --fs-lg: 1.25rem;
-  --fs-xl: 2rem;
+  --fs-xl: 1.75rem;
 
   --fw-100: 100;
   --fw-400: 400;
   --fw-500: 500;
   --fw-600: 600;
+}
+
+body {
+  line-height: 1.5;
+  font-size: var(--fs-md);
+  font-family: var(--ff-text);
+}
+
+/* ================ Typography ================ */
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-600);
+}
+
+h2 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-600);
+}
+
+h3,
+h4 {
+  font-weight: var(--fw-500);
+}
+
+a, 
+img {
+  display: inline-block;
 }
