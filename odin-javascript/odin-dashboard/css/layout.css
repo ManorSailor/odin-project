@@ -1,17 +1,20 @@
 /* ================ Global Layout ================ */
 img {
-  width: var(--icons);
-  height: var(--icons);
   vertical-align: middle;
-}
-
-img[class$="-avatar"] {
-  width: auto;
-  height: auto;
-  border-radius: 50%;
 }
 
 body {
   display: grid;
   grid-template-columns: 1fr 2fr 3fr;
+}
+
+/* ================ Icons Layout ================ */
+img[class="icon"] {
+  width: var(--icons);
+  height: var(--icons);
+}
+
+/* Any img element which has a class ending with -avatar */
+img[class$="-avatar"] {
+  border-radius: 50%;
 }
