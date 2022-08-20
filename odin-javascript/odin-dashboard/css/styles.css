@@ -13,10 +13,10 @@
 }
 
 :root {
-  --bg-clr: #f7fafe;
+  --bg-clr: hsl(180, 2%, 90%);
   --acc-clr: #71adc1;
   --txt-clr: #2e353d;
-  --bg-clr-alt: #f3f1f0;
+  --bg-clr-alt: #f5f5f5;
   --acc-clr-alt: #a2cadc;
 
   --ff-text: 'Montserrat Alternates', sans-serif;
@@ -32,7 +32,12 @@
   --fw-500: 500;
   --fw-600: 600;
 
-  --icons: 30px;
+  --icons: 24px;
+
+  --border-radius: 12px;
+  --border: 1px solid var(--txt-clr);
+
+  --transition: 200ms ease;
 }
 
 body {
@@ -70,7 +75,49 @@ img {
   display: inline-block;
 }
 
+input {
+  border: none;
+  appearance: none;
+  font-family: var(--ff-text);
+  background-color: var(--bg-clr);
+}
+
+input:focus {
+  outline: 2px solid var(--acc-clr);
+}
+
+button {
+  border: none;
+  appearance: none;
+  color: var(--txt-clr);
+  font-size: var(--fs-sm);
+  font-family: var(--ff-text);
+  background-color: var(--acc-clr-alt);
+  cursor: pointer;
+  transition: color var(--transition),
+              background-color var(--transition);
+}
+
+button:hover {
+  color: white;
+  background-color: var(--acc-clr);
+}
+
 /* ================ Nav Aside ================ */
 .nav-aside {
   background-color: var(--acc-clr-alt);
+}
+
+/* ================ Main Header ================ */
+.main-header {
+  background-color: var(--bg-clr-alt);
+  box-shadow: 5px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-intro > p {
+  font-size: var(--fs-sm);
+}
+
+.user-intro > *:last-child {
+  font-weight: 600;
 }

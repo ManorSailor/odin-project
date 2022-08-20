@@ -3,11 +3,24 @@ img {
   vertical-align: middle;
 }
 
+input {
+  flex-grow: 1;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--border-radius);
+}
+
+button {
+  padding: 0.5em 1em;
+  border-radius: var(--border-radius);
+}
+
 body {
   color: var(--txt-clr);
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 5fr;
+  /* Set size of the first row */
+  grid-template-rows: 140px;
 }
 
 /* ================ Icons Layout ================ */
@@ -37,4 +50,55 @@ img[class$="-avatar"] {
 
 .nav-links > *:nth-child(7) {
   margin-top: 2rem;
+}
+
+/* ================ Main Header ================ */
+.main-header {
+  padding: 0.75rem;
+}
+
+.main-header >*:first-child {
+  margin-bottom: 0.75rem;
+}
+
+/* =========== Search Section =========== */
+.search {
+  gap: 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.search-box {
+  max-width: 500px;
+  flex-grow: 1;
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+/* =========== User Section =========== */
+.user-wrapper > *:not(:last-child) {
+  margin-right: 1rem;
+}
+
+/* ======= User Profile Section ======= */
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.user-intro-wrapper {
+  flex-grow: 1;
+  max-width: 600px;
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.btn-wrapper {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
