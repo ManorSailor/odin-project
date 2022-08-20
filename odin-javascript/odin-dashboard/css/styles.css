@@ -69,3 +69,8 @@ a,
 img {
   display: inline-block;
 }
+
+/* ================ Nav Aside ================ */
+.nav-aside {
+  background-color: var(--acc-clr-alt);
+}

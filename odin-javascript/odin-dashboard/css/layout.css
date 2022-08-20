@@ -4,8 +4,10 @@ img {
 }
 
 body {
+  color: var(--txt-clr);
+  min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 2fr 3fr;
+  grid-template-columns: 1fr 4fr;
 }
 
 /* ================ Icons Layout ================ */
@@ -17,4 +19,22 @@ img[class="icon"] {
 /* Any img element which has a class ending with -avatar */
 img[class$="-avatar"] {
   border-radius: 50%;
+}
+
+/* ================ Nav Aside ================ */
+.nav-aside {
+  padding: 1rem;
+  grid-row: 1 / 3;
+}
+
+.nav-aside > .nav-header {
+  margin-bottom: 2rem;
+}
+
+.nav-links > * {
+  margin-bottom: 0.75rem;
+}
+
+.nav-links > *:nth-child(7) {
+  margin-top: 2rem;
 }
