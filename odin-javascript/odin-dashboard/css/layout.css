@@ -27,7 +27,7 @@ img[class$="-avatar"] {
   grid-row: 1 / 3;
 }
 
-.nav-aside > .nav-header {
+.nav-header {
   margin-bottom: 2rem;
 }
 
