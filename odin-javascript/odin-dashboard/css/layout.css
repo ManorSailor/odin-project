@@ -102,3 +102,36 @@ img[class$="-avatar"] {
   align-items: center;
   justify-content: center;
 }
+
+/* ================ Main ================ */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: var(--card-gap);
+}
+
+/* =========== Cards Section =========== */
+.cards-wrapper {
+  grid-column: 1 / 3;
+}
+
+.cards-container {
+  display: grid;
+  gap: var(--card-gap);
+  margin-top: var(--card-gap);
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
+}
+
+.card {
+  padding: 1.25rem;
+  max-width: var(--card-width);
+  border-radius: var(--card-radius);
+}
+
+.card-content {
+  margin-bottom: 0.5rem;
+}
+
+.card-content > *:first-child {
+  margin-bottom: 0.25rem;
+}

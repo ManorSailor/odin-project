@@ -34,8 +34,12 @@
 
   --icons: 24px;
 
+  --card-radius: 8px;
   --border-radius: 12px;
-  --border: 1px solid var(--txt-clr);
+  --border: 6px solid var(--acc-clr);
+
+  --card-width: 300px;
+  --card-gap: 1rem;
 
   --transition: 200ms ease;
 }
@@ -120,4 +124,26 @@ button:hover {
 
 .user-intro > *:last-child {
   font-weight: 600;
+}
+
+/* ================ Main ================ */
+.card {
+  font-size: var(--fs-sm);
+  border-left: var(--border);
+  background-color: var(--bg-clr-alt);
+  cursor: pointer;
+}
+
+.card-content > *:first-child {
+  font-size: initial;
+  font-weight: var(--fw-600);
+}
+
+.card-content > p {
+  line-height: initial;
+  font-size: var(--fs-xs);
+}
+
+.card-footer {
+  text-align: end;
 }
