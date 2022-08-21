@@ -38,8 +38,9 @@
   --border-radius: 12px;
   --border: 6px solid var(--acc-clr);
 
-  --card-width: 300px;
   --card-gap: 1rem;
+  --card-width: 300px;
+  --card-avatar: 32px;
 
   --transition: 200ms ease;
 }

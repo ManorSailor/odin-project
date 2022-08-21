@@ -135,3 +135,7 @@ img[class$="-avatar"] {
 .card-content > *:first-child {
   margin-bottom: 0.25rem;
 }
+
+.card-avatar {
+  width: var(--card-avatar);
+}
