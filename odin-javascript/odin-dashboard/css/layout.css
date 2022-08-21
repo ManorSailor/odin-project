@@ -120,15 +120,19 @@ img[class$="-avatar"] {
   display: grid;
   gap: var(--card-gap);
   margin-top: var(--card-gap);
+  grid-auto-rows: var(--card-height);
   grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   padding: 1.25rem;
   border-radius: var(--card-radius);
 }
 
 .card-content {
+  flex-grow: 1;
   margin-bottom: 0.5rem;
 }
 
@@ -171,8 +175,8 @@ img[class$="-avatar"] {
 /* =========== Trending =========== */
 .trends-container {
   display: grid;
-  gap: 0.75rem;
-  margin-top: var(--card-gap);
+  gap: var(--card-gap);
+  margin-top: 0.7rem;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
