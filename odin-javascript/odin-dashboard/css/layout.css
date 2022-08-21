@@ -139,3 +139,54 @@ img[class$="-avatar"] {
 .card-avatar {
   width: var(--card-avatar);
 }
+
+/* ================ Info Section ================ */
+.info-aside > *:nth-child(2) {
+  margin-top: var(--card-gap);
+}
+
+/* =========== Announcement =========== */
+.announcements-container {
+  display: grid;
+  gap: var(--card-gap);
+  margin-top: var(--card-gap);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.content-box {
+  padding: 1.25rem;
+  border-radius: var(--card-radius);
+}
+
+.content-box > *:first-child {
+  font-size: initial;
+  font-weight: var(--fw-600);
+  margin-bottom: 0.25rem;
+}
+
+.content-box:last-child {
+  grid-column: 1 / -1;
+}
+
+/* =========== Trending =========== */
+.trends-container {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: var(--card-gap);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.trend-card {
+  min-width: 150px;
+  padding: 1rem;
+}
+
+.trend-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.trend-card > p {
+  margin-top: 0.5rem;
+}

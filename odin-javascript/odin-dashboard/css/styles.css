@@ -149,3 +149,24 @@ button:hover {
 .card-footer {
   text-align: end;
 }
+
+/* =========== Info Section =========== */
+.content-box {
+  font-size: var(--fs-sm);
+  background-color: var(--bg-clr-alt);
+  cursor: pointer;
+}
+
+/* =========== Trending =========== */
+.trend-card {
+  border: none;
+}
+
+.trend-card-content > *:first-child {
+  font-weight: var(--fw-600);
+}
+
+.trend-card-content + p {
+  font-size: var(--fs-xs);
+  text-align: right;
+}
