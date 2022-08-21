@@ -191,6 +191,10 @@ img[class$="-avatar"] {
   justify-content: space-between;
 }
 
+.trends-avatar {
+  width: var(--card-avatar);
+}
+
 .trend-card > p {
   margin-top: 0.5rem;
 }
