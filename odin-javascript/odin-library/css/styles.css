@@ -11,10 +11,10 @@
 }
 
 :root {
-  --bg-clr-alt: #24304b;
-  --fg-clr-alt: #151a27;
+  --bg-clr: #1e273e;
+  --fg-clr: #151a27;
   --acc-clr: #5ebddb;
-  --txt-clr-alt: #f0efee;
+  --txt-clr: #f0efee;
   --bg-clr-alt: #39353A;
 
   --ff-head: 'Montserrat Alternates', 'sans-serif';
@@ -30,4 +30,28 @@
   --fw-400: 400;
   --fw-500: 500;
   --fw-600: 600;
+}
+
+body {
+  line-height: 1.5;
+  font-size: var(--fs-md);
+  font-family: var(--ff-text);
+  color: var(--txt-clr);
+  background-color: var(--bg-clr);
+}
+
+/* ================ Typography ================ */
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+  font-weight: var(--fw-600);
+  font-family: var(--ff-head);
+}
+
+p,
+a,
+span {
+  display: inline-block;
 }
