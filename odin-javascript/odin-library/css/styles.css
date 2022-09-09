@@ -55,3 +55,13 @@ a,
 span {
   display: inline-block;
 }
+
+/* ================ Header ================ */
+.main-header {
+  padding: 1.25rem;
+  background-color: var(--fg-clr);
+}
+
+.logo {
+  margin-left: 8rem;
+}
