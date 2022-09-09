@@ -9,3 +9,24 @@
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --bg-clr-alt: #24304b;
+  --fg-clr-alt: #151a27;
+  --acc-clr: #5ebddb;
+  --txt-clr-alt: #f0efee;
+  --bg-clr-alt: #39353A;
+
+  --ff-text: 'Montserrat Alternates', sans-serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.75rem;
+
+  --fw-100: 100;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+}
