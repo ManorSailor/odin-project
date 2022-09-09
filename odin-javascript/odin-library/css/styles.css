@@ -30,6 +30,11 @@
   --fw-400: 400;
   --fw-500: 500;
   --fw-600: 600;
+
+  --gutter: 1rem;
+  --btn-radius: 6px;
+
+  --transition: 250ms ease;
 }
 
 body {
@@ -61,6 +66,21 @@ span {
 }
 
 /* ================ Utility Classes ================ */
+button {
+  border: none;
+  appearance: none;
+  padding: 0.5em 1em;
+  font-size: var(--fs-md);
+  font-family: var(--ff-text);
+  border-radius: var(--btn-radius);
+  background-color: var(--acc-clr);
+  cursor: pointer;
+  transition: transform var(--transition);
+}
+
+button:active {
+  transform: scale(0.9);
+}
 
 /* ================ Header ================ */
 .main-header {
@@ -81,7 +101,9 @@ span {
   flex-grow: 1;
 }
 
-.shelf {
-  text-align: center;
-  margin-bottom: 1rem;
+.shelf-header {
+  gap: var(--gutter);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
