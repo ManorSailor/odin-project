@@ -38,6 +38,10 @@ body {
   font-family: var(--ff-text);
   color: var(--txt-clr);
   background-color: var(--bg-clr);
+  min-height: 100vh;
+  letter-spacing: 0.5px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ================ Typography ================ */
@@ -56,6 +60,8 @@ span {
   display: inline-block;
 }
 
+/* ================ Utility Classes ================ */
+
 /* ================ Header ================ */
 .main-header {
   padding: 1.25rem;
@@ -64,4 +70,18 @@ span {
 
 .logo {
   margin-left: 8rem;
+}
+
+/* ================ Main ================ */
+.main-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.shelf {
+  text-align: center;
+  margin-bottom: 1rem;
 }
