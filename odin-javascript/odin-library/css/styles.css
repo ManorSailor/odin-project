@@ -17,7 +17,8 @@
   --txt-clr-alt: #f0efee;
   --bg-clr-alt: #39353A;
 
-  --ff-text: 'Montserrat Alternates', sans-serif;
+  --ff-head: 'Montserrat Alternates', 'sans-serif';
+  --ff-text: 'Prompt', 'Montserrat Alternates', 'sans-serif';
 
   --fs-xs: 0.75rem;
   --fs-sm: 0.875rem;
