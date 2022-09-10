@@ -91,7 +91,7 @@ button:active {
   transform: scale(0.9);
 }
 
-/* ================ Header ================ */
+/* ================ Main Header ================ */
 .main-header {
   padding: 1.25rem;
   background-color: var(--fg-clr);
@@ -112,10 +112,11 @@ button:active {
 }
 
 .shelf-header {
-  gap: var(--gutter);
+  gap: calc(var(--gutter) / 2);
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: var(--gutter);
 }
 
 .cards-container {
