@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Meta Tags -->
     <meta charset="UTF-8">
@@ -8,7 +9,8 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://api.fonts.coollabs.io">
-    <link href="https://api.fonts.coollabs.io/css2?family=Montserrat+Alternates:wght@100;400;500;600;800&family=Prompt:ital@0;1&display=swap"
+    <link
+        href="https://api.fonts.coollabs.io/css2?family=Montserrat+Alternates:wght@100;400;500;600;800&family=Prompt:ital@0;1&display=swap"
         rel="stylesheet">
 
     <!-- Stylesheet -->
@@ -20,6 +22,7 @@
     <!-- Title -->
     <title>Library</title>
 </head>
+
 <body>
     <!-- Header -->
     <header class="main-header">
@@ -34,21 +37,27 @@
         </header>
 
         <!-- Cards Container -->
-        <!-- <div class="cards-container">
+        <div class="cards-container">
             <article class="card">
-                <header class="card-header">
-                    <h3 class="book-title">Journey to the broken world</h3>
-                    <h4 class="book-author">Mark Heisenberg</h4>
-                </header>
-                <div class="card-body">
-                    <p class="pages">250 pages</p>
-                </div>
-                <footer class="card-footer">
-                    <div class="book-read-status"></div>
-                    <button class="remove-book">Remove</button>
-                </footer>
+                <h3 class="title">Journey to the broken world</h3>
+                <h4 class="author">Mark Heisenberg</h4>
+                <p class="pages">250 pages</p>
+                
+                <!-- Mark as read toggle -->
+                <label for="toggle" class="read-status">
+                    <input type="checkbox" id="toggle">
+                    Mark as read
+                    <span class="toggle-container">
+                        <span class="knob"></span>
+                        <span class="bar"></span>
+                    </span>
+                </label>
+
+                <!-- Remove book button -->
+                <button class="remove-book">Remove</button>
             </article>
-        </div> -->
+        </div>
     </main>
 </body>
+
 </html>
