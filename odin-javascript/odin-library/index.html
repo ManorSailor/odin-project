@@ -8,10 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://api.fonts.coollabs.io">
-    <link
-        href="https://api.fonts.coollabs.io/css2?family=Montserrat+Alternates:wght@100;400;500;600;800&family=Prompt:ital@0;1&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;400;500;600&family=Prompt:ital@0;1&display=swap" rel="stylesheet">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="./css/styles.css">
@@ -39,10 +37,14 @@
         <!-- Cards Container -->
         <div class="cards-container">
             <article class="card">
-                <h3 class="title">Journey to the broken world</h3>
+                <header class="card-header">
+                    <h3 class="title">Journey to the broken world</h3>
+                    <img src="./assets/delete.png" alt="Delete icon" class="remove-book">
+                </header>
+
                 <h4 class="author">Mark Heisenberg</h4>
                 <p class="pages">250 pages</p>
-                
+
                 <!-- Mark as read toggle -->
                 <label for="toggle" class="read-status">
                     <input type="checkbox" id="toggle">
@@ -52,9 +54,64 @@
                         <span class="bar"></span>
                     </span>
                 </label>
+            </article>
 
-                <!-- Remove book button -->
-                <button class="remove-book">Remove</button>
+            <article class="card">
+                <header class="card-header">
+                    <h3 class="title">Journey to the broken world</h3>
+                    <img src="./assets/delete.png" alt="Delete icon" class="remove-book">
+                </header>
+
+                <h4 class="author">Mark Heisenberg</h4>
+                <p class="pages">250 pages</p>
+
+                <!-- Mark as read toggle -->
+                <label for="toggle" class="read-status">
+                    <input type="checkbox" id="toggle">
+                    Mark as read
+                    <span class="toggle-container">
+                        <span class="knob"></span>
+                        <span class="bar"></span>
+                    </span>
+                </label>
+            </article>
+            <article class="card">
+                <header class="card-header">
+                    <h3 class="title">Journey to the broken world</h3>
+                    <img src="./assets/delete.png" alt="Delete icon" class="remove-book">
+                </header>
+
+                <h4 class="author">Mark Heisenberg</h4>
+                <p class="pages">250 pages</p>
+
+                <!-- Mark as read toggle -->
+                <label for="toggle" class="read-status">
+                    <input type="checkbox" id="toggle">
+                    Mark as read
+                    <span class="toggle-container">
+                        <span class="knob"></span>
+                        <span class="bar"></span>
+                    </span>
+                </label>
+            </article>
+            <article class="card">
+                <header class="card-header">
+                    <h3 class="title">Journey to the broken world</h3>
+                    <img src="./assets/delete.png" alt="Delete icon" class="remove-book">
+                </header>
+
+                <h4 class="author">Mark Heisenberg</h4>
+                <p class="pages">250 pages</p>
+
+                <!-- Mark as read toggle -->
+                <label for="toggle" class="read-status">
+                    <input type="checkbox" id="toggle">
+                    Mark as read
+                    <span class="toggle-container">
+                        <span class="knob"></span>
+                        <span class="bar"></span>
+                    </span>
+                </label>
             </article>
         </div>
     </main>
