@@ -75,14 +75,6 @@ img {
   display: inline-block;
 }
 
-input {
-  border: none;
-  outline: none;
-  appearance: none;
-  font-size: var(--fs-lg);
-  font-family: var(--ff-text);
-}
-
 ul {
   list-style: none;
 }
@@ -271,6 +263,10 @@ button:active {
 }
 
 input[class^="book-"] {
+  outline: none;
+  appearance: none;
+  font-size: var(--fs-md);
+  font-family: var(--ff-text);
   padding: calc(var(--gutter) / 2);
   border: 2px solid var(--txt-clr);
   border-radius: var(--card-radius);
