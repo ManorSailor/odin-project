@@ -47,65 +47,7 @@
 
                 <!-- Mark as read toggle -->
                 <label class="read-status">
-                    <input type="checkbox">
-                    Mark as read
-                    <span class="toggle-container">
-                        <span class="knob"></span>
-                        <span class="bar"></span>
-                    </span>
-                </label>
-            </article>
-
-            <article class="card">
-                <header class="card-header">
-                    <h3 class="title">Journey to broken world</h3>
-                    <img src="./assets/delete.png" alt="Delete icon" class="remove-book">
-                </header>
-
-                <h4 class="author">Mark Heisenberg</h4>
-                <p class="pages">250 pages</p>
-
-                <!-- Mark as read toggle -->
-                <label class="read-status">
-                    <input type="checkbox">
-                    Mark as read
-                    <span class="toggle-container">
-                        <span class="knob"></span>
-                        <span class="bar"></span>
-                    </span>
-                </label>
-            </article>
-            <article class="card">
-                <header class="card-header">
-                    <h3 class="title">Journey to broken world</h3>
-                    <img src="./assets/delete.png" alt="Delete icon" class="remove-book">
-                </header>
-
-                <h4 class="author">Mark Heisenberg</h4>
-                <p class="pages">250 pages</p>
-
-                <!-- Mark as read toggle -->
-                <label class="read-status">
-                    <input type="checkbox">
-                    Mark as read
-                    <span class="toggle-container">
-                        <span class="knob"></span>
-                        <span class="bar"></span>
-                    </span>
-                </label>
-            </article>
-            <article class="card">
-                <header class="card-header">
-                    <h3 class="title">Journey to broken world</h3>
-                    <img src="./assets/delete.png" alt="Delete icon" class="remove-book">
-                </header>
-
-                <h4 class="author">Mark Heisenberg</h4>
-                <p class="pages">250 pages</p>
-
-                <!-- Mark as read toggle -->
-                <label class="read-status">
-                    <input type="checkbox" name="test">
+                    <input type="checkbox" class="mark-as-read">
                     Mark as read
                     <span class="toggle-container">
                         <span class="knob"></span>
@@ -115,6 +57,41 @@
             </article>
         </div>
     </main>
+
+    <!-- Modal -->
+    <section class="modal-container">
+        <form action="/" class="book-form card" method="post">
+            <h2>Add new book</h2>
+            <!-- Note: Placeholder with an empty space is required to check if the input is empty or not via CSS -->
+            <ul class="data-list">
+                <li>
+                    <label for="title">
+                        <span>Title</span>
+                        <input id="title" class="book-title" type="text" minlength="1" maxlength="20" placeholder=" " required>
+                    </label>
+                </li>
+                <li>
+                    <label for="author">
+                        <span>Author</span>
+                        <input id="author" class="book-author" type="text" minlength="1" maxlength="20" placeholder=" " required>
+                    </label>
+                </li>
+                <li>
+                    <label for="pages">
+                        <span>Total Pages</span>
+                        <input id="pages" class="book-pages" type="number" min="1" placeholder=" " required>
+                    </label>
+                </li>
+                <li>
+                    <label for="status">
+                        Have you finished this book?
+                        <input id="status" class="book-status" type="checkbox" required>
+                    </label>
+                </li>
+            </ul>
+            <button class="btn">Add</button><br>
+        </form>
+    </section>
 </body>
 
 </html>
