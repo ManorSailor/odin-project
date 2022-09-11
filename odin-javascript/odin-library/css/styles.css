@@ -102,6 +102,18 @@ button:active {
   margin-left: 8rem;
 }
 
+/* Media query to center the logo on small screen devices */
+@media screen and (max-width: 800px) {
+  .main-header {
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo  {
+    margin: 0;
+  }
+}
+
 /* ================ Main ================ */
 .main-container {
   width: 100%;
