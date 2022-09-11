@@ -134,7 +134,7 @@ button:active {
 .cards-container {
   gap: var(--gutter);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(var(--card-size), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-size), 1fr));
 }
 
 /* ================ Cards ================ */
