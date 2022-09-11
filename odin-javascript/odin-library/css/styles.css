@@ -199,7 +199,7 @@ button:active {
 }
 
 /* ================ Toggler ================ */
-input[type="checkbox"] {
+.mark-as-read {
   display: none;
 }
 
@@ -231,7 +231,7 @@ input[type="checkbox"] {
 }
 
 /* When input has a pseudo-class of checked, find & look inside of its next sibling & apply styles to knob element */
-input[type="checkbox"]:checked + .toggle-container > .knob {
+.mark-as-read:checked + .toggle-container > .knob {
   transform: translateX(120%);
 }
 
