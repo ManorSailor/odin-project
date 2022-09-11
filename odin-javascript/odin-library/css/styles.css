@@ -96,6 +96,10 @@ button:active {
   transform: scale(0.9);
 }
 
+.active {
+  display: flex !important;
+}
+
 /* ================ Main Header ================ */
 .main-header {
   padding: 1.25rem;
@@ -236,7 +240,7 @@ button:active {
 
 /* ================ Modal ================ */
 .modal-container {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   position: fixed;
