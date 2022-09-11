@@ -186,7 +186,7 @@ button:active {
 }
 
 /* ================ Toggler ================ */
-#toggle {
+input[type="checkbox"] {
   display: none;
 }
 
@@ -217,7 +217,8 @@ button:active {
   transition: transform var(--transition);
 }
 
-#toggle:checked + .toggle-container > .knob {
+/* When input has a pseudo-class of checked, find & look inside of its next sibling & apply styles to knob element */
+input[type="checkbox"]:checked + .toggle-container > .knob {
   transform: translateX(120%);
 }
 
