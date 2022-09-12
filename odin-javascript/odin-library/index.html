@@ -60,32 +60,32 @@
 
     <!-- Modal -->
     <section class="modal-container" id="modal">
-        <form action="/" class="book-form card" method="post">
+        <form class="book-form card" id="form">
             <h2>Add new book</h2>
             <!-- Note: Placeholder with an empty space is required to check if the input is empty or not via CSS -->
             <ul class="data-list">
                 <li>
                     <label for="title">
                         <span>Title</span>
-                        <input id="title" class="book-title" type="text" minlength="1" maxlength="20" placeholder=" " required>
+                        <input class="book-title" type="text" minlength="1" maxlength="20" placeholder=" " required>
                     </label>
                 </li>
                 <li>
                     <label for="author">
                         <span>Author</span>
-                        <input id="author" class="book-author" type="text" minlength="1" maxlength="20" placeholder=" " required>
+                        <input class="book-author" type="text" minlength="1" maxlength="20" placeholder=" " required>
                     </label>
                 </li>
                 <li>
                     <label for="pages">
                         <span>Total Pages</span>
-                        <input id="pages" class="book-pages" type="number" min="1" placeholder=" " required>
+                        <input class="book-pages" type="number" min="1" placeholder=" " required>
                     </label>
                 </li>
                 <li>
                     <label for="status">
                         Have you finished this book?
-                        <input id="status" class="status" type="checkbox" required>
+                        <input class="status" type="checkbox" required>
                     </label>
                 </li>
             </ul>
