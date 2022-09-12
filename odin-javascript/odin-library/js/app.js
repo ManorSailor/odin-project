@@ -38,6 +38,7 @@ form.addEventListener('submit', (e) => {
     const newCard = cardFactory(newBook);
     cardsContainer.appendChild(newCard);
     toggleModal(e);
+    form.reset();
     e.preventDefault();
 });
 
