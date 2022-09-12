@@ -15,6 +15,9 @@
   --fg-clr: #151a27;
   --acc-clr: #5ebddb;
   --txt-clr: #f0efee;
+  --fg-clr-alt: hsl(223, 30%, 50%);
+  --bg-clr-alt: hsl(223, 35%, 30%);
+  --acc-clr-alt: hsl(194, 63%, 40%);
 
   --ff-head: 'Montserrat Alternates', 'sans-serif';
   --ff-text: 'Prompt', 'Montserrat Alternates', 'sans-serif';
@@ -39,6 +42,7 @@
 
   --knob-size: 14px;
   --bar-size: 32px;
+  --bar-radius: 10px;
 
   --modal-bg: rgba(41, 40, 40, 0.2);
   --modal-blur: 8px;
@@ -216,26 +220,39 @@ button:active {
   position: relative;
 }
 
+.knob,
+.bar {
+  transition: transform var(--transition),
+              background-color var(--transition);
+}
+
 .knob {
   width: var(--knob-size);
   height: var(--knob-size);
   border-radius: 50%;
-  background-color: var(--txt-clr);
+  background-color: var(--fg-clr-alt);
   position: absolute;
   left: 0;
-  transition: transform var(--transition);
-}
-
-/* When input has a pseudo-class of checked, find & look inside of its next sibling & apply styles to knob element */
-.mark-as-read:checked + .toggle-container > .knob {
-  transform: translateX(120%);
+  transform: translateY(-5%);
 }
 
 .bar {
   width: var(--bar-size);
   height: calc(var(--bar-size) / 4);
-  border-radius: var(--btn-radius);
-  background-color: var(--bg-clr);
+  border-radius: var(--bar-radius);
+  background-color: var(--bg-clr-alt);
+  transition-delay: 50ms;
+}
+
+/* When input has a pseudo-class of checked, find & look inside of its next sibling & apply styles to knob element */
+.mark-as-read:checked + .toggle-container > .knob {
+  background-color: var(--acc-clr);
+  transform: translateX(120%) translateY(-5%);
+}
+
+/* When input has a pseudo-class of checked, find & look inside of its next sibling & apply styles to bar element */
+.mark-as-read:checked + .toggle-container > .bar {
+  background-color: var(--acc-clr-alt);
 }
 
 /* ================ Modal ================ */
