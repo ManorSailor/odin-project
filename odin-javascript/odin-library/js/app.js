@@ -19,6 +19,10 @@ function parseData(formFields) {
     const data = [];
 
     for (let i = 0; i < len; i++) {
+        if (formFields[i].type === 'checkbox') {
+            data.push(formFields[i].checked);
+            continue;
+        }
         data.push(formFields[i].value);
     }
 
