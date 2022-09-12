@@ -1,6 +1,7 @@
 // Global Variables
 const modal = document.getElementById('modal');
 const newBookBtn = document.getElementById('new-book');
+let library = [];
 
 modal.addEventListener('click', toggleModal);
 newBookBtn.addEventListener('click', toggleModal);
@@ -30,7 +31,28 @@ function parseData(formFields) {
 }
 
 form.addEventListener('submit', (e) => {
-    const [name, author, pages, status] = parseData(e.target);
+    const parsedData = parseData(e.target);
+    const newBook = new Book(parsedData);
+    library.push(newBook);
     toggleModal(e);
     e.preventDefault();
 });
+
+// Book Constructor
+let uid = 0;
+
+function Book([title, author, pages, hasRead]) {
+    this.id = ++uid;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.hasRead = hasRead;
+}
+
+Book.prototype.changeStatus = function() {
+    (this.hasRead) ? this.hasRead = false : this.hasRead = true;
+}
+
+Book.prototype.removeBook = function() {
+    library = library.filter(book => (book.id !== this.id));
+}
