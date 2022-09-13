@@ -39,6 +39,21 @@ form.addEventListener('submit', (e) => {
     cardsContainer.appendChild(newCard);
     toggleModal(e);
     form.reset();
+
+    newCard.addEventListener('click', function(e) {
+        switch(e.target.tagName) {
+            case 'INPUT':
+                const id = this.getAttribute('data-id');
+                const book = library.find(book => (book.id === Number(id)));
+                console.log(book);
+                book.changeStatus();
+                console.log(book.hasRead);
+                break;
+            default:
+                break;
+        }
+    });
+
     e.preventDefault();
 });
 
