@@ -43,11 +43,11 @@ form.addEventListener('submit', (e) => {
     newCard.addEventListener('click', function(e) {
         const id = Number(this.getAttribute('data-id'));
         const book = Book.getBook(id);
-        switch(e.target.tagName) {
-            case 'INPUT':
+        switch(e.target.id) {
+            case 'mark-as-read':
                 book.changeStatus();
                 break;
-            case 'IMG':
+            case 'remove-book':
                 book.removeBook();
                 this.remove();
                 break;
@@ -98,6 +98,7 @@ function cardFactory({id, title, author, pages, hasRead}) {
 
     const img = document.createElement('img');
     img.classList.add('remove-book');
+    img.id = 'remove-book';
     img.src = "./assets/delete.png";
     img.alt = "Delete icon";
 
@@ -118,6 +119,7 @@ function cardFactory({id, title, author, pages, hasRead}) {
 
     const input = document.createElement('input');
     input.classList.add('mark-as-read');
+    input.id = 'mark-as-read';
     input.type = 'checkbox';
     input.checked = hasRead;
 
