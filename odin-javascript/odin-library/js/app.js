@@ -41,13 +41,15 @@ form.addEventListener('submit', (e) => {
     form.reset();
 
     newCard.addEventListener('click', function(e) {
+        const id = Number(this.getAttribute('data-id'));
+        const book = Book.getBook(id);
         switch(e.target.tagName) {
             case 'INPUT':
-                const id = this.getAttribute('data-id');
-                const book = library.find(book => (book.id === Number(id)));
-                console.log(book);
                 book.changeStatus();
-                console.log(book.hasRead);
+                break;
+            case 'IMG':
+                book.removeBook();
+                this.remove();
                 break;
             default:
                 break;
@@ -68,6 +70,13 @@ function Book([title, author, pages, hasRead]) {
     this.hasRead = hasRead;
 }
 
+// Static Methods
+Book.getBook = function(id) {
+    if (!id) throw 'Missing or Invalid ID!';
+    return library.find(book => (book.id === id));
+}
+
+// Shared Methods
 Book.prototype.changeStatus = function() {
     (this.hasRead) ? this.hasRead = false : this.hasRead = true;
 }
