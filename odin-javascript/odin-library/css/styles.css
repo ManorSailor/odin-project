@@ -283,6 +283,24 @@ button:active {
   justify-content: center;
 }
 
+.data-list > li:not(:last-child) * {
+  transition: color var(--transition),
+              border-color var(--transition);
+}
+
+.data-list > li:not(:last-child) > label:focus-within {
+  color: var(--acc-clr);
+}
+
+.data-list > li:not(:last-child) > label:focus-within > input {
+  border-color: var(--acc-clr);
+}
+
+.data-list > li:last-child * {
+  cursor: pointer;
+  user-select: none;
+}
+
 input[class^="book-"] {
   outline: none;
   appearance: none;
@@ -293,4 +311,11 @@ input[class^="book-"] {
   border-radius: var(--card-radius);
   color: var(--txt-clr);
   background-color: transparent;
+}
+
+input[class="status"] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--acc-clr);
+  vertical-align: -2px;
 }
