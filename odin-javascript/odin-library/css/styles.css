@@ -271,9 +271,20 @@ button:active {
   padding: 1.25rem;
 }
 
-.book-form > h2 {
+.form-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.form-header > * {
   margin-bottom: 1.25rem;
-  text-align: center;
+}
+
+.close {
+  position: absolute;
+  right: 0;
 }
 
 .data-list {

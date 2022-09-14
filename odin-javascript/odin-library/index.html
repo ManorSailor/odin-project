@@ -41,7 +41,10 @@
     <section class="modal-container" id="modal">
         <!-- Need AutoComplete off here because FF remembers data across soft page refreshes -->
         <form class="book-form card" id="form" autocomplete="off">
-            <h2>Add new book</h2>
+            <div class="form-header">
+                <h2>Add new book</h2>
+                <img id="close" src="./assets/delete.png" alt="close icon" class="remove-book close">
+            </div>
             <!-- Note: Placeholder with an empty space is required to check if the input is empty or not via CSS -->
             <ul class="data-list">
                 <li>

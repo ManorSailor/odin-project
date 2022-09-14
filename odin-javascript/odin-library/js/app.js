@@ -8,7 +8,7 @@ modal.addEventListener('click', toggleModal);
 newBookBtn.addEventListener('click', toggleModal);
 
 function toggleModal(e) {
-    if (e.target === modal || e.target === newBookBtn || e.type === 'submit') {
+    if (e.target === modal || e.target === newBookBtn || e.target.id === 'close' || e.type === 'submit') {
         modal.classList.toggle('active');
     }
 }
