@@ -9,7 +9,7 @@ newBookBtn.addEventListener('click', toggleModal);
 
 function toggleModal(e) {
     if (e.target === modal || e.target === newBookBtn || e.target.id === 'close' || e.type === 'submit') {
-        
+
         // Get the classlist convert into an array, then into a string, check if it includes inactive class
         const isInactive = [modal.classList].join(' ').includes('inactive');
 
@@ -24,7 +24,7 @@ function toggleModal(e) {
             // required. Otherwise visibility property will hide the element immediately & animation won't work
             modal.addEventListener('animationend', () => {
                 modal.classList.add('inactive');
-            }, {once: true});
+            }, { once: true });
         }
     }
 }
@@ -33,18 +33,16 @@ function toggleModal(e) {
 const form = document.getElementById('form')
 
 function parseData(formFields) {
-    const len = formFields.length - 1;
-    const data = [];
-
-    for (let i = 0; i < len; i++) {
-        if (formFields[i].type === 'checkbox') {
-            data.push(formFields[i].checked);
-            continue;
+    // Use the spread syntax & convert formFields into an array
+    // Call array reducer method on it, populate & return a new array of parsedData
+    return [...formFields].reduce((parsedData, field) => {
+        if (field.type === 'checkbox') {
+            parsedData.push(field.checked);
+        } else {
+            parsedData.push(field.value);
         }
-        data.push(formFields[i].value);
-    }
-
-    return data;
+        return parsedData;
+    }, []);
 }
 
 form.addEventListener('submit', (e) => {
@@ -56,10 +54,10 @@ form.addEventListener('submit', (e) => {
     toggleModal(e);
     form.reset();
 
-    newCard.addEventListener('click', function(e) {
+    newCard.addEventListener('click', function (e) {
         const id = Number(this.getAttribute('data-id'));
         const book = Book.getBook(id);
-        switch(e.target.id) {
+        switch (e.target.id) {
             case 'mark-as-read':
                 book.changeStatus();
                 break;
@@ -87,22 +85,22 @@ function Book([title, author, pages, hasRead]) {
 }
 
 // Static Methods
-Book.getBook = function(id) {
+Book.getBook = function (id) {
     if (!id) throw 'Missing or Invalid ID!';
     return library.find(book => (book.id === id));
 }
 
 // Shared Methods
-Book.prototype.changeStatus = function() {
+Book.prototype.changeStatus = function () {
     (this.hasRead) ? this.hasRead = false : this.hasRead = true;
 }
 
-Book.prototype.removeBook = function() {
+Book.prototype.removeBook = function () {
     library = library.filter(book => (book.id !== this.id));
 }
 
 // Card Factory Function
-function cardFactory({id, title, author, pages, hasRead}) {
+function cardFactory({ id, title, author, pages, hasRead }) {
     const article = document.createElement('article');
 
     // Card Header
