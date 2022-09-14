@@ -34,6 +34,11 @@ const form = document.getElementById('form')
 
 function parseData(formFields) {
     // Use the spread syntax & convert formFields into an array
+    formFields = [...formFields];
+
+    // Pop off the last element, we don't need it. If ever required, use the submitter property of SubmitEventAPI
+    formFields.pop();
+
     // Call array reducer method on it, populate & return a new array of parsedData
     return [...formFields].reduce((parsedData, field) => {
         if (field.type === 'checkbox') {
@@ -70,6 +75,7 @@ form.addEventListener('submit', (e) => {
         }
     });
 
+    // Prevent the form from submitting because there is no backend to handle the request yet
     e.preventDefault();
 });
 
