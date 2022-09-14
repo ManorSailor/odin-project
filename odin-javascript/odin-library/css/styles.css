@@ -101,7 +101,19 @@ button:active {
 }
 
 .active {
-  display: flex !important;
+  visibility: visible;
+}
+
+.inactive {
+  visibility: hidden;
+}
+
+.pop-in {
+  animation: pop-in var(--transition) forwards;
+}
+
+.pop-out {
+  animation: pop-out var(--transition);
 }
 
 /* ================ Main Header ================ */
@@ -257,7 +269,7 @@ button:active {
 
 /* ================ Modal ================ */
 .modal-container {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -329,4 +341,24 @@ input[class="status"] {
   height: 1rem;
   accent-color: var(--acc-clr);
   vertical-align: -2px;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pop-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.2);
+  }
 }

@@ -9,7 +9,23 @@ newBookBtn.addEventListener('click', toggleModal);
 
 function toggleModal(e) {
     if (e.target === modal || e.target === newBookBtn || e.target.id === 'close' || e.type === 'submit') {
-        modal.classList.toggle('active');
+        
+        // Get the classlist convert into an array, then into a string, check if it includes inactive class
+        const isActive = [modal.classList].join(' ').includes('inactive');
+
+        if (isActive) {
+            modal.classList.remove('inactive', 'pop-out');
+            modal.classList.add('active', 'pop-in');
+        } else {
+            modal.classList.remove('active', 'pop-in');
+            modal.classList.add('pop-out');
+
+            // Listen for animationend event before making the modal inactive
+            // required, otherwise our visibility property will just hide the element immediately
+            modal.addEventListener('animationend', () => {
+                modal.classList.add('inactive');
+            }, {once: true});
+        }
     }
 }
 
