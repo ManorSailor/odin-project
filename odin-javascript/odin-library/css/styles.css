@@ -281,6 +281,7 @@ button:active {
 
 .book-form {
   padding: 1.25rem;
+  min-width: var(--card-size);
 }
 
 .form-header {
@@ -306,16 +307,38 @@ button:active {
   justify-content: center;
 }
 
-.data-list > li:not(:last-child) * {
+.list-item {
+  position: relative;
+}
+
+.list-item * {
   transition: color var(--transition),
               border-color var(--transition);
 }
 
-.data-list > li:not(:last-child) > label:focus-within {
+.list-item > label > span {
+  padding: 0 0.25em;
+  background-color: var(--fg-clr);
+  position: absolute;
+  top: -22%; left: 5%;
+  transform: translateY(82%);
+  pointer-events: none;
+  user-select: none;
+  transition: transform var(--transition),
+              font-size var(--transition);
+}
+
+.list-item > label:focus-within > span, 
+.list-item > label > input:not(:placeholder-shown) + span {
+  font-size: var(--fs-sm);
+  transform: translateY(0);
+}
+
+.list-item > label:focus-within {
   color: var(--acc-clr);
 }
 
-.data-list > li:not(:last-child) > label:focus-within > input {
+.list-item > label:focus-within > input {
   border-color: var(--acc-clr);
 }
 
@@ -327,6 +350,7 @@ button:active {
 input[class^="book-"] {
   outline: none;
   appearance: none;
+  width: 100%;
   font-size: var(--fs-md);
   font-family: var(--ff-text);
   padding: calc(var(--gutter) / 2);
