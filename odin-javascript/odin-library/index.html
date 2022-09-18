@@ -48,27 +48,31 @@
             <!-- Note: Placeholder with an empty space is required to check if the input is empty or not via CSS -->
             <ul class="data-list">
                 <li class="list-item">
-                    <label>
+                    <label class="input-label">
                         <input class="book-title" type="text" minlength="1" maxlength="20" placeholder=" " required>
                         <span>Title</span>
                     </label>
                 </li>
                 <li class="list-item">
-                    <label>
+                    <label class="input-label">
                         <input class="book-author" type="text" minlength="1" maxlength="20" placeholder=" " required>
                         <span>Author</span>
                     </label>
                 </li>
                 <li class="list-item">
-                    <label>
+                    <label class="input-label">
                         <input class="book-pages" type="number" min="1" placeholder=" " required>
                         <span>Total Pages</span>
                     </label>
                 </li>
-                <li>
-                    <label>
+                <li class="list-item">
+                    <label class="read-status">
                         Mark as read?
                         <input class="status" type="checkbox">
+                        <span class="toggle-container">
+                            <span class="knob"></span>
+                            <span class="bar"></span>
+                        </span>
                     </label>
                 </li>
             </ul>

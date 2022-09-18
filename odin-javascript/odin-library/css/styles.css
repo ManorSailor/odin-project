@@ -84,12 +84,16 @@ ul {
 }
 
 /* ================ Utility Classes ================ */
-button {
-  border: none;
+button,
+input:not(input[type="checkbox"]) {
   appearance: none;
-  padding: 0.5em 1em;
   font-size: var(--fs-md);
   font-family: var(--ff-text);
+}
+
+button {
+  border: none;
+  padding: 0.5em 1em;
   border-radius: var(--btn-radius);
   background-color: var(--acc-clr);
   cursor: pointer;
@@ -109,7 +113,7 @@ button:active {
 }
 
 .pop-in {
-  animation: pop-in var(--transition) forwards;
+  animation: pop-in var(--transition);
 }
 
 .pop-out {
@@ -210,8 +214,8 @@ button:active {
   font-size: var(--fs-sm);
 }
 
-/* ================ Toggler ================ */
-.mark-as-read {
+/* ================ Toggle ================ */
+input[type="checkbox"] {
   display: none;
 }
 
@@ -257,21 +261,25 @@ button:active {
 }
 
 /* When input has a pseudo-class of checked, find & look inside of its next sibling & apply styles to knob element */
-.mark-as-read:checked + .toggle-container > .knob {
+input[type="checkbox"]:checked + .toggle-container > .knob {
   background-color: var(--acc-clr);
   transform: translateX(120%) translateY(-5%);
 }
 
 /* When input has a pseudo-class of checked, find & look inside of its next sibling & apply styles to bar element */
-.mark-as-read:checked + .toggle-container > .bar {
+input[type="checkbox"]:checked + .toggle-container > .bar {
   background-color: var(--acc-clr-alt);
 }
 
 /* ================ Modal ================ */
-.modal-container {
+.modal-container,
+.form-header {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.modal-container {
   position: fixed;
   width: 100%;
   min-height: 100vh;
@@ -279,15 +287,14 @@ button:active {
   backdrop-filter: blur(var(--modal-blur));
 }
 
+/* ================ Main Form ================ */
 .book-form {
   padding: 1.25rem;
   min-width: var(--card-size);
 }
 
+/* ================ Form Header ================ */
 .form-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
 }
 
@@ -300,6 +307,7 @@ button:active {
   right: 0;
 }
 
+/* ================ Data List ================ */
 .data-list {
   gap: calc(var(--gutter) * 1.25);
   display: flex;
@@ -307,16 +315,33 @@ button:active {
   justify-content: center;
 }
 
+/* ================ List Items ================ */
 .list-item {
   position: relative;
 }
 
-.list-item * {
-  transition: color var(--transition),
-              border-color var(--transition);
+.list-item:last-child {
+  position: static;
+  margin: 0 auto calc(var(--gutter) / 1.5);
 }
 
-.list-item > label > span {
+/* =============== Input Fields  =============== */
+.input-label {
+  transition: color var(--transition);
+}
+
+.input-label > input[class^="book-"] {
+  outline: none;
+  width: 100%;
+  padding: calc(var(--gutter) / 2);
+  border: 2px solid var(--txt-clr);
+  border-radius: var(--card-radius);
+  color: var(--txt-clr);
+  background-color: transparent;
+  transition: border-color var(--transition);
+}
+
+.input-label > span {
   padding: 0 0.25em;
   background-color: var(--fg-clr);
   position: absolute;
@@ -328,45 +353,21 @@ button:active {
               font-size var(--transition);
 }
 
-.list-item > label:focus-within > span, 
-.list-item > label > input:not(:placeholder-shown) + span {
+.input-label:focus-within {
+  color: var(--acc-clr);
+}
+
+.input-label:focus-within > input {
+  border-color: var(--acc-clr);
+}
+
+.input-label:focus-within > span, 
+.input-label > input:not(:placeholder-shown) + span {
   font-size: var(--fs-sm);
   transform: translateY(0);
 }
 
-.list-item > label:focus-within {
-  color: var(--acc-clr);
-}
-
-.list-item > label:focus-within > input {
-  border-color: var(--acc-clr);
-}
-
-.data-list > li:last-child * {
-  cursor: pointer;
-  user-select: none;
-}
-
-input[class^="book-"] {
-  outline: none;
-  appearance: none;
-  width: 100%;
-  font-size: var(--fs-md);
-  font-family: var(--ff-text);
-  padding: calc(var(--gutter) / 2);
-  border: 2px solid var(--txt-clr);
-  border-radius: var(--card-radius);
-  color: var(--txt-clr);
-  background-color: transparent;
-}
-
-input[class="status"] {
-  width: 1rem;
-  height: 1rem;
-  accent-color: var(--acc-clr);
-  vertical-align: -2px;
-}
-
+/* ================ Animations ================ */
 @keyframes pop-in {
   from {
     opacity: 0;
