@@ -84,10 +84,18 @@ let uid = 0;
 
 function Book([title, author, pages, hasRead]) {
     this.id = ++uid;
-    this.title = title;
-    this.author = author;
+    this.title = toTitleCase(title);
+    this.author = toTitleCase(author);
     this.pages = pages;
     this.hasRead = hasRead;
+
+    function toTitleCase(str) {
+        return str.split(' ').reduce((arr, word) => {
+            word = word[0].toUpperCase() + word.slice(1);
+            arr.push(word);
+            return arr;
+        }, []).join(' ');
+    }
 }
 
 // Static Methods
