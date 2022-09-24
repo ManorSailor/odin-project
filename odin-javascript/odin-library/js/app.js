@@ -146,6 +146,7 @@ function cardFactory({ id, title, author, pages, hasRead }) {
     const label = document.createElement('label');
 
     const input = document.createElement('input');
+    input.classList.add('mark-as-read');
     input.id = 'mark-as-read';
     input.type = 'checkbox';
     input.checked = hasRead;
