@@ -40,7 +40,7 @@ function parseData(formFields) {
     formFields.pop();
 
     // Call array reducer method on it, populate & return a new array of parsedData
-    return [...formFields].reduce((parsedData, field) => {
+    return formFields.reduce((parsedData, field) => {
         if (field.type === 'checkbox') {
             parsedData.push(field.checked);
         } else {
@@ -52,14 +52,15 @@ function parseData(formFields) {
 
 form.addEventListener('submit', (e) => {
     const parsedData = parseData(e.target);
-    const newBook = new Book(parsedData);
-    library.push(newBook);
-    const newCard = cardFactory(newBook);
-    cardsContainer.appendChild(newCard);
+    const book = new Book(parsedData);
+    library.push(book);
+    const card = cardFactory(book);
+    cardsContainer.appendChild(card);
     toggleModal(e);
     form.reset();
 
-    newCard.addEventListener('click', function (e) {
+    // Take advantage of JS event delegation
+    card.addEventListener('click', function (e) {
         const id = Number(this.getAttribute('data-id'));
         const book = Book.getBook(id);
         switch (e.target.id) {
@@ -146,7 +147,6 @@ function cardFactory({ id, title, author, pages, hasRead }) {
     const label = document.createElement('label');
 
     const input = document.createElement('input');
-    input.classList.add('mark-as-read');
     input.id = 'mark-as-read';
     input.type = 'checkbox';
     input.checked = hasRead;
