@@ -30,6 +30,12 @@
   --fw-400: 400;
   --fw-500: 500;
   --fw-600: 600;
+
+  --padding: 1rem;
+  --transition: 225ms ease;
+
+  --btn-radius: 8px;
+  --btn-border: 1px solid var(--acc-one);
 }
 
 body {
@@ -40,4 +46,51 @@ body {
   background-color: var(--bg-clr);
   min-height: 100vh;
   letter-spacing: 0.5px;
+}
+
+/* ================ Utility Classes ================ */
+.btn {
+  outline: none;
+  appearance: none;
+  font-size: var(--fs-md);
+  font-family: var(--ff-text);
+  border: var(--btn-border);
+  border-radius: var(--btn-radius);
+  color: white;
+  background-color: var(--acc-one);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  transition: color var(--transition),
+              background-color var(--transition);
+}
+
+.btn:hover,
+.btn:focus {
+  color: var(--txt-clr);
+  background-color: transparent;
+}
+
+.active {
+  visibility: visible;
+}
+
+.inactive {
+  visibility: hidden;
+}
+
+/* ================ Intro Modal ================ */
+.intro-modal {
+  position: fixed;
+  width: 100%;
+  min-height: inherit;
+  background-color: var(--bg-clr);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: var(--padding);
+}
+
+.intro-text {
+  font-size: var(--fs-xl);
 }
