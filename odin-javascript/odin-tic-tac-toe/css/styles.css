@@ -9,3 +9,35 @@
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --bg-clr: #FBFBFB;
+  --fg-clr: #F0F0F0;
+  --acc-one: #cf9fff;
+  --acc-two: #5ebddb;
+  --txt-clr: #000000;
+  --fg-clr-alt: #F3F3F3;
+
+  --ff-text: 'Montserrat Alternates', 'Prompt', 'sans-serif';
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.75rem;
+
+  --fw-100: 100;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+}
+
+body {
+  line-height: 1.5;
+  font-size: var(--fs-md);
+  font-family: var(--ff-text);
+  color: var(--txt-clr);
+  background-color: var(--bg-clr);
+  min-height: 100vh;
+  letter-spacing: 0.5px;
+}
