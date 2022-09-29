@@ -16,7 +16,7 @@
   --acc-one: #cf9fff;
   --acc-two: #5ebddb;
   --txt-clr: #000000;
-  --fg-clr-alt: #F3F3F3;
+  --fg-clr-alt: #e6e6e6;
 
   --ff-text: 'Montserrat Alternates', 'Prompt', 'sans-serif';
 
@@ -31,11 +31,16 @@
   --fw-500: 500;
   --fw-600: 600;
 
+  --gutter: 1rem;
   --padding: 1rem;
   --transition: 225ms ease;
 
   --btn-radius: 8px;
   --btn-border: 1px solid var(--acc-one);
+
+  --board-size: 320px;
+  --board-border: 1px solid var(--txt-clr);
+  --card-radius: 8px;
 }
 
 body {
@@ -93,4 +98,45 @@ body {
 
 .intro-text {
   font-size: var(--fs-xl);
+}
+
+/* ================ Game Container ================ */
+.game-container {
+  min-height: inherit;
+  padding: var(--padding);
+  gap: var(--gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ================ Game Board ================ */
+.game-board {
+  width: var(--board-size);
+  height: var(--board-size);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  margin: 0 auto;
+  padding: var(--padding);
+  border-radius: var(--card-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.game-board > * {
+  border-right: var(--board-border);
+  border-bottom: var(--board-border);
+  transition: background-color var(--transition);
+}
+
+.game-board > *:nth-child(3n) {
+  border-right: none;
+}
+
+.game-board > *:nth-child(n + 7) {
+  border-bottom: none;
+}
+
+.game-board > *:hover {
+  background-color: var(--fg-clr-alt);
 }

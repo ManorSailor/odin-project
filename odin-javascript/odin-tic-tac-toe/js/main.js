@@ -3,18 +3,38 @@ import * as utils from './utils/utils.js'
 
 /* ========= Global Variables ========= */
 const body = document.body;
+const main = document.createElement('main');
+main.classList.add('game-container');
+body.appendChild(main);
 
-// Modal
-function makeModal(txt='', btnTxt='') {
+/* ========= Game Board Object ========= */
+const gameBoard = (() => {
+    const render = (() => {
+        const section = document.createElement('section');
+        section.classList.add('game-board');
 
-}
+        for (let i = 0; i < 9; i++) {
+            const child = document.createElement('div');
+            child.classList.add('cell');
+            child.setAttribute('data-id', i);
+            section.appendChild(child);
+        }
 
-const modal = utils.createElement('section', '', ['intro-modal']);
+        main.appendChild(section);
+    })();
+    
+    let occupiedCells = [];
 
-const text = utils.createElement('p', "Let's Play The Classic Game of Tic-tac-toe!", ['intro-text']);
+    const isBoardFull = () => (occupiedCells.length === 9);
 
-const btn = utils.createElement('button', 'Start Game!', ['btn']);
+    const isCellTaken = (cell) => Boolean(occupiedCells[cell]);
 
-modal.appendChild(text);
-modal.appendChild(btn);
-body.appendChild(modal);
+    const insert = (gameObject, cell) => {
+        cell.appendChild(gameObject.name);
+        occupiedCells.push(cell);
+    };
+
+    const clearBoard = () => occupiedCells = [];
+
+    return { isBoardFull, isCellTaken, clearBoard };
+})();
