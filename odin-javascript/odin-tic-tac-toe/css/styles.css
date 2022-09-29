@@ -124,9 +124,22 @@ body {
 }
 
 .game-board > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(var(--fs-lg) * 2.25);
+  font-weight: var(--fw-600);
   border-right: var(--board-border);
   border-bottom: var(--board-border);
   transition: background-color var(--transition);
+}
+
+.game-board > *:hover {
+  background-color: var(--fg-clr-alt);
+}
+
+.game-board > *.full {
+  background-color: initial;
 }
 
 .game-board > *:nth-child(3n) {
@@ -151,8 +164,4 @@ body {
 
 .game-board > *:nth-child(9) {
   border-bottom-right-radius: var(--card-radius);
-}
-
-.game-board > *:hover {
-  background-color: var(--fg-clr-alt);
 }
