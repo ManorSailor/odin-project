@@ -137,6 +137,22 @@ body {
   border-bottom: none;
 }
 
+.game-board > *:nth-child(1) {
+  border-top-left-radius: var(--card-radius);
+}
+
+.game-board > *:nth-child(3) {
+  border-top-right-radius: var(--card-radius);
+}
+
+.game-board > *:nth-child(7) {
+  border-bottom-left-radius: var(--card-radius);
+}
+
+.game-board > *:nth-child(9) {
+  border-bottom-right-radius: var(--card-radius);
+}
+
 .game-board > *:hover {
   background-color: var(--fg-clr-alt);
 }
