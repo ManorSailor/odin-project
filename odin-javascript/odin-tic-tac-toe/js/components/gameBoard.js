@@ -1,4 +1,5 @@
-const main = document.querySelector('.game-container');
+/* ========= Imports ========= */
+import { main } from "../utils/utils.js";
 
 const view = (() => {
     const section = document.createElement('section');
@@ -13,7 +14,7 @@ const view = (() => {
     const insert = (gameObject, cell) => {
         cell.textContent = gameObject;
         cell.classList.add('full');
-    };
+    }
 
     const clear = () => {
         let child = section.firstChild;
@@ -44,7 +45,7 @@ const model = (() => {
             return true;
         }
         return false;
-    };
+    }
     
     const clear = () => board.clear();
 
