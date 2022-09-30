@@ -11,7 +11,6 @@ const view = (() => {
     }
 
     const insert = (gameObject, cell) => {
-        if (cell === section) return;
         cell.textContent = gameObject;
         cell.classList.add('full');
     };
@@ -54,7 +53,7 @@ const model = (() => {
 
 export const gameBoard = (() => {
     const insert = (gameObject, cell) => {
-        const inserted = model.insert(cell);
+        const inserted = model.insert(cell.getAttribute('data-cell-id'));
         if (inserted) {
             view.insert(gameObject, cell);
         }
