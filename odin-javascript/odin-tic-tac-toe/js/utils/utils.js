@@ -1,3 +1,6 @@
+/* ========= Selectors ========= */
+export const main = document.querySelector('.game-container');
+
 function createElement([type, text = '', classes = []]) {
     // Create the passed element
     const element = document.createElement(type);

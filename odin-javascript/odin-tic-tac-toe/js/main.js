@@ -1,5 +1,6 @@
 /* ========= Imports ========= */
 import { gameBoard } from "./components/gameBoard.js";
+import { player } from "./components/player.js";
 
 /* ========= Global Variables ========= */
 const boardContainer = document.querySelector('.game-board');
@@ -15,3 +16,14 @@ boardContainer.addEventListener('click', (e) => {
         gameBoard.clear();
     }
 });
+
+const p1 = player('Player 1', 'X');
+const p2 = player('Player 2', 'O');
+
+console.log(p1);
+p1.incrementScore();
+p1.incrementScore();
+p1.incrementScore();
+p1.incrementScore();
+p1.clearScore();
+console.log(p2);
