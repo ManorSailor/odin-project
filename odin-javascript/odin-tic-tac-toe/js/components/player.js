@@ -6,6 +6,7 @@ section.classList.add('player-board');
 main.appendChild(section);
 
 function view(name, score) {
+    // Initialize DOM Nodes
     const nameView  = document.createElement('p');
     nameView.classList.add('name');
     nameView.textContent = name;
@@ -14,11 +15,12 @@ function view(name, score) {
     scoreView.classList.add('score');
     scoreView.textContent = score;
 
-    const updateScore = (val) => scoreView.textContent = val;
-    const clearScore = () => scoreView.textContent = 0;
-
     nameView.appendChild(scoreView);
     section.appendChild(nameView);
+
+    // Modifiers/Setters
+    const updateScore = (val) => scoreView.textContent = val;
+    const clearScore = () => scoreView.textContent = 0;
 
     return { updateScore, clearScore };
 }
@@ -56,5 +58,5 @@ export function player(name, gameSign) {
         playerModel.clearScore();
     }
 
-    return { name, gameSign, incrementScore, clearScore };
+    return { name, gameSign, incrementScore, clearScore, 'getCells': playerModel.getCells, 'addCell': playerModel.addCell };
 }
