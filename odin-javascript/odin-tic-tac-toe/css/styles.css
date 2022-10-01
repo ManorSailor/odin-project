@@ -17,6 +17,8 @@
   --acc-two: #5ebddb;
   --txt-clr: #000000;
   --fg-clr-alt: #e6e6e6;
+  --win-clr: #cf9fff;
+  --tie-clr: #e6e6e6;
 
   --ff-text: 'Montserrat Alternates', 'Prompt', 'sans-serif';
 
@@ -33,6 +35,7 @@
 
   --gutter: 1rem;
   --padding: 1rem;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   --transition: 225ms ease;
 
   --btn-radius: 8px;
@@ -83,6 +86,14 @@ body {
   visibility: hidden;
 }
 
+.winner {
+  background-color: var(--win-clr);
+}
+
+.tie {
+  background-color: var(--tie-clr);
+}
+
 /* ================ Intro Modal ================ */
 .intro-modal {
   position: fixed;
@@ -120,7 +131,7 @@ body {
   margin: 0 auto;
   padding: var(--padding);
   border-radius: var(--card-radius);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow);
 }
 
 .game-board > * {
@@ -164,4 +175,29 @@ body {
 
 .game-board > *:nth-child(9) {
   border-bottom-right-radius: var(--card-radius);
+}
+
+/* ================ Player Board ================ */
+.player-board {
+  margin: 0 auto; 
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow);
+}
+
+.player-board > .name {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: var(--fs-lg);
+  border-radius: var(--card-radius);
+  padding: var(--padding);
+  transition: background-color var(--transition);
+}
+
+.player-board > .name > .score {
+  font-size: var(--fs-xl);
+  order: -1;
 }
