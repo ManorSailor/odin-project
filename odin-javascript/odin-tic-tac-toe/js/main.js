@@ -1,29 +1,28 @@
 /* ========= Imports ========= */
+import { Game } from "./components/game.js";
 import { gameBoard } from "./components/gameBoard.js";
-import { player } from "./components/player.js";
 
 /* ========= Global Variables ========= */
 const boardContainer = document.querySelector('.game-board');
 
-/* ========= Game Board Object ========= */
-boardContainer.addEventListener('click', (e) => {
+boardContainer.addEventListener('click', main);
+
+/* ========= Main ========= */
+function main(e) {
     // Ignore any clicks on the board, we only care about its children
     if (e.target === boardContainer) return;
 
-    if (!gameBoard.isFull()) {
-        gameBoard.insert('X', e.target);
+    if (Game.isRunning()) {
+        const currentPlayer = Game.activePlayer();
+        const inserted = gameBoard.insert(currentPlayer.gameSign, e.target);
+        
+        if (inserted) {
+            currentPlayer.addCell(inserted);
+            // Game.checkWinner(currentPlayer);
+            Game.switchPlayer();
+        }
     } else {
-        gameBoard.clear();
+        Game.declareTie();
+        Game.resetGame();
     }
-});
-
-const p1 = player('Player 1', 'X');
-const p2 = player('Player 2', 'O');
-
-console.log(p1);
-p1.incrementScore();
-p1.incrementScore();
-p1.incrementScore();
-p1.incrementScore();
-p1.clearScore();
-console.log(p2);
+}

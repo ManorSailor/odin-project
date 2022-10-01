@@ -11,8 +11,8 @@ const view = (() => {
         section.appendChild(cell);
     }
 
-    const insert = (gameObject, cell) => {
-        cell.textContent = gameObject;
+    const insert = (gameSign, cell) => {
+        cell.textContent = gameSign;
         cell.classList.add('full');
     }
 
@@ -42,7 +42,7 @@ const model = (() => {
     const insert = (cell) => {
         if (!isCellTaken(cell)) {
             board.add(cell);
-            return true;
+            return cell;
         }
         return false;
     }
@@ -53,10 +53,10 @@ const model = (() => {
 })();
 
 export const gameBoard = (() => {
-    const insert = (gameObject, cell) => {
+    const insert = (gameSign, cell) => {
         const inserted = model.insert(cell.getAttribute('data-cell-id'));
         if (inserted) {
-            view.insert(gameObject, cell);
+            view.insert(gameSign, cell);
         }
         return inserted;
     }
