@@ -5,6 +5,9 @@ const section = document.createElement('section');
 section.classList.add('player-board');
 main.appendChild(section);
 
+// Array for storing each player instance fn references
+const fnRefs = [];
+
 function view(name, score) {
     // Initialize DOM Nodes
     const nameView  = document.createElement('p');
@@ -58,5 +61,11 @@ export function player(name, gameSign) {
         playerModel.clearScore();
     }
 
-    return { name, gameSign, incrementScore, clearScore, 'getCells': playerModel.getCells, 'addCell': playerModel.addCell };
+    // Store clearScore method reference of each player
+    fnRefs.push(clearScore);
+
+    return { name, gameSign, incrementScore, 'getCells': playerModel.getCells, 'addCell': playerModel.addCell };
 }
+
+// Static Method, declared directly on the playerController function
+player.clearAllScores = () => fnRefs.forEach(fn => fn());
