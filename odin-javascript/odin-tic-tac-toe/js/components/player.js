@@ -21,11 +21,14 @@ function view(name, score) {
     nameView.appendChild(scoreView);
     section.appendChild(nameView);
 
+    // Public Properties
+    const playerBoard = nameView;
+
     // Modifiers/Setters
     const updateScore = (val) => scoreView.textContent = val;
     const clearScore = () => scoreView.textContent = 0;
 
-    return { updateScore, clearScore };
+    return { playerBoard, updateScore, clearScore };
 }
 
 function model() {
@@ -64,7 +67,7 @@ export function player(name, gameSign) {
     // Store reference of clearScore method of each player
     fnRefs.push(clearScore);
 
-    return { name, gameSign, incrementScore, 'getCells': playerModel.getCells, 'addCell': playerModel.addCell };
+    return { name, gameSign, incrementScore, 'getCells': playerModel.getCells, 'addCell': playerModel.addCell, 'board': playerView.playerBoard };
 }
 
 // Static Method, declared directly on the playerController function
