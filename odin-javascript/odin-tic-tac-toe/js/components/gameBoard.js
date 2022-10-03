@@ -1,11 +1,11 @@
 /* ========= Imports ========= */
-import { main } from "../utils/utils.js";
+import { main, GRID_SIZE } from "../utils/utils.js";
 
 const view = (() => {
     const section = document.createElement('section');
     section.classList.add('game-board');
 
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < GRID_SIZE; i++) {
         const cell = document.createElement('div');
         cell.setAttribute('data-cell-id', i);
         section.appendChild(cell);
@@ -33,21 +33,21 @@ const view = (() => {
 const model = (() => {
     // Set is more performant & helped us out a bit in implementation
     // https://www.reddit.com/r/learnjavascript/comments/n1j7ub/comment/gwdpz0h/?utm_source=share&utm_medium=web2x&context=3
-    const board = new Set();
+    const occupiedBoard = new Set();
 
-    const isBoardFull = () => (board.size === 9);
+    const isBoardFull = () => (occupiedBoard.size === 9);
 
-    const isCellTaken = (cell) => board.has(cell);
+    const isCellTaken = (cell) => occupiedBoard.has(cell);
 
     const insert = (cell) => {
         if (!isCellTaken(cell)) {
-            board.add(cell);
+            occupiedBoard.add(cell);
             return cell;
         }
         return false;
     }
     
-    const clear = () => board.clear();
+    const clear = () => occupiedBoard.clear();
 
     return { isBoardFull, insert, clear };
 })();
@@ -68,5 +68,5 @@ export const gameBoard = (() => {
         model.clear();
     }
 
-    return { insert, isFull, clear, };
+    return { insert, isFull, clear };
 })();

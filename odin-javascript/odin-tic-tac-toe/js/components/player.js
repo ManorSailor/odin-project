@@ -5,7 +5,7 @@ const section = document.createElement('section');
 section.classList.add('player-board');
 main.appendChild(section);
 
-// Array for storing each player instance fn references
+// Array for storing fn references of each player instance 
 const fnRefs = [];
 
 function view(name, score) {
@@ -61,7 +61,7 @@ export function player(name, gameSign) {
         playerModel.clearScore();
     }
 
-    // Store clearScore method reference of each player
+    // Store reference of clearScore method of each player
     fnRefs.push(clearScore);
 
     return { name, gameSign, incrementScore, 'getCells': playerModel.getCells, 'addCell': playerModel.addCell };
