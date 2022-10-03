@@ -38,7 +38,7 @@ function model() {
 
     // Accessors/Getters
     const getScore = () => score;
-    const getCells = () => myCells;
+    const getCells = () => (myCells.length >= 3) ? myCells : null;
 
     // Modifiers/Setters
     const clearScore = () => score = 0;

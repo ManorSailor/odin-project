@@ -5,6 +5,11 @@ export const main = document.querySelector('.game-container');
 export const GRID_SIZE = 9;
 export const winningPaths = [];
 
+/* ========= Player Props ========= */
+export const player1 = ['Player 1', 'X'];
+export const ties = ['Ties'];
+export const player2 = ['Player 2', 'O'];
+
 /* ========= Utilities ========= */
 function createElement([type, text = '', classes = []]) {
     // Create the passed element

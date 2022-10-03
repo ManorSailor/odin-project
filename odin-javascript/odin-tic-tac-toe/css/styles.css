@@ -87,11 +87,11 @@ body {
 }
 
 .winner {
-  background-color: var(--win-clr);
+  background-color: var(--win-clr) !important;
 }
 
 .tie {
-  background-color: var(--tie-clr);
+  background-color: var(--tie-clr) !important;
 }
 
 /* ================ Intro Modal ================ */
