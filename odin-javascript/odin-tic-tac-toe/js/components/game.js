@@ -11,18 +11,18 @@ export const Game = (() => {
     let gameWon = false;
     let currentPlayer = p1;
 
-    const isRunning = () => (!gameBoard.isFull() && !gameWon);
+    const isRunning    = () => (!gameBoard.isFull() && !gameWon);
     const activePlayer = () => currentPlayer;
-    const switchPlayer = () => ((currentPlayer === p1) ? currentPlayer = p2: currentPlayer = p1);
+    const switchPlayer = () => ((currentPlayer === p1) ? currentPlayer = p2 : currentPlayer = p1);
 
     const checkWinner = (cells) => {
         let counter = 0;
 
         for (let path of winningPaths) {
             for (let cell of cells) {
-                if (path.includes(cell)) {
-                    counter++;
-                }
+                const cellID = cell.getAttribute('data-cell-id');
+
+                if (path.includes(cellID)) counter++;
                 
                 // Denotes a player has 3 paths in a row
                 if (counter === 3) {

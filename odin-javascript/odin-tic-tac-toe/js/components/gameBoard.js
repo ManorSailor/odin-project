@@ -2,6 +2,7 @@
 import { main, GRID_SIZE } from "../utils/utils.js";
 
 const view = (() => {
+    // Initialize DOM Nodes
     const section = document.createElement('section');
     section.classList.add('game-board');
 
@@ -10,7 +11,10 @@ const view = (() => {
         cell.setAttribute('data-cell-id', i);
         section.appendChild(cell);
     }
+    
+    main.appendChild(section);
 
+    // Modifiers/Setters
     const insert = (gameSign, cell) => {
         cell.textContent = gameSign;
         cell.classList.add('full');
@@ -24,8 +28,6 @@ const view = (() => {
             child = child.nextSibling;
         }
     }
-
-    main.appendChild(section);
 
     return { insert, clear };
 })();
@@ -54,7 +56,7 @@ const model = (() => {
 
 export const gameBoard = (() => {
     const insert = (gameSign, cell) => {
-        const inserted = model.insert(cell.getAttribute('data-cell-id'));
+        const inserted = model.insert(cell);
         if (inserted) {
             view.insert(gameSign, cell);
         }
