@@ -13,16 +13,16 @@ function main(e) {
     if (e.target === boardContainer) return;
 
     if (Game.isRunning()) {
-        const currentPlayer = Game.activePlayer();
-        const inserted = gameBoard.insert(currentPlayer.gameSign, e.target);
+        const player = Game.activePlayer();
+        const inserted = gameBoard.insert(player.gameSign, e.target);
         
         if (inserted) {
-            currentPlayer.addCell(inserted);
-            // Game.checkWinner(currentPlayer);
+            player.addCell(inserted);
+            Game.checkWinner(player.getCells());
             Game.switchPlayer();
         }
     } else {
-        Game.declareTie();
+        Game.declareResult();
         Game.resetGame();
     }
 }
