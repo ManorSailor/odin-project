@@ -1,6 +1,5 @@
 /* ========= Imports ========= */
-import { main } from "../utils/utils.js";
-import { stateController } from "./state.js";
+import { main, stateController } from "../utils/utils.js";
 
 const section = document.createElement('section');
 section.classList.add('player-board');
@@ -24,9 +23,8 @@ function view(name, score) {
     const clearScore  = () => scoreView.textContent = 0;
     const setState    = (classList) => stateController.setState(nameView, classList);
     const removeState = (classList) => stateController.removeState(nameView, classList);
-    const toggleState = (classList) => stateController.toggleState(nameView, classList);
 
-    return { updateScore, clearScore, setState, removeState, toggleState };
+    return { updateScore, clearScore, setState, removeState };
 }
 
 function model() {
@@ -62,5 +60,5 @@ export function player(name, gameSign) {
         playerModel.clearScore();
     }
 
-    return { name, gameSign, incrementScore, 'getCells': playerModel.getCells, 'addCell': playerModel.addCell, 'setState': playerView.setState, 'removeState': playerView.removeState, 'toggleState': playerView.toggleState };
+    return { name, gameSign, incrementScore, 'getCells': playerModel.getCells, 'addCell': playerModel.addCell, 'setState': playerView.setState, 'removeState': playerView.removeState };
 }

@@ -29,6 +29,31 @@ function createElement([type, text = '', classes = []]) {
 // Thanks to: https://stackoverflow.com/a/39914235
 export const sleep = ms => new Promise(r => setTimeout(r, ms));
 
+// Handles updating classes on DOM objects
+export const stateController = (() => {
+    // Private Methods
+    // Following fn returns a new slightly modified fn according to the passed method
+    function makeController(method) {
+        return function (elements = [], classList = []) {
+            if (!Array.isArray(elements)) {
+                elements = [elements];
+            }
+            if (!Array.isArray(classList)) {
+                classList = [classList];
+            }
+            elements.forEach(element => {
+                classList.forEach(cls => element.classList[method](cls));
+            });
+        }
+    }
+
+    // Public APIs
+    const setState    = makeController('add');
+    const removeState = makeController('remove');
+
+    return { setState, removeState };
+})();
+
 const generatePaths = (() => {
     /*
         0, 1, 2
