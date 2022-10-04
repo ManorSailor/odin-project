@@ -1,6 +1,6 @@
 /* ========= Imports ========= */
 import { Game } from "./components/game.js";
-import { gameBoard } from "./components/gameBoard.js";
+import { gameBoard } from "./components/board.js";
 
 /* ========= Global Variables ========= */
 const boardContainer = document.querySelector('.game-board');

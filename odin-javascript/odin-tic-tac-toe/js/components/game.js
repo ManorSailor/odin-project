@@ -1,5 +1,5 @@
 /* ========= Imports ========= */
-import { gameBoard } from "./gameBoard.js";
+import { gameBoard } from "./board.js";
 import { makePlayer, getInstances, seconds } from "../utils/game-props.js";
 import { winningPaths, sleep, stateController } from "../utils/utils.js";
 
