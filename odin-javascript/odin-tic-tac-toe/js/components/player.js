@@ -1,12 +1,10 @@
 /* ========= Imports ========= */
 import { main } from "../utils/utils.js";
+import { stateController } from "./state.js";
 
 const section = document.createElement('section');
 section.classList.add('player-board');
 main.appendChild(section);
-
-// Array for storing fn references of each player instance 
-const fnRefs = [];
 
 function view(name, score) {
     // Initialize DOM Nodes
@@ -21,14 +19,13 @@ function view(name, score) {
     nameView.appendChild(scoreView);
     section.appendChild(nameView);
 
-    // Public Properties
-    const playerBoard = nameView;
-
     // Modifiers/Setters
     const updateScore = (val) => scoreView.textContent = val;
-    const clearScore = () => scoreView.textContent = 0;
+    const clearScore  = () => scoreView.textContent = 0;
+    const setState    = (classList) => stateController.setState(nameView, classList);
+    const removeState = (classList) => stateController.removeState(nameView, classList);
 
-    return { playerBoard, updateScore, clearScore };
+    return { updateScore, clearScore, setState, removeState };
 }
 
 function model() {
@@ -64,11 +61,5 @@ export function player(name, gameSign) {
         playerModel.clearScore();
     }
 
-    // Store reference of clearScore method of each player
-    fnRefs.push(clearScore);
-
-    return { name, gameSign, incrementScore, 'getCells': playerModel.getCells, 'addCell': playerModel.addCell, 'board': playerView.playerBoard };
+    return { name, gameSign, incrementScore, 'getCells': playerModel.getCells, 'addCell': playerModel.addCell, 'setState': playerView.setState, 'removeState': playerView.removeState };
 }
-
-// Static Method, declared directly on the playerController function
-player.clearAllScores = () => fnRefs.forEach(fn => fn());
