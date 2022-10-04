@@ -10,10 +10,21 @@ const p2 = player(...player2);
 export const Game = (() => {
     let gameWon = false;
     let currentPlayer = p1;
+    currentPlayer.setState('active');
 
     const isRunning    = () => (!gameBoard.isFull() && !gameWon);
     const activePlayer = () => currentPlayer;
-    const switchPlayer = () => ((currentPlayer === p1) ? currentPlayer = p2 : currentPlayer = p1);
+    
+    const switchPlayer = () => {
+        // Toggle state of old currentPlayer
+        currentPlayer.toggleState('active');
+        
+        // Swap currentPlayer
+        currentPlayer = (currentPlayer === p1) ? p2 : p1;
+
+        // Toggle state of swapped currentPlayer
+        currentPlayer.toggleState('active');
+    }
 
     const checkWinner = (cells) => {
         if (!cells) return;

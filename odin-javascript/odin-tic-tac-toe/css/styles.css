@@ -79,11 +79,7 @@ body {
 }
 
 .active {
-  visibility: visible;
-}
-
-.inactive {
-  visibility: hidden;
+  box-shadow: var(--shadow);
 }
 
 .winner {
@@ -181,10 +177,7 @@ body {
 .player-board {
   margin: 0 auto; 
   display: grid;
-  justify-content: center;
   grid-template-columns: repeat(3, 1fr);
-  border-radius: var(--card-radius);
-  box-shadow: var(--shadow);
 }
 
 .player-board > .name {
@@ -194,7 +187,8 @@ body {
   font-size: var(--fs-lg);
   border-radius: var(--card-radius);
   padding: var(--padding);
-  transition: background-color var(--transition);
+  transition: background-color var(--transition),
+              box-shadow var(--transition);
 }
 
 .player-board > .name > .score {
