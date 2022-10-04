@@ -1,7 +1,7 @@
 /* ========= Imports ========= */
 import { gameBoard } from "./gameBoard.js";
 import { player } from "./player.js";
-import { player1, player2, ties, winningPaths } from "../utils/utils.js";
+import { player1, player2, ties, winningPaths, sleep } from "../utils/utils.js";
 
 const p1 = player(...player1);
 const tie = player(...ties);
@@ -15,15 +15,19 @@ export const Game = (() => {
     const isRunning    = () => (!gameBoard.isFull() && !gameWon);
     const activePlayer = () => currentPlayer;
     
-    const switchPlayer = () => {
+    // Need to use an async fn with await
+    const switchPlayer = async () => {
+        // We need to wait here because we don't want to switch to the next player when the result is being declared
+        if (gameWon) await sleep(2000);
+
         // Toggle state of old currentPlayer
-        currentPlayer.toggleState('active');
+        currentPlayer.removeState('active');
         
         // Swap currentPlayer
         currentPlayer = (currentPlayer === p1) ? p2 : p1;
 
         // Toggle state of swapped currentPlayer
-        currentPlayer.toggleState('active');
+        currentPlayer.setState('active');
     }
 
     const checkWinner = (cells) => {
@@ -50,20 +54,17 @@ export const Game = (() => {
     
     const resetGame = () => {
         gameBoard.clear();
-        player.clearAllScores();
         // TODO: Take care to clear each player's myCells
     }
 
     // TODO: Refactor this piece of code, perhaps, implement a stateController for handling css classes
-    const declareResult = (winningCells) => {
+    const declareResult = async (winningCells) => {
         currentPlayer.incrementScore();
-        currentPlayer.board.classList.add('winner');
-        winningCells.forEach(cell => cell.classList.add('winner'));
-        const s = currentPlayer;
-        setTimeout(() => {
-            gameBoard.clear();
-            s.board.classList.remove('winner');
-        }, 2000);
+        currentPlayer.setState('winner');
+        await sleep(2000);
+        gameWon = false;
+        currentPlayer.removeState('winner');
+        gameBoard.clear();
     }
 
     return { isRunning, activePlayer, switchPlayer, checkWinner, declareResult, resetGame };

@@ -25,6 +25,10 @@ function createElement([type, text = '', classes = []]) {
     return element;
 }
 
+// Sleep function to wait for x seconds. Note: Must be used with await/async!
+// Thanks to: https://stackoverflow.com/a/39914235
+export const sleep = ms => new Promise(r => setTimeout(r, ms));
+
 const generatePaths = (() => {
     /*
         0, 1, 2
