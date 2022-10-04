@@ -5,24 +5,21 @@ import { gameBoard } from "./components/gameBoard.js";
 /* ========= Global Variables ========= */
 const boardContainer = document.querySelector('.game-board');
 
-boardContainer.addEventListener('click', main);
+boardContainer.addEventListener('click', play);
 
 /* ========= Main ========= */
-function main(e) {
+function play(e) {
     // Ignore any clicks on the board, we only care about its children
     if (e.target === boardContainer) return;
 
-    if (Game.isRunning()) {
+    if (Game.isPlayable()) {
         const player = Game.activePlayer();
-        const inserted = gameBoard.insert(player.gameSign, e.target);
+        const cell = gameBoard.insert(player.gameSign, e.target);
         
-        if (inserted) {
-            player.addCell(inserted);
-            Game.checkWinner(player.getCells());
+        if (cell) {
+            player.addCell(cell);
+            Game.checkState(player);
             Game.switchPlayer();
         }
-    } else {
-        Game.declareResult();
-        Game.resetGame();
     }
 }
