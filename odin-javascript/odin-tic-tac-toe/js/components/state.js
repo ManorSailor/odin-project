@@ -3,7 +3,7 @@
 
 export const stateController = (() => {
     // Private Methods
-    // 
+    // Following fn returns a new slightly modified fn according to the passed method
     function makeController(method) {
         return function (elements = [], classList = []) {
             if (!Array.isArray(elements)) {
@@ -21,6 +21,7 @@ export const stateController = (() => {
     // Public APIs
     const setState    = makeController('add');
     const removeState = makeController('remove');
+    const toggleState = makeController('toggle');
 
-    return { setState, removeState };
+    return { setState, removeState, toggleState };
 })();

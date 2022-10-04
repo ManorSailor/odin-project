@@ -24,8 +24,9 @@ function view(name, score) {
     const clearScore  = () => scoreView.textContent = 0;
     const setState    = (classList) => stateController.setState(nameView, classList);
     const removeState = (classList) => stateController.removeState(nameView, classList);
+    const toggleState = (classList) => stateController.toggleState(nameView, classList);
 
-    return { updateScore, clearScore, setState, removeState };
+    return { updateScore, clearScore, setState, removeState, toggleState };
 }
 
 function model() {
@@ -61,5 +62,5 @@ export function player(name, gameSign) {
         playerModel.clearScore();
     }
 
-    return { name, gameSign, incrementScore, 'getCells': playerModel.getCells, 'addCell': playerModel.addCell, 'setState': playerView.setState, 'removeState': playerView.removeState };
+    return { name, gameSign, incrementScore, 'getCells': playerModel.getCells, 'addCell': playerModel.addCell, 'setState': playerView.setState, 'removeState': playerView.removeState, 'toggleState': playerView.toggleState };
 }
