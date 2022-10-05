@@ -1,5 +1,4 @@
 import { main } from "../utils/utils.js";
-import { Game } from "./game.js";
 
 const optionsView = (() => {
     /* ===== Private ===== */
@@ -60,11 +59,6 @@ export const options = (() => {
     // Attach a listener on gameMode btn
     optionsView.getGameModeBtn().addEventListener('click', switchGameMode);
 
-    const resetGame = () => Game.resetGame();
-    
-    // Attach a listener on resetGame btn
-    optionsView.getResetBtn().addEventListener('click', resetGame);
-
     const incrementRound = () => {
         optionsModel.incrementRound();
         const round = optionsModel.getRound();
@@ -82,5 +76,6 @@ export const options = (() => {
         'incrementRound': incrementRound,
         'resetRound': resetRound,
         'getMode': optionsView.getGameMode,
+        'getResetBtn': optionsView.getResetBtn
      }
 })();

@@ -12,6 +12,7 @@ export const Game = (() => {
     /* ===== Private ===== */
     let gameWon = false;
     let currentPlayer = p1;
+    const resetBtn = options.getResetBtn();
     currentPlayer.setState('active');
 
     // Accessors/Getters
@@ -46,18 +47,20 @@ export const Game = (() => {
     
     const wait = async (status, element, state) => {
         await sleep(seconds);
-        if (options.finalRound()) {
+        // If the last round match wasn't a tie
+        if (options.finalRound() && !checkTie()) {
+            // Highlight the reset button before exiting the game
+            stateController.setState(resetBtn, 'winner');
             return;
-        } else {
-            nextRound();
         }
+        nextRound();
         gameWon = status;
         element.removeState(state);
-        resetGame();
     }
 
     const nextRound = () => {
-        options.incrementRound();
+        // Only increment the round count if there is no tie
+        if (!checkTie()) options.incrementRound();
         const playerInstances = getInstances();
         playerInstances.forEach(player => player.clearCells());
         gameBoard.clear();
@@ -78,7 +81,9 @@ export const Game = (() => {
             currentPlayer.removeState('active');            
             await sleep(seconds);
             currentPlayer.setState('active');
-        }
+        } 
+        // If the last round match has been won, return. We don't need to switch player
+        if (options.finalRound() && gameWon) return;
         
         // Remove state of old currentPlayer
         currentPlayer.removeState('active');
@@ -107,10 +112,14 @@ export const Game = (() => {
         options.resetRound();
         gameBoard.clear();
         gameWon = false;
+        stateController.removeState(resetBtn, 'winner');
         currentPlayer.removeState('active');
         currentPlayer = p1;
         currentPlayer.setState('active');
     }
+
+    // Attach listener to game reset btn
+    resetBtn.addEventListener('click', resetGame);
 
     return { isPlayable, activePlayer, switchPlayer, checkState, resetGame };
 })();
