@@ -39,7 +39,7 @@
   --transition: 225ms ease;
 
   --btn-radius: 8px;
-  --btn-border: 1px solid var(--acc-one);
+  --btn-border: 1px solid var(--fg-clr-alt);
 
   --board-size: 320px;
   --board-border: 1px solid var(--txt-clr);
@@ -58,24 +58,25 @@ body {
 
 /* ================ Utility Classes ================ */
 .btn {
-  outline: none;
+  outline: none ;
   appearance: none;
   font-size: var(--fs-md);
   font-family: var(--ff-text);
   border: var(--btn-border);
   border-radius: var(--btn-radius);
-  color: white;
-  background-color: var(--acc-one);
+  background-color: var(--fg-clr);
   padding: 0.5em 1em;
   cursor: pointer;
-  transition: color var(--transition),
+  transition: transform var(--transition),
               background-color var(--transition);
 }
 
-.btn:hover,
-.btn:focus {
-  color: var(--txt-clr);
-  background-color: transparent;
+.btn:hover {
+  background-color: var(--fg-clr-alt);
+}
+
+.btn:active {
+  transform: scale(0.8);
 }
 
 .active {
@@ -110,11 +111,36 @@ body {
 /* ================ Game Container ================ */
 .game-container {
   min-height: inherit;
+  max-width: 1000px;
+  margin: 0 auto;
   padding: var(--padding);
   gap: var(--gutter);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.game-board,
+.game-options {
+  user-select: none;
+}
+
+/* ================ Game Options ================ */
+.game-options {
+  order: -1;
+  max-width: 50%;
+  gap: var(--gutter);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  margin: 0 auto;
+}
+
+.round {
+  font-size: var(--fs-lg);
+  box-shadow: var(--shadow);
+  border-radius: var(--card-radius);
+  padding: calc(var(--padding) / 2) var(--padding);
 }
 
 /* ================ Game Board ================ */

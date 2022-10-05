@@ -2,6 +2,7 @@
 import { gameBoard } from "./board.js";
 import { makePlayer, getInstances, seconds } from "../utils/game-props.js";
 import { winningPaths, sleep, stateController } from "../utils/utils.js";
+import { options } from "./options.js";
 
 const p1  = makePlayer(['Player 1', 'X']);
 const tie = makePlayer(['Ties']);
@@ -45,9 +46,21 @@ export const Game = (() => {
     
     const wait = async (status, element, state) => {
         await sleep(seconds);
+        if (options.finalRound()) {
+            return;
+        } else {
+            nextRound();
+        }
         gameWon = status;
-        element.removeState(state)
+        element.removeState(state);
         resetGame();
+    }
+
+    const nextRound = () => {
+        options.incrementRound();
+        const playerInstances = getInstances();
+        playerInstances.forEach(player => player.clearCells());
+        gameBoard.clear();
     }
 
     /* ===== Public ===== */
@@ -90,10 +103,10 @@ export const Game = (() => {
     
     const resetGame = () => {
         const playerInstances = getInstances();
-
-        // For each player created, call their clearCells
-        playerInstances.forEach(player => player.clearCells());
+        playerInstances.forEach(player => player.resetPlayer());
+        options.resetRound();
         gameBoard.clear();
+        gameWon = false;
     }
 
     return { isPlayable, activePlayer, switchPlayer, checkState, resetGame };
