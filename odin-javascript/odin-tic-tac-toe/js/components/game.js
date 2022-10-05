@@ -107,6 +107,9 @@ export const Game = (() => {
         options.resetRound();
         gameBoard.clear();
         gameWon = false;
+        currentPlayer.removeState('active');
+        currentPlayer = p1;
+        currentPlayer.setState('active');
     }
 
     return { isPlayable, activePlayer, switchPlayer, checkState, resetGame };
