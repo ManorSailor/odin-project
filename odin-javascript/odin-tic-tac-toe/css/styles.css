@@ -91,6 +91,10 @@ body {
   background-color: var(--tie-clr) !important;
 }
 
+.disable {
+  pointer-events: none;
+}
+
 /* ================ Intro Modal ================ */
 .intro-modal {
   position: fixed;

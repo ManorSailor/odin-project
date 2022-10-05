@@ -42,6 +42,7 @@ export const Game = (() => {
         player.incrementScore();
         player.setState(state);
         stateController.setState(cells, cellState);
+        resetBtn.classList.add('disable');
         wait(false, player, state);
     }
     
@@ -56,6 +57,7 @@ export const Game = (() => {
         nextRound();
         gameWon = status;
         element.removeState(state);
+        resetBtn.classList.remove('disable');
     }
 
     const nextRound = () => {
