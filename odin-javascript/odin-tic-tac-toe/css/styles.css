@@ -207,3 +207,14 @@ body {
   font-size: var(--fs-xl);
   order: -1;
 }
+
+/* Media query to make the website responsive on mobile devices */
+@media screen and (max-width: 400px) {
+  .player-board > .name {
+    padding: calc(var(--padding) / 1.25);
+  }
+
+  .game-options {
+    grid-template-columns: auto;
+  }
+}
