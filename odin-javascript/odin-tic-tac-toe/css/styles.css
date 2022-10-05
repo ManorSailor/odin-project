@@ -18,7 +18,6 @@
   --txt-clr: #000000;
   --fg-clr-alt: #e6e6e6;
   --win-clr: #cf9fff;
-  --tie-clr: #e6e6e6;
 
   --ff-text: 'Montserrat Alternates', 'Prompt', 'sans-serif';
 
@@ -88,28 +87,11 @@ body {
 }
 
 .tie {
-  background-color: var(--tie-clr) !important;
+  background-color: var(--fg-clr-alt) !important;
 }
 
 .disable {
   pointer-events: none;
-}
-
-/* ================ Intro Modal ================ */
-.intro-modal {
-  position: fixed;
-  width: 100%;
-  min-height: inherit;
-  background-color: var(--bg-clr);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: var(--padding);
-}
-
-.intro-text {
-  font-size: var(--fs-xl);
 }
 
 /* ================ Game Container ================ */
