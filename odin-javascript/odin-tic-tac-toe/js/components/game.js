@@ -50,7 +50,7 @@ export const Game = (() => {
         // If the last round match wasn't a tie
         if (options.finalRound() && !checkTie()) {
             // Highlight the reset button before exiting the game
-            stateController.setState(resetBtn, 'winner');
+            resetBtn.classList.add('winner');
             return;
         }
         nextRound();
@@ -112,7 +112,7 @@ export const Game = (() => {
         options.resetRound();
         gameBoard.clear();
         gameWon = false;
-        stateController.removeState(resetBtn, 'winner');
+        resetBtn.classList.remove('winner');
         currentPlayer.removeState('active');
         currentPlayer = p1;
         currentPlayer.setState('active');
