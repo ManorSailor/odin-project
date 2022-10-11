@@ -1,4 +1,5 @@
 // Global Variables
+const form = document.getElementById('form');
 const modal = document.getElementById('modal');
 const newBookBtn = document.getElementById('new-book');
 const cardsContainer = document.querySelector('.cards-container');
@@ -6,6 +7,7 @@ let library = [];
 
 modal.addEventListener('click', toggleModal);
 newBookBtn.addEventListener('click', toggleModal);
+form.addEventListener('submit', submitHandler);
 
 function toggleModal(e) {
     if (e.target === modal || e.target === newBookBtn || e.target.id === 'close' || e.type === 'submit') {
@@ -30,8 +32,6 @@ function toggleModal(e) {
 }
 
 // Retrieve data from input fields when the form is submitted
-const form = document.getElementById('form')
-
 function parseData(formFields) {
     // Use the spread syntax & convert formFields into an array
     formFields = [...formFields];
@@ -50,7 +50,8 @@ function parseData(formFields) {
     }, []);
 }
 
-form.addEventListener('submit', (e) => {
+// Handle Data Submission into the form
+function submitHandler(e) {
     const parsedData = parseData(e.target);
     const book = new Book(parsedData);
     library.push(book);
@@ -78,7 +79,7 @@ form.addEventListener('submit', (e) => {
 
     // Prevent the form from submitting because there is no backend to handle the request yet
     e.preventDefault();
-});
+}
 
 // Book Constructor
 let uid = 0;
