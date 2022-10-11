@@ -81,38 +81,47 @@ function submitHandler(e) {
     e.preventDefault();
 }
 
-// Book Constructor
-let uid = 0;
+// Book Class
+// TODO: Book needn't take care of its IDs, that job belongs to library class. Migrate to Library Class
+class Book {
+    // Private Static fields can only be accessed by the Book class itself & its private to this class alone
+    // Need to use a static here otherwise the value of ID gets re-initialized each time a new Book is created
+    static #id = 0;
 
-function Book([title, author, pages, hasRead]) {
-    this.id = ++uid;
-    this.title = toTitleCase(title);
-    this.author = toTitleCase(author);
-    this.pages = pages;
-    this.hasRead = hasRead;
+    static #generateID() {
+        return Book.#id++;
+    }
 
-    function toTitleCase(str) {
-        return str.split(' ').reduce((arr, word) => {
+    #toTitleCase(str) {
+        if (!str) return '';
+
+        return str.trim().split(' ').reduce((arr, word) => {
             word = word[0].toUpperCase() + word.slice(1);
             arr.push(word);
             return arr;
         }, []).join(' ');
     }
-}
 
-// Static Methods
-Book.getBook = function (id) {
-    if (!id) throw 'Missing or Invalid ID!';
-    return library.find(book => (book.id === id));
-}
+    constructor([title, author, pages, hasRead]) {
+        this.id      = Book.#generateID();
+        this.title   = this.#toTitleCase(title);
+        this.author  = this.#toTitleCase(author);
+        this.pages   = pages;
+        this.hasRead = hasRead;
+    }
 
-// Shared Methods
-Book.prototype.changeStatus = function () {
-    (this.hasRead) ? this.hasRead = false : this.hasRead = true;
-}
+    static getBook(id) {
+        if (id === undefined) throw 'Missing or Invalid ID!';
+        return library.find(book => (book.id === id));
+    }
 
-Book.prototype.removeBook = function () {
-    library = library.filter(book => (book.id !== this.id));
+    changeStatus() {
+        this.hasRead = !this.hasRead;
+    }
+
+    removeBook() {
+        library = library.filter(book => (book.id !== this.id));
+    }
 }
 
 // Card Factory Function
