@@ -83,6 +83,8 @@ function submitHandler(e) {
 
 // Book Class
 // TODO: Book needn't take care of its IDs, that job belongs to library class. Migrate to Library Class
+// Note: Use dependency inversion principle while implementing library class, create a wrapper around actual db api to ensure seamless switching from one db to another
+// Obviously our initial db will be localStorage of the browser
 class Book {
     // Private Static fields can only be accessed by the Book class itself & its private to this class alone
     // Need to use a static here otherwise the value of ID gets re-initialized each time a new Book is created
