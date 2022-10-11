@@ -12,8 +12,8 @@ form.addEventListener('submit', submitHandler);
 function toggleModal(e) {
     if (e.target === modal || e.target === newBookBtn || e.target.id === 'close' || e.type === 'submit') {
 
-        // Get the classlist convert into an array, then into a string, check if it includes inactive class
-        const isInactive = [modal.classList].join(' ').includes('inactive');
+        // Convert the classlist into an array & check if it includes inactive class
+        const isInactive = [...modal.classList].includes('inactive');
 
         if (isInactive) {
             modal.classList.remove('inactive', 'pop-out');
