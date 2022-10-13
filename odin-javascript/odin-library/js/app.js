@@ -84,59 +84,25 @@ function submitHandler(e) {
 
 // Card Factory Function
 function cardFactory({ id, title, author, pages, hasRead }) {
-    const article = document.createElement('article');
+    const card = document.createElement('article');
+    card.classList.add('card');
+    card.setAttribute('data-id', id);
+    card.innerHTML = `
+    <header class="card-header">
+        <h3 class="title">${title}</h3><img class="remove-book" id="remove-book" src="./assets/delete.png" alt="Delete icon">
+    </header>
+    <h4 class="author">${author}</h4>
+    
+    <p class="pages">${pages} pages</p>
 
-    // Card Header
-    const header = document.createElement('header');
+    <label class="read-status">
+        Mark as read
+        <input id="mark-as-read" type="checkbox" ${(hasRead) ? 'checked' : ''}>
+        <span class="toggle-container">
+            <span class="knob"></span>
+            <span class="bar"></span>
+        </span>
+    </label>`
 
-    const h3 = document.createElement('h3');
-    h3.classList.add('title');
-    h3.textContent = title;
-
-    const img = document.createElement('img');
-    img.classList.add('remove-book');
-    img.id = 'remove-book';
-    img.src = "./assets/delete.png";
-    img.alt = "Delete icon";
-
-    header.classList.add('card-header');
-    header.append(h3, img);
-
-    // Card body
-    const h4 = document.createElement('h4');
-    h4.classList.add('author');
-    h4.textContent = author;
-
-    const p = document.createElement('p');
-    p.classList.add('pages');
-    p.textContent = `${pages} pages`;
-
-    // Card toggle
-    const label = document.createElement('label');
-
-    const input = document.createElement('input');
-    input.id = 'mark-as-read';
-    input.type = 'checkbox';
-    input.checked = hasRead;
-
-    const toggleContainer = document.createElement('span');
-
-    const knob = document.createElement('span');
-    knob.classList.add('knob');
-
-    const bar = document.createElement('span');
-    bar.classList.add('bar');
-
-    toggleContainer.classList.add('toggle-container');
-    toggleContainer.append(knob, bar);
-
-    label.textContent = 'Mark as read';
-    label.classList.add('read-status');
-    label.append(input, toggleContainer);
-
-    article.setAttribute('data-id', id);
-    article.classList.add('card');
-    article.append(header, h4, p, label);
-
-    return article;
+    return card;
 }
