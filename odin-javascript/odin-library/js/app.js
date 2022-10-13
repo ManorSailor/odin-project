@@ -1,3 +1,7 @@
+// Imports
+import { Book } from "./Book.js";
+import { Library } from "./library.js";
+
 // Global Variables
 const form = document.getElementById('form');
 const modal = document.getElementById('modal');
@@ -53,8 +57,7 @@ function parseData(formFields) {
 // Handle Data Submission into the form
 function submitHandler(e) {
     const parsedData = parseData(e.target);
-    const book = new Book(parsedData);
-    library.push(book);
+    const book = new Book(parsedData, Library);
     const card = cardFactory(book);
     cardsContainer.appendChild(card);
     toggleModal(e);
@@ -62,8 +65,6 @@ function submitHandler(e) {
 
     // Take advantage of JS event delegation
     card.addEventListener('click', function (e) {
-        const id = Number(this.getAttribute('data-id'));
-        const book = Book.getBook(id);
         switch (e.target.id) {
             case 'mark-as-read':
                 book.changeStatus();
@@ -79,51 +80,6 @@ function submitHandler(e) {
 
     // Prevent the form from submitting because there is no backend to handle the request yet
     e.preventDefault();
-}
-
-// Book Class
-// TODO: Book needn't take care of its IDs, that job belongs to library class. Migrate to Library Class
-// Note: Use dependency inversion principle while implementing library class, create a wrapper around actual db api to ensure seamless switching from one db to another
-// Obviously our initial db will be localStorage of the browser
-class Book {
-    // Private Static fields can only be accessed by the Book class itself & its private to this class alone
-    // Need to use a static here otherwise the value of ID gets re-initialized each time a new Book is created
-    static #id = 0;
-
-    static #generateID() {
-        return Book.#id++;
-    }
-
-    #toTitleCase(str) {
-        if (!str) return '';
-
-        return str.trim().split(' ').reduce((arr, word) => {
-            word = word[0].toUpperCase() + word.slice(1);
-            arr.push(word);
-            return arr;
-        }, []).join(' ');
-    }
-
-    constructor([title, author, pages, hasRead]) {
-        this.id      = Book.#generateID();
-        this.title   = this.#toTitleCase(title);
-        this.author  = this.#toTitleCase(author);
-        this.pages   = pages;
-        this.hasRead = hasRead;
-    }
-
-    static getBook(id) {
-        if (id === undefined) throw 'Missing or Invalid ID!';
-        return library.find(book => (book.id === id));
-    }
-
-    changeStatus() {
-        this.hasRead = !this.hasRead;
-    }
-
-    removeBook() {
-        library = library.filter(book => (book.id !== this.id));
-    }
 }
 
 // Card Factory Function
