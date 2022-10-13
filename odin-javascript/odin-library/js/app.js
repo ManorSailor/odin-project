@@ -7,7 +7,6 @@ const form = document.getElementById('form');
 const modal = document.getElementById('modal');
 const newBookBtn = document.getElementById('new-book');
 const cardsContainer = document.querySelector('.cards-container');
-let library = [];
 
 modal.addEventListener('click', toggleModal);
 newBookBtn.addEventListener('click', toggleModal);
