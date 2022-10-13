@@ -1,6 +1,7 @@
 // Imports
 import { Book } from "./Book.js";
 import { Library } from "./library.js";
+import { parseData } from "./utils.js";
 
 // Global Variables
 const form = document.getElementById('form');
@@ -34,33 +35,10 @@ function toggleModal(e) {
     }
 }
 
-// Retrieve data from input fields when the form is submitted
-function parseData(formFields) {
-    // Use the spread syntax & convert formFields into an array
-    formFields = [...formFields];
-
-    // Pop off the last element, we don't need it. If ever required, use the submitter property of SubmitEventAPI
-    formFields.pop();
-
-    // Call array reducer method on it, populate & return a new array of parsedData
-    return formFields.reduce((parsedData, field) => {
-        if (field.type === 'checkbox') {
-            parsedData.push(field.checked);
-        } else {
-            parsedData.push(field.value);
-        }
-        return parsedData;
-    }, []);
-}
-
-// Handle Data Submission into the form
-function submitHandler(e) {
-    const parsedData = parseData(e.target);
-    const book = new Book(parsedData, Library);
+// Function concerned with rendering books on the screen
+function render(book) {
     const card = cardFactory(book);
     cardsContainer.appendChild(card);
-    toggleModal(e);
-    form.reset();
 
     // Take advantage of JS event delegation
     card.addEventListener('click', function (e) {
@@ -76,7 +54,15 @@ function submitHandler(e) {
                 break;
         }
     });
+}
 
+// Handle Data Submission into the form
+function submitHandler(e) {
+    const data = parseData(e.target);
+    const book = new Book(data, Library);
+    render(book);
+    toggleModal(e);
+    form.reset();
     // Prevent the form from submitting because there is no backend to handle the request yet
     e.preventDefault();
 }
@@ -86,9 +72,11 @@ function cardFactory({ id, title, author, pages, hasRead }) {
     const card = document.createElement('article');
     card.classList.add('card');
     card.setAttribute('data-id', id);
+
     card.innerHTML = `
     <header class="card-header">
-        <h3 class="title">${title}</h3><img class="remove-book" id="remove-book" src="./assets/delete.png" alt="Delete icon">
+        <h3 class="title">${title}</h3>
+        <img class="remove-book" id="remove-book" src="./assets/delete.png" alt="Delete icon">
     </header>
     <h4 class="author">${author}</h4>
     
