@@ -1,5 +1,6 @@
 // Imports
 import { Book } from "./Book.js";
+import { booksList } from "./data.js";
 import { Library } from "./library.js";
 import { parseData } from "./utils.js";
 
@@ -9,10 +10,15 @@ const modal = document.getElementById('modal');
 const newBookBtn = document.getElementById('new-book');
 const cardsContainer = document.querySelector('.cards-container');
 
+// Listeners
 modal.addEventListener('click', toggleModal);
 newBookBtn.addEventListener('click', toggleModal);
 form.addEventListener('submit', submitHandler);
 
+// Render each book stored in the booksList
+booksList.forEach(book => render(new Book(book, Library)));
+
+// Functions
 function toggleModal(e) {
     if (e.target === modal || e.target === newBookBtn || e.target.id === 'close' || e.type === 'submit') {
 
@@ -60,6 +66,7 @@ function render(book) {
 function submitHandler(e) {
     const data = parseData(e.target);
     const book = new Book(data, Library);
+    console.log(Library.lib());
     render(book);
     toggleModal(e);
     form.reset();
