@@ -66,7 +66,6 @@ function render(book) {
 function submitHandler(e) {
     const data = parseData(e.target);
     const book = new Book(data, Library);
-    console.log(Library.lib());
     render(book);
     toggleModal(e);
     form.reset();
