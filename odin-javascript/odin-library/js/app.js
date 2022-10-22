@@ -15,8 +15,20 @@ modal.addEventListener('click', toggleModal);
 newBookBtn.addEventListener('click', toggleModal);
 form.addEventListener('submit', submitHandler);
 
-// Render each book stored in the booksList
-booksList.forEach(book => render(new Book(book, Library)));
+// Main function, which runs on page load
+(function() {
+    // Query the library for all stored books
+    const books = Library.getBooks();
+
+    // If there are books in the library, render them
+    if (books.length) {
+        books.forEach(book => render(book));
+    }
+    // Otherwise, render each book stored in the booksList
+    else {
+        booksList.forEach(book => render(new Book(book, Library)));
+    }
+})();
 
 // Functions
 function toggleModal(e) {

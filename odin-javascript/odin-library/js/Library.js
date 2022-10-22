@@ -7,6 +7,7 @@ export const Library = (() => {
     const generateID = () => id++;
     const add    = (book) => library.push(book);
     const remove = (id)   => library = library.filter(book => (book.id !== id));
+    const getBooks = () => library;
 
-    return { generateID, add, remove };
+    return { generateID, add, remove, getBooks };
 })();
