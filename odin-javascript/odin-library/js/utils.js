@@ -9,10 +9,10 @@ export function parseData(formFields) {
     // Call array reducer method on it, populate & return a new array of parsedData
     return formFields.reduce((parsedData, field) => {
         if (field.type === 'checkbox') {
-            parsedData.push(field.checked);
+            parsedData[field.id] = field.checked;
         } else {
-            parsedData.push(field.value);
+            parsedData[field.id] = field.value;
         }
         return parsedData;
-    }, []);
+    }, {});
 }
