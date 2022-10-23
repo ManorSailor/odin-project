@@ -22,9 +22,6 @@ export class Book {
         this.author   = this.#toTitleCase(author);
         this.pages    = pages;
         this.hasRead  = hasRead;
-
-        // Store the current book in the library
-        Library.add(this);
     }
 
     changeStatus() {
