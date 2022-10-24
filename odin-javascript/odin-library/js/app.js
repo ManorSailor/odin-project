@@ -17,6 +17,8 @@ form.addEventListener('submit', submitHandler);
 
 // Main function, which runs on page load
 (function() {
+    Library.populateDB();
+
     // Query the library for all stored books
     const books = Library.getBooks();
 
@@ -78,6 +80,7 @@ function render(book) {
 function submitHandler(e) {
     const data = parseData(e.target);
     const book = new Book(data, Library);
+    Library.add(book);
     render(book);
     toggleModal(e);
     form.reset();
