@@ -8,10 +8,12 @@ export function parseData(formFields) {
 
     // Call array reducer method on it, populate & return a new array of parsedData
     return formFields.reduce((parsedData, field) => {
+        const name = field.getAttribute('data-id');
+
         if (field.type === 'checkbox') {
-            parsedData[field.id] = field.checked;
+            parsedData[name] = field.checked;
         } else {
-            parsedData[field.id] = field.value;
+            parsedData[name] = field.value;
         }
         return parsedData;
     }, {});
