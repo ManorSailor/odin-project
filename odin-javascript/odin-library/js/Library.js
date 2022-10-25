@@ -1,42 +1,44 @@
 import { Book } from "./Book.js";
-import { db } from "./db/DBManager.js";
+import { LocalDBManager } from "./db/LocalDB.js"
+
+// Initialize databases
+const localDb  = new LocalDBManager('Library');
+let library = [];
+
+// Retrieve any books stored locally
+const bookData = localDb.retrieve();
 
 // Library Module. Since we only need a single library throughout our application!
 export const Library = (() => {
-    // In-memory db
-    let library = [];
     let id = library.length;
 
-    const populateDB = () => {
-        const books = db.retrieve();
-
-        if (!books.length) return;
-
-        books.forEach(bookData => {
-            const book = new Book(bookData, Library);
-            library.push(book);
-        });
-    }
-
-    // TODO: Make sure the operations are only performed on data of type Book
-    // In other words, make sure the passed data is an instance of Book class
     const generateID = () => id++;
     
-    const add = (book) => {
+    const store = (book) => {
+        if (!book instanceof Book) {
+            throw('Passed data is not an instance of Book');
+        }
+
         library.push(book);
-        db.store(book);
+        localDb.save(library);
     }
     
     const remove = (id) => {
         library = library.filter(book => (book.id !== id));
-        db.update(library);
+        localDb.save(library);
     }
 
     // Returns our in-memory db, bcz it contains objects of book type & is faster than localDB
     const getBooks = () => library;
 
-    // Handles syncing our in-memory db with localDB
-    const sync = () => db.update(library);
-
-    return { generateID, add, remove, getBooks, sync, populateDB };
+    return { generateID, store, remove, getBooks };
 })();
+
+// This needs to be down here because Book class depends on Library
+// We can't pass library until it has initialized
+if (bookData.length) {
+    bookData.forEach(data => {
+        const book = new Book(data, Library);
+        library.push(book);
+    });
+}

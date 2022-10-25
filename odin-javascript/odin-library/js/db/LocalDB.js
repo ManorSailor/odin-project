@@ -1,4 +1,5 @@
-export class LocalDB {
+// Low level localdb API
+class LocalDB {
     constructor(name) {
         this.name = name;
         this.db = localStorage;
@@ -18,6 +19,21 @@ export class LocalDB {
     }
 }
 
-// TODO: Export a LocalDB wrapper/manager which exposes generic named APIs
-// instead of relying on low-level APIs. Why? To have an abstract dbmanager class
-// which can work with any type of db & allows easy refactoring
+// LocalDB Manager which wraps the low level api
+export class LocalDBManager {
+    constructor(name) {
+        this.db = new LocalDB(name);
+    }
+
+    retrieve() {
+        return this.db.getObject();
+    }
+
+    save(obj) {
+        this.db.setObject(obj);
+    }
+
+    clear() {
+        this.db.clearDB();
+    }
+}
