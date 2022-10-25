@@ -1,7 +1,7 @@
 // Imports
 import { Book } from "./Book.js";
 import { booksList } from "./data.js";
-import { Library } from "./library.js";
+import { Library } from "./Library.js";
 import { parseData } from "./utils.js";
 
 // Global Variables
