@@ -20,18 +20,21 @@ export const Library = (() => {
         }
 
         library.push(book);
-        localDb.save(library);
+        syncDB();
     }
     
     const remove = (id) => {
         library = library.filter(book => (book.id !== id));
-        localDb.save(library);
+        syncDB();
     }
 
     // Returns our in-memory db, bcz it contains objects of book type & is faster than localDB
     const getBooks = () => library;
 
-    return { generateID, store, remove, getBooks };
+    // Method to sync changes to the localDb
+    const syncDB = () => localDb.save(library);
+
+    return { generateID, store, remove, getBooks, syncDB };
 })();
 
 // This needs to be down here because Book class depends on Library

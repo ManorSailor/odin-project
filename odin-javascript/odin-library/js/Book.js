@@ -26,6 +26,7 @@ export class Book {
 
     changeStatus() {
         this.hasRead = !this.hasRead;
+        this.#library.syncDB();
     }
 
     removeBook() {
