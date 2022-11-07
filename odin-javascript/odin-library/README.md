@@ -1,4 +1,4 @@
-# odin-dashboard
+# odin-library
 
 ### Description
 This is my solution to the [Library](https://www.theodinproject.com/lessons/node-path-javascript-library) project of [The Odin Project](https://www.theodinproject.com/)
@@ -15,9 +15,8 @@ One of the biggest hurdles was to find a way to design my app in such a way that
 
 Challenges Faced
 
-- The biggest challenge was to find way uniquely identifying each book when the user toggles or deletes it Instead of relying on the book object array index, I simply declared a variable which increments itself whenever a new book is initialized. The incremented value is assigned to each book alongside other data entered by the user
-- I realized how powerful constructors can be & how much of boilerplate can be reduced using them
-- Although, the app doesn't store any of the added books yet, support for that will be added in the future
+- One of the problems was to uniquely identify each book to perform appropriate operations when a user interacts with the book. To solve this problem, a variable to store book id alongside a method incrementing said variable was declared. The incremented value is assigned to each book alongside other data entered by the user.
+- Another hurdle which I am still facing is improving Code Design. I found that writing maintainable & extendable code is hard. To be able to improve the code design & making it extendable, I am learning about SOLID & DRY principles. In fact, one of the recent additions to codebase was data persistance using localdb, precisely, localStorage of the browser. I tried to follow the 'Dependency Inversion' principle here, my code doesn't rely on the underlying localStorage APIs directly. Instead, it relies on a LocalDBManager which wraps around the localStorage api. I know its overkill for such a small project, although, I have realized the importance of maintainable & extendable codebase. And, now, I want to develop good habits.
 
 
 ### Todo/Future Goals
@@ -26,3 +25,4 @@ Challenges Faced
 - [ ] Backend to enable data persistance 
 - [ ] Other features like Book count etc
 - [ ] Perhaps, transforming this app into an eBook reader app using Electron later
+- [x] Implement data persistance using localStorage API
