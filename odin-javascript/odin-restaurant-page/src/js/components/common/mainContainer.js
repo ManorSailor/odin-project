@@ -2,22 +2,14 @@ import { makeElement, body } from "../../utilities/utils";
 
 const mainContainer = (() => {
     const attributes = {
-        'id': 'content',
+        'class': 'container mx-auto min-h-full',
     }
-    
+
     const main = makeElement('main', '', attributes);
     
-    function remove() {
-        main.remove();
-    }
-    
-    function attach() {
-        body.appendChild(main);
-    }
-    
-    function append(...nodes) {
-        nodes.forEach(node => main.appendChild(node));
-    }
+    const remove = () => main.remove();
+    const attach = () => body.appendChild(main);
+    const append = (...nodes) => nodes.forEach(node => main.appendChild(node));
 
     return { remove, attach, append };
 })();
