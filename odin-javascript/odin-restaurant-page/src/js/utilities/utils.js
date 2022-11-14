@@ -7,7 +7,7 @@ const body = document.body;
  * @param {string} [textContent]     - Element's textContent
  * @param {Object} [attr]            - Object containing element's attributes
  * @param {string} [attr.id]         - Element's ID
- * @param {string[]} [attr.class]    - Element's class list
+ * @param {string} [attr.class]      - Element's classList
  * @param {*} [attr.dataAttr]        - Element's data attributes
  * @returns {Node}
  */
