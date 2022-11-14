@@ -1,3 +1,6 @@
+// Reference to body of the page
+const body = document.body;
+
 /**
  * Creates & return DOM elements
  * @param {string} type              - Type of element, i.e, div, main etc
@@ -22,4 +25,5 @@ function makeElement(type, textContent='', attr={}) {
 
 export {
     makeElement,
+    body
 }
