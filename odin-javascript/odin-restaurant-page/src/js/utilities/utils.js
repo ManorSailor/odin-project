@@ -17,7 +17,7 @@ function makeElement(elementProps={}) {
 
     const element = document.createElement(elementProps.type);
 
-    if (elementProps.textContent) element.textContent = textContent;
+    if (elementProps.textContent) element.textContent = elementProps.textContent;
 
     if (elementProps.attr) {
         for (const key in elementProps.attr) {
