@@ -1,5 +1,6 @@
 import './css/styles.css'
-import mainContainer from './js/components/common/mainContainer'
+import navbar from './js/components/common/navbar';
+import mainContainer from './js/components/common/mainContainer';
 
-// Attach mainContainer to the DOM
+navbar.attach();
 mainContainer.attach();
