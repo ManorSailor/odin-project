@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-clr: #212121;
+    --bg-clr-alt: #292929;
+    --acc-clr: #C19D60;
+    --txt-clr: #eeeeee;
+
+    --ff-text: 'Montserrat Alternates', 'sans-serif';
+    --ff-alt: 'Prompt', 'Montserrat Alternates', 'sans-serif';
+
+    --home-bg: url(../assets/home-bg.jpg);
+  }
+
+  body {
+    /* Custom Styles */
+    color: var(--txt-clr);
+    font-family: var(--ff-text);
+    background-color: var(--bg-clr);
+
+    /* Tailwind Specific Styles */
+    @apply p-4;
+    @apply min-h-screen;
+    @apply leading-normal;
+    @apply tracking-wide;
+  }
+}
