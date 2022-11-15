@@ -1,5 +1,5 @@
 import { body } from "../../utilities/utils";
-import { mainContainer as main } from "./mainContainer/mainContainerComponent";
+import { mainContainer as main } from "./mainContainer/mainContainerNode";
 
 const mainContainer = (() => {
     const remove = () => main.remove();
