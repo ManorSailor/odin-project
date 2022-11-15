@@ -1,9 +1,12 @@
-import { header, h3, nav, ul, li } from "./navbar/navComponents"
+import { body } from "../../utilities/utils";
+import { navNode } from "./navbar/navNodes";
 
-ul.append(...li);
-nav.appendChild(ul);
-header.append(h3, nav);
+const navbar = (() => {
+    const nav = navNode;
 
-export {
-    header as navbar,
-}
+    const attach = () => body.appendChild(nav);
+
+    return { attach };
+})();
+
+export default navbar;
