@@ -1,14 +1,13 @@
 const liObjs = [];
 const anchorObjs = [];
-const buttonObjs = [];
 
-const linksHref = ['#home', 'menu', '#contact'];
+const linksHref = ['#home', '#menu', '#contact'];
 const linksText = ['Home', 'Menu', 'Contact'];
 
 const headerObj = {
     'type': 'header',
     'attr': {
-        'class': 'fixed left-0 right-0 flex items-center justify-between py-2 px-8',
+        'class': 'fixed left-0 right-0 flex items-center justify-between py-3 px-8 max-w-6xl mx-auto bg-nav-clr shadow-sm rounded-md',
     },
 }
 
@@ -24,6 +23,7 @@ const anchorObj = {
     'textContent': 'Restaurant',
     'attr': {
         'href': '#home',
+        'class': 'py-2 px-4 hover:text-accent rounded-md hover:text-accent',
     },
 }
 
@@ -46,24 +46,16 @@ linksText.forEach((linkText, index) => {
         'type': 'li',
     }
 
-    const buttonObj = {
-        'type': 'button',
-        'attr': {
-            'class': 'py-2 px-4',
-        },
-    }
-
     const anchorObj = {
         'type': 'a',
         'textContent': linkText,
         'attr': {
-            'class': '',
+            'class': 'py-2 px-4 hover:text-accent rounded-md',
             'href': linksHref[index],
         },
     }
 
     liObjs.push(liObj);
-    buttonObjs.push(buttonObj);
     anchorObjs.push(anchorObj);
 });
 
@@ -74,6 +66,5 @@ export {
     navObj,
     ulObj,
     liObjs,
-    buttonObjs,
     anchorObjs,
 }

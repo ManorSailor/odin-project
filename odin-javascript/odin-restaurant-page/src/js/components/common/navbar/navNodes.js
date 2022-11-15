@@ -1,5 +1,5 @@
 import { makeElement } from "../../../utilities/utils";
-import { headerObj, h3Obj, anchorObj, navObj, ulObj, liObjs, buttonObjs, anchorObjs } from "./navObjects";
+import { headerObj, h3Obj, anchorObj, navObj, ulObj, liObjs, anchorObjs } from "./navObjects";
 
 // Convert Objects into DOM Nodes
 const header = makeElement(headerObj);
@@ -10,11 +10,9 @@ const ul = makeElement(ulObj);
 
 liObjs.forEach((liObj, index) => {
     const li = makeElement(liObj);
-    const button = makeElement(buttonObjs[index]);
     const anchor = makeElement(anchorObjs[index]);
 
-    button.appendChild(anchor);
-    li.appendChild(button);
+    li.appendChild(anchor);
     ul.appendChild(li);
 });
 
