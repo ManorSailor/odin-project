@@ -67,7 +67,7 @@ const heroTitleObj = {
 const aboutContainerObj = {
     'type': 'div',
     'attr': {
-        'class': 'bg-main w-screen max-h-full flex justify-between items-center p-4 -mx-4 gap-8',
+        'class': 'bg-main w-screen max-h-full flex justify-between items-center p-4 py-8 gap-8',
     }
 }
 
@@ -105,7 +105,7 @@ const aboutTextContentObj = {
 const aboutImgContainerObj = {
     'type': 'div',
     'attr': {
-        'class': 'grow grid grid-cols-3 items-center',
+        'class': 'grow grid grid-cols-3 items-center justify-items-center',
     }
 }
 

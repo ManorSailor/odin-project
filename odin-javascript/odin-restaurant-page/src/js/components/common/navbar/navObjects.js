@@ -7,7 +7,7 @@ const linksText = ['Home', 'Menu', 'Contact'];
 const headerObj = {
     'type': 'header',
     'attr': {
-        'class': 'fixed left-0 right-0 flex items-center justify-between py-3 px-8 max-w-6xl mx-auto bg-nav-clr shadow-sm rounded-md z-50',
+        'class': 'fixed left-0 right-0 flex items-center justify-between py-3 px-8 max-w-6xl mx-auto mt-4 bg-nav-clr shadow-sm rounded-md z-50 backdrop-blur-sm',
     },
 }
 
