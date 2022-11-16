@@ -27,6 +27,8 @@
     @apply min-h-screen;
     @apply leading-normal;
     @apply tracking-wide;
+    @apply flex;
+    @apply flex-col;
   }
 }
 
