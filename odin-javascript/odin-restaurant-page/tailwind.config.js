@@ -8,6 +8,7 @@ module.exports = {
       'main-alt': 'var(--bg-clr-alt)',
       'accent': 'var(--acc-clr)',
       'nav-clr': 'var(--nav-clr)',
+      'black': '#000',
     },
   },
   plugins: [],
