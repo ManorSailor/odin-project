@@ -29,3 +29,9 @@
     @apply tracking-wide;
   }
 }
+
+@layer utilities {
+  .activeState {
+    color: var(--acc-clr);
+  }
+}

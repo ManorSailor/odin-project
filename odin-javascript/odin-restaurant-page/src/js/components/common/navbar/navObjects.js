@@ -22,8 +22,10 @@ const anchorObj = {
     'type': 'a',
     'textContent': 'Restaurant',
     'attr': {
-        'href': '#home',
+        'id': 'restaurant',
+        'href': linksHref[0],
         'class': 'py-2 px-4 hover:text-accent rounded-md hover:text-accent',
+        'data-id': linksHref[0],
     },
 }
 
@@ -52,6 +54,7 @@ linksText.forEach((linkText, index) => {
         'attr': {
             'class': 'py-2 px-4 hover:text-accent rounded-md',
             'href': linksHref[index],
+            'data-id': linksHref[index],
         },
     }
 
