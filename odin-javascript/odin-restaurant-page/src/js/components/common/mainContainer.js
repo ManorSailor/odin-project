@@ -2,11 +2,11 @@ import { body } from "../../utilities/utils";
 import { mainContainer as main } from "./mainContainer/mainContainerNode";
 
 const mainContainer = (() => {
-    const remove = () => main.remove();
+    const clear  = () => [...main.children].forEach(child => child.remove());
     const attach = () => body.appendChild(main);
     const append = (...nodes) => nodes.forEach(node => main.appendChild(node));
 
-    return { remove, attach, append };
+    return { clear, attach, append };
 })();
 
 export default mainContainer;
