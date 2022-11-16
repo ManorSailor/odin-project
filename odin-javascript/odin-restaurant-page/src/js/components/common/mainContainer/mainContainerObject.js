@@ -1,6 +1,6 @@
 export const mainObj = {
     'type': 'main',
     'attr': {
-        'class': 'container mx-auto min-h-full',
+        'class': 'container mx-auto flex grow',
     }
 }
