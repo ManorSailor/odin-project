@@ -29,6 +29,7 @@
     @apply tracking-wide;
     @apply flex;
     @apply flex-col;
+    @apply overflow-x-hidden;
   }
 }
 
