@@ -20,7 +20,7 @@ const h3Obj = {
 
 const anchorObj = {
     'type': 'a',
-    'textContent': 'Restaurant',
+    'textContent': 'Restoeat',
     'attr': {
         'id': 'restaurant',
         'href': linksHref[0],

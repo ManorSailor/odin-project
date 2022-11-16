@@ -50,7 +50,7 @@ const heroTaglineObj = {
 
 const heroPreTitleObj = {
     'type': 'p',
-    'textContent': 'Welcome to Restabook',
+    'textContent': 'Welcome to Restoeat',
     'attr': {
         'class': 'text-4xl',
     }
