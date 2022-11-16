@@ -13,14 +13,14 @@ const homeWrapperObj = {
 const heroWrapperObj = {
     'type': 'div',
     'attr': {
-        'class': 'min-h-full flex items-center',
+        'class': 'relative min-h-full flex items-center',
     }
 }
 
 const bgImgObj = {
     'type': 'img',
     'attr': {
-        'class': 'absolute top-0 left-0 w-full max-h-full z-[-2] bg-cover bg-scroll bg-no-repeat bg-center',
+        'class': 'absolute top-0 left-0 w-full h-full z-[-2] object-cover',
         'src': bgImg,
         'alt': 'main background image',
     }
