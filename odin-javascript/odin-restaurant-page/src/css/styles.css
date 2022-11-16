@@ -23,7 +23,6 @@
     background-color: var(--bg-clr);
 
     /* Tailwind Specific Styles */
-    @apply p-4;
     @apply min-h-screen;
     @apply leading-normal;
     @apply tracking-wide;
