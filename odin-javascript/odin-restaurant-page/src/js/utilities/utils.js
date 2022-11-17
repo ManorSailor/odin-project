@@ -42,8 +42,20 @@ function makeSetActiveHandler(defaultTab, activeClass='activeState') {
     }
 }
 
+// Creates & return a renderer function which handles rendering content
+function makeRenderer(parentObject) {
+    if (!parentObject || parentObject instanceof Node) {
+        throw 'Parent Container is not an Object Instance. Pass in an Object Instance with proper methods.'
+    }
+    return (nodes) => {
+        parentObject.clear();
+        (Array.isArray(nodes)) ? parentObject.append(...nodes) : parentObject.append(nodes)
+    }
+}
+
 export {
     makeElement,
     makeSetActiveHandler,
+    makeRenderer,
     body
 }

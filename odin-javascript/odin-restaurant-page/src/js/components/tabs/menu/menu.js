@@ -1,5 +1,5 @@
 import { headerImg, menuWrapper, MainDishes, Desserts, Drinks, menuListContainer, btnNodes as tabsBtnNodes, menuOl as tabsContainer, btnNodes } from "./components/menuNodes";
-import { makeSetActiveHandler } from "../../../utilities/utils";
+import { makeRenderer, makeSetActiveHandler } from "../../../utilities/utils";
 
 // Set main dishes as the default active tab
 let setActiveTab = makeSetActiveHandler(btnNodes[0]);
@@ -8,9 +8,11 @@ setActiveTab(btnNodes[0]);
 const menuList = (() => {
     const clear  = () => [...menuListContainer.children].forEach(child => child.remove());
     const append = (...nodes) => nodes.forEach(node => menuListContainer.appendChild(node));
-
+    
     return { clear, append };
 })();
+
+const renderTab = makeRenderer(menuList);
 
 // Listen for clicks on each of the tabs li nodes
 tabsContainer.addEventListener('click', (e) => {
@@ -30,11 +32,6 @@ function tabsHandler(activeTab) {
     } else {
         renderTab(Drinks);
     }
-}
-
-function renderTab(tab) {
-    menuList.clear();
-    menuList.append(...tab);
 }
 
 const menu = [menuWrapper];
