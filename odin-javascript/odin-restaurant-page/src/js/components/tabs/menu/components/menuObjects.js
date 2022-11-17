@@ -66,7 +66,7 @@ const menuContainerObj = {
 const menuHeaderObj = {
     'type': 'div',
     'attr': {
-        'class': 'bg-main-alt max-w-[50%] mx-auto rounded-md',
+        'class': 'bg-main-alt max-w-[50%] min-w-[340px] mx-auto rounded-md',
     }
 }
 
