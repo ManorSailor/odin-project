@@ -1,9 +1,9 @@
-import { body } from "../../utilities/utils";
+import { body, makeSetActiveHandler } from "../../utilities/utils";
 import { navNode, linkNodes } from "./navbar/navNodes";
 
 // Set home as the default active tab
-let currentTab = linkNodes[0];
-setActiveTab(currentTab);
+const setActiveTab = makeSetActiveHandler(linkNodes[0]);
+setActiveTab(linkNodes[0]);
 
 function init(callback) {
     if (!callback || typeof (callback) !== 'function') {
@@ -26,12 +26,6 @@ function linksHandler(e, callback) {
     }
 
     callback(element.getAttribute('data-id'));
-}
-
-function setActiveTab(newTab) {
-    currentTab.classList.remove('activeState');
-    currentTab = newTab;
-    currentTab.classList.add('activeState');
 }
 
 const navbar = {

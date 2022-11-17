@@ -28,7 +28,22 @@ function makeElement(elementProps={}) {
     return element;
 }
 
+// Creates & returns a setActive handler function which applies css class to passed element
+function makeSetActiveHandler(defaultTab, activeClass='activeState') {
+    if (!defaultTab || !defaultTab instanceof Node) throw 'Passed element is not a DOM Node. Please provide a valid DOM node'
+
+    // required to remember old element bcz active state will have to removed from it before adding to a new element
+    let currentTab = defaultTab;
+    
+    return (newTab) => {
+        currentTab.classList.remove(activeClass);
+        currentTab = newTab;
+        currentTab.classList.add(activeClass);
+    }
+}
+
 export {
     makeElement,
+    makeSetActiveHandler,
     body
 }
