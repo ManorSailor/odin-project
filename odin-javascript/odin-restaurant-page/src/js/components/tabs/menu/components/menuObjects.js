@@ -30,7 +30,7 @@ const headerImgObj = {
 const overlayObj = {
     'type': 'div',
     'attr': {
-        'class': 'absolute top-0 left-0 w-full min-h-[43.25%] bg-black opacity-60 z-[-1]',
+        'class': 'absolute top-0 left-0 w-full min-h-[46vh] bg-black opacity-60 z-[-1]',
     }
 }
 
@@ -93,6 +93,7 @@ menuList.forEach(item => {
         'textContent': item,
         'attr': {
             'class': 'py-2 px-4 hover:text-accent rounded-md',
+            'data-id': item,
         }
     }
 

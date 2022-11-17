@@ -19,16 +19,18 @@ const menuContainer = makeElement(menuContainerObj);
 
 const menuHeader = makeElement(menuHeaderObj);
 const menuOl = makeElement(menuOlObj);
-const liNodes = [];
+const tabsLiNodes = [];
+const btnNodes = [];
 menuLiObjs.forEach((liObj, index) => {
     const liNode = makeElement(liObj);
     const btnNode = makeElement(menuBtnObjs[index]);
 
     liNode.appendChild(btnNode);
-    liNodes.push(liNode);
+    tabsLiNodes.push(liNode);
+    btnNodes.push(btnNode);
 });
 
-menuOl.append(...liNodes);
+menuOl.append(...tabsLiNodes);
 menuHeader.append(menuOl);
 
 // Menu Items List
@@ -108,6 +110,8 @@ menuWrapper.append(contentWrapper, menuContainer);
 export {
     menuWrapper,
     headerImg,
+    menuOl,
+    btnNodes,
     menuListContainer,
     MainDishes,
     Desserts,
