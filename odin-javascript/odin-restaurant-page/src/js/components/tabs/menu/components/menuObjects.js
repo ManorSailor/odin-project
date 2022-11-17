@@ -30,7 +30,7 @@ const headerImgObj = {
 const overlayObj = {
     'type': 'div',
     'attr': {
-        'class': 'absolute top-0 left-0 w-full min-h-[46vh] bg-black opacity-60 z-[-1]',
+        'class': 'absolute top-0 left-0 w-full min-h-[40%] bg-black opacity-60 z-[-1]',
     }
 }
 

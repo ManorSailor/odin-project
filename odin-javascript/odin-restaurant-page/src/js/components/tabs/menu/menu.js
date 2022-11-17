@@ -1,14 +1,9 @@
 import { headerImg, menuWrapper, MainDishes, Desserts, Drinks, menuListContainer, btnNodes as tabsBtnNodes, menuOl as tabsContainer, btnNodes } from "./components/menuNodes";
-import simpleParallax from 'simple-parallax-js';
 import { makeSetActiveHandler } from "../../../utilities/utils";
 
 // Set main dishes as the default active tab
 let setActiveTab = makeSetActiveHandler(btnNodes[0]);
 setActiveTab(btnNodes[0]);
-
-new simpleParallax(headerImg, {
-    delay: 1,
-});
 
 const menuList = (() => {
     const clear  = () => [...menuListContainer.children].forEach(child => child.remove());
