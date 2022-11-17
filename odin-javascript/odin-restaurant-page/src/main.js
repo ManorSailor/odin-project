@@ -3,6 +3,7 @@ import navbar from './js/components/common/navbar';
 import mainContainer from './js/components/common/mainContainer';
 import home from './js/components/tabs/home/home';
 import menu from './js/components/tabs/menu/menu';
+import contact from './js/components/tabs/contact/contact';
 import { makeRenderer } from './js/utilities/utils';
 
 const renderTab = makeRenderer(mainContainer);
@@ -15,7 +16,7 @@ function tabHandler(activeTab) {
     if (activeTab === '#menu') {
         renderTab(menu);
     } else if (activeTab === '#contact') {
-        renderTab();
+        renderTab(contact);
     } else if (activeTab === '#home') {
         renderTab(home);
     }
