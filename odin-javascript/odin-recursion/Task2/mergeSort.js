@@ -39,9 +39,9 @@ function merge(sortedLeft, sortedRight) {
 const evenUnsorted = [1, 3, 20, 17, 11, 6, 9, 14, 7, 5];
 const oddUnsorted = [6, 18, 7, 9, 17, 3, 19, 12, 20, 8, 2];
 const alphabetTest = ['E', 'm', 'I', 'N', 'f', 'K', 'S', 'q', 'A', 'C'];
-const MixedTest = ['4', '^', '/', '6', '-', '>', '(', '>', '+', '3'];
+const mixedTest = ['4', '^', '/', '6', '-', '>', '(', '>', '+', '3'];
 
 console.log(mergeSort(evenUnsorted)); // -> [ 1, 3, 5, 6, 7, 9, 11, 14, 17, 20 ]
 console.log(mergeSort(oddUnsorted));  // -> [ 2, 3, 6, 7, 8, 9, 12, 17, 18, 19, 20 ]
 console.log(mergeSort(alphabetTest)); // -> [ "A", "C", "E", "I", "K", "N", "S", "f", "m", "q" ]
-console.log(mergeSort(MixedTest));    // -> [ "(", "+", "-", "/", "3", "4", "6", ">", ">", "^" ]
+console.log(mergeSort(mixedTest));    // -> [ "(", "+", "-", "/", "3", "4", "6", ">", ">", "^" ]
