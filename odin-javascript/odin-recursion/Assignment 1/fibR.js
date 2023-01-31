@@ -30,9 +30,9 @@ console.log(fibR(8));  // -> [0, 1, 1, 2, 3, 5, 8, 13]
 
 /**
  * Some facts about function above
- * - It has 3 Base cases, aka multiple base cases
+ * - It has only a single base, the 1st 2 cases won't run during recursive calls
  * - It has only 1 Recursive step unlike unoptimized recursive fib solution which has 2
- * - Its recursive depth is n unlike unoptimized recursive fib solution whose depth is 3n/2 (if my math is correct)
+ * - Its recursive depth is n, recursive depth is the max number of calls from the initial call to the base case... I thought the conventional fib solution has a depth of 2n - 1? My maths is weaker than I thought ;__;
  */
 
 // Plz ignore this abomination. It works, but its cursed.
