@@ -53,6 +53,7 @@ class LinkedList {
     this.#size = 0;
     this.#head = null;
     this.#tail = null;
+    return this;
   }
 
   append(node) {
