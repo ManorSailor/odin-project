@@ -175,16 +175,18 @@ class LinkedList {
     return listStr;
   }
 
-  insertAt(newNode, index) {
+  insertAt(value, index) {
     if (index == null || index < 0 || index >= this.#size) return null;
 
+    const node = new Node(value);
+
     if (index === 0) {
-      newNode.next = this.#head;
-      this.#head = newNode;
+      node.next = this.#head;
+      this.#head = node;
     } else {
       const prevNode = this.at(index - 1);
-      newNode.next = prevNode.next;
-      prevNode.next = newNode;
+      node.next = prevNode.next;
+      prevNode.next = node;
     }
 
     this.#size++;
