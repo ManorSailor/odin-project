@@ -47,6 +47,10 @@ class LinkedList {
     return this.#tail;
   }
 
+  get lastIndex() {
+    return this.#size ? this.#size - 1 : null;
+  }
+
   #init(node) {
     if (this.#size === 0) {
       this.#size = 1;
@@ -79,7 +83,7 @@ class LinkedList {
 
   prepend(value) {
     const node = new Node(value);
-    
+
     if (this.#size === 0) {
       this.#init(node);
     } else {
@@ -87,7 +91,7 @@ class LinkedList {
       this.#head = node;
       this.#size++;
     }
-    
+
     return this;
   }
 
@@ -192,6 +196,8 @@ class LinkedList {
 
     if (index === 0) {
       this.#head = this.#head.next;
+    } else if (index === this.lastIndex) {
+      return this.pop();
     } else {
       const prevNode = this.at(index - 1);
       prevNode.next = prevNode.next.next;
