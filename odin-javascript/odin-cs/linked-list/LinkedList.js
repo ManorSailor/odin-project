@@ -31,9 +31,7 @@ class LinkedList {
 
   constructor(node) {
     if (node instanceof Node) {
-      this.#size = 1;
-      this.#head = node;
-      this.#tail = node;
+      this.#init(node);
     }
   }
 
@@ -47,6 +45,15 @@ class LinkedList {
 
   get tail() {
     return this.#tail;
+  }
+
+  #init(node) {
+    if (this.#size === 0) {
+      this.#size = 1;
+      this.#head = node;
+      this.#tail = node;
+    }
+    return this;
   }
 
   clear() {
