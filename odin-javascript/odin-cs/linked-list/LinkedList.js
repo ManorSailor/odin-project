@@ -63,20 +63,24 @@ class LinkedList {
     return this;
   }
 
-  append(node) {
+  append(value) {
+    const node = new Node(value);
     this.#tail.next = node;
     this.#tail = node;
     this.#size++;
     return this;
   }
 
-  prepend(node) {
+  prepend(value) {
+    const node = new Node(value);
     node.next = this.#head;
     this.#head = node;
     this.#size++;
     return this;
   }
-
+  if (this.#size === 0) {
+    this.#init(node);
+  } else {
   at(index) {
     if (index >= this.#size) return null;
     if (index < 0) {
