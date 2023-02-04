@@ -213,5 +213,22 @@ class LinkedList {
     return removedNode;
   }
 
-  reverse() {}
+  reverse() {
+    if (this.#size < 2) return this;
+
+    let node = this.#tail;
+    let nodeIndex = this.lastIndex - 1;
+
+    while (node !== this.#head) {
+      const prevNode = this.at(nodeIndex);
+      node.next = prevNode;
+      nodeIndex--;
+      node = prevNode;
+    }
+
+    this.#head.next = null;
+    [this.#head, this.#tail] = [this.#tail, this.#head];
+
+    return this;
+  }
 }
