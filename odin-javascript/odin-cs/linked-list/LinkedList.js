@@ -194,17 +194,21 @@ class LinkedList {
   removeAt(index) {
     if (index == null || index < 0 || index >= this.#size) return null;
 
+    let removedNode = null;
+
     if (index === 0) {
+      removedNode = this.#head;
       this.#head = this.#head.next;
     } else if (index === this.lastIndex) {
       return this.pop();
     } else {
       const prevNode = this.at(index - 1);
+      removedNode = prevNode.next;
       prevNode.next = prevNode.next.next;
     }
 
     this.#size--;
-    return this;
+    return removedNode;
   }
 
   reverse() {}
