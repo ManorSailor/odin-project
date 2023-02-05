@@ -115,14 +115,17 @@ class LinkedList {
 
   pop() {
     if (this.#size === 0) return;
-    if (this.#size === 1) return this.clear();
 
     const oldTail = this.#tail;
-    const prevNode = this.at(-2);
 
-    this.#tail = prevNode;
-    this.#tail.next = null;
-    this.#size--;
+    if (this.#size === 1) {
+      this.clear();
+    } else {
+      const prevNode = this.at(-2);
+      this.#tail = prevNode;
+      this.#tail.next = null;
+      this.#size--;
+    }
 
     return oldTail;
   }
