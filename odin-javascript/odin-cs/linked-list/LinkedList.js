@@ -1,18 +1,9 @@
 class Node {
-  #value;
   #next;
 
   constructor(value) {
-    this.#value = value;
+    this.value = value;
     this.#next = null;
-  }
-
-  get value() {
-    return this.#value;
-  }
-
-  set value(newVal) {
-    this.#value = newVal;
   }
 
   get next() {
@@ -130,6 +121,21 @@ class LinkedList {
     return oldTail;
   }
 
+  shift() {
+    if (this.#size === 0) return;
+
+    const oldHead = this.#head;
+
+    if (this.#size === 1) {
+      this.clear();
+    } else {
+      this.#head = this.#head.next;
+      this.#size--;
+    }
+
+    return oldHead;
+  }
+
   contains(value) {
     if (this.#size === 0) return false;
 
@@ -180,17 +186,13 @@ class LinkedList {
 
   insertAt(value, index) {
     if (index == null || index < 0 || index >= this.#size) return null;
+    if (index === 0) return this.prepend(value);
 
     const node = new Node(value);
+    const prevNode = this.at(index - 1);
 
-    if (index === 0) {
-      node.next = this.#head;
-      this.#head = node;
-    } else {
-      const prevNode = this.at(index - 1);
-      node.next = prevNode.next;
-      prevNode.next = node;
-    }
+    node.next = prevNode.next;
+    prevNode.next = node;
 
     this.#size++;
     return this;
@@ -198,19 +200,13 @@ class LinkedList {
 
   removeAt(index) {
     if (index == null || index < 0 || index >= this.#size) return null;
+    if (index === this.lastIndex) return this.pop();
+    if (index === 0) return this.shift();
 
-    let removedNode = null;
-
-    if (index === 0) {
-      removedNode = this.#head;
-      this.#head = this.#head.next;
-    } else if (index === this.lastIndex) {
-      return this.pop();
-    } else {
-      const prevNode = this.at(index - 1);
-      removedNode = prevNode.next;
-      prevNode.next = prevNode.next.next;
-    }
+    const prevNode = this.at(index - 1);
+    let removedNode = prevNode.next;
+    
+    prevNode.next = prevNode.next.next;
 
     this.#size--;
     return removedNode;
