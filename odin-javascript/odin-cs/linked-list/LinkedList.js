@@ -1,18 +1,9 @@
 class Node {
-  #value;
   #next;
 
   constructor(value) {
-    this.#value = value;
+    this.value = value;
     this.#next = null;
-  }
-
-  get value() {
-    return this.#value;
-  }
-
-  set value(newVal) {
-    this.#value = newVal;
   }
 
   get next() {
