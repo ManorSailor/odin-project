@@ -13,6 +13,13 @@ class BBST {
     return this.#root;
   }
 
+  #init(node) {
+    if (!this.#root) {
+      this.#root = node;
+    }
+    return this;
+  }
+
   buildTree(arr) {
     if (arr.length === 0) return null;
     if (arr.length === 1) return TreeNode.of(arr[0]);
@@ -29,7 +36,28 @@ class BBST {
     return root;
   }
 
-  insert() {}
+  insert(value) {
+    if (value == null) return;
+    if (!this.#root) return this.#init(TreeNode.of(value));
+
+    const insert = (node) => {
+      switch (true) {
+        case value < node.value:
+          return node.left
+            ? insert(node.left)
+            : (node.left = TreeNode.of(value));
+
+        case value > node.value:
+          return node.right
+            ? insert(node.right)
+            : (node.right = TreeNode.of(value));
+      }
+    };
+
+    insert(this.#root, value);
+    return this;
+  }
+
   delete() {}
   levelOrder() {}
   preOrder() {}
@@ -54,6 +82,8 @@ class BBST {
 
 const arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 const tree = new BBST(arr);
+
+tree.insert(58);
 
 tree.print();
 
