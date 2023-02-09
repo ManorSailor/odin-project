@@ -1,8 +1,8 @@
 import TreeNode from './TreeNode.mjs';
 
 class BBST {
-  #height = 0;
-  #depth = 0;
+  #height = -1;
+  #depth = -1;
   #root = null;
 
   constructor(arr = []) {
