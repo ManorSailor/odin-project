@@ -58,6 +58,22 @@ class BBST {
     return this;
   }
 
+  find(value, includeParent = false) {
+    if (value == null) return null;
+
+    const find = (node, branch = null, parent = null) => {
+      if (!node) return null;
+      if (value === node.value)
+        return includeParent ? { parent, branch, node } : node;
+
+      return value < node.value
+        ? find(node.left, 'left', node)
+        : find(node.right, 'right', node);
+    };
+
+    return find(this.#root);
+  }
+
   delete() {}
   levelOrder() {}
   preOrder() {}
@@ -84,6 +100,7 @@ const arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 const tree = new BBST(arr);
 
 tree.insert(58);
+console.log(tree.find(67, true));
 
 tree.print();
 
