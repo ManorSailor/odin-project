@@ -242,7 +242,7 @@ class BBST {
       const leftHeight = this.height(node.left);
       const rightHeight = this.height(node.right);
 
-      if (leftHeight - rightHeight > 1) return false;
+      if (Math.abs(leftHeight - rightHeight) > 1) return false;
       return isBalanced(node.left) && isBalanced(node.right);
     };
 
@@ -268,20 +268,5 @@ class BBST {
     }
   }
 }
-
-const arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
-const arr2 = [
-  30, 20, 32, 40, 50, 60, 70, 65, 75, 80, 34, 36, 85, 28, 37, 19, 12, 13, 14,
-];
-const tree = new BBST(arr2);
-
-tree.insert(62);
-tree.insert(63);
-tree.insert(64);
-tree.print();
-console.log(tree.isBalanced());
-tree.rebalance();
-tree.print();
-console.log(tree.isBalanced());
 
 export default BBST;
