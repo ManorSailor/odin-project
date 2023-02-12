@@ -1,3 +1,4 @@
+import Queue from './Queue.mjs';
 import TreeNode from './TreeNode.mjs';
 
 class BBST {
@@ -17,6 +18,13 @@ class BBST {
   static isInternalNode(node = null) {
     // make sure node has either left OR right child
     return (node?.left && !node?.right) || (node?.right && !node?.left);
+  }
+
+  static childNodesOf(node = null) {
+    const children = [];
+    if (node.left) children.push(node.left);
+    if (node.right) children.push(node.right);
+    return children;
   }
 
   get root() {
@@ -130,7 +138,25 @@ class BBST {
     return removedNode;
   }
 
-  levelOrder() {}
+  levelOrder(callback) {
+    if (!this.#root) return null;
+
+    const hasCallback = typeof callback === 'function';
+    const Q = Queue.of(this.#root);
+    const lvlValues = [];
+
+    const processNode = (node) =>
+      hasCallback ? callback(node) : lvlValues.push(node.value);
+
+    while (!Q.empty()) {
+      const node = Q.pop();
+      processNode(node);
+      if (!BBST.isLeafNode(node)) Q.push(...BBST.childNodesOf(node));
+    }
+
+    return hasCallback ? undefined : lvlValues;
+  }
+
   preOrder() {}
   inOrder() {}
   postOrder() {}
@@ -158,7 +184,6 @@ const arr2 = [
 const tree = new BBST(arr2);
 
 tree.print();
-tree.delete(36)
-tree.print();
+console.log(tree.levelOrder());
 
 export default BBST;
