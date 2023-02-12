@@ -2,8 +2,6 @@ import Queue from './Queue.mjs';
 import TreeNode from './TreeNode.mjs';
 
 class BBST {
-  #height = -1;
-  #depth = -1;
   #root = null;
 
   constructor(arr = []) {
@@ -40,8 +38,6 @@ class BBST {
 
   clear() {
     this.#root = null;
-    this.#height = -1;
-    this.#depth = -1;
     return this;
   }
 
@@ -216,11 +212,30 @@ class BBST {
     const postOrderVals = postOrder(this.#root);
     return hasCallback ? undefined : postOrderVals;
   }
+  
+  height(node) {
+    if (!node) return -1;
+    return Math.max(this.height(node.left), this.height(node.right)) + 1;
+  }
+  
+  depth(node) {
+    if (!this.#root || !node) return -1;
+    
+    const depth = (root, counter = 0) => {
+      if (!root) return -1;
+      if (node === root)
+        return counter;
+      
+      return node.value < root.value
+      ? counter = depth(root.left, counter + 1)
+      : counter = depth(root.right, counter + 1);
+    };
+
+    return depth(this.#root);
+  }
 
   isBalanced() {}
   rebalance() {}
-  height() {}
-  depth() {}
 
   print(node = this.#root, prefix = '', isLeft = true) {
     if (!node) return null;
@@ -241,8 +256,8 @@ const arr2 = [
 const tree = new BBST(arr2);
 
 tree.insert(62);
-tree.insert(64);
 tree.print();
-console.log(tree.postOrder());
+const t = tree.find(50)
+console.log(tree.depth(t))
 
 export default BBST;
