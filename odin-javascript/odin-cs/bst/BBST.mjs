@@ -151,7 +151,7 @@ class BBST {
     while (!Q.empty()) {
       const node = Q.pop();
       processNode(node);
-      if (!BBST.isLeafNode(node)) Q.push(...BBST.childNodesOf(node));
+      Q.push(...BBST.childNodesOf(node));
     }
 
     return hasCallback ? undefined : lvlValues;
