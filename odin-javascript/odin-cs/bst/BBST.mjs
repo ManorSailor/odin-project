@@ -212,30 +212,50 @@ class BBST {
     const postOrderVals = postOrder(this.#root);
     return hasCallback ? undefined : postOrderVals;
   }
-  
+
   height(node) {
     if (!node) return -1;
     return Math.max(this.height(node.left), this.height(node.right)) + 1;
   }
-  
+
   depth(node) {
     if (!this.#root || !node) return -1;
-    
+
     const depth = (root, counter = 0) => {
       if (!root) return -1;
-      if (node === root)
-        return counter;
-      
+      if (node === root) return counter;
+
       return node.value < root.value
-      ? counter = depth(root.left, counter + 1)
-      : counter = depth(root.right, counter + 1);
+        ? (counter = depth(root.left, counter + 1))
+        : (counter = depth(root.right, counter + 1));
     };
 
     return depth(this.#root);
   }
 
-  isBalanced() {}
-  rebalance() {}
+  isBalanced() {
+    if (!this.#root) return false;
+
+    const isBalanced = (node) => {
+      if (!node) return true;
+
+      const leftHeight = this.height(node.left);
+      const rightHeight = this.height(node.right);
+
+      if (leftHeight - rightHeight > 1) return false;
+      return isBalanced(node.left) && isBalanced(node.right);
+    };
+
+    return isBalanced(this.#root);
+  }
+
+  rebalance() {
+    if (!this.isBalanced()) {
+      const sortedVals = this.inOrder();
+      this.#root = this.buildTree(sortedVals);
+    }
+    return this;
+  }
 
   print(node = this.#root, prefix = '', isLeft = true) {
     if (!node) return null;
@@ -256,8 +276,12 @@ const arr2 = [
 const tree = new BBST(arr2);
 
 tree.insert(62);
+tree.insert(63);
+tree.insert(64);
 tree.print();
-const t = tree.find(50)
-console.log(tree.depth(t))
+console.log(tree.isBalanced());
+tree.rebalance();
+tree.print();
+console.log(tree.isBalanced());
 
 export default BBST;
