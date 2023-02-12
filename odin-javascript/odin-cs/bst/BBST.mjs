@@ -157,9 +157,66 @@ class BBST {
     return hasCallback ? undefined : lvlValues;
   }
 
-  preOrder() {}
-  inOrder() {}
-  postOrder() {}
+  inOrder(callback) {
+    if (!this.#root) return null;
+
+    const hasCallback = typeof callback === 'function';
+
+    const inOrder = (node) => {
+      if (!node) return [];
+
+      const leftVals = inOrder(node.left);
+      if (hasCallback) callback(node);
+      const rightVals = inOrder(node.right);
+
+      // left -> root -> right
+      return [...leftVals, node.value, ...rightVals];
+    };
+
+    const inOrderVals = inOrder(this.#root);
+    return hasCallback ? undefined : inOrderVals;
+  }
+
+  preOrder(callback) {
+    if (!this.#root) return null;
+
+    const hasCallback = typeof callback === 'function';
+
+    const preOrder = (node) => {
+      if (!node) return [];
+
+      if (hasCallback) callback(node);
+      const leftVals = preOrder(node.left);
+      const rightVals = preOrder(node.right);
+
+      // root -> left -> right
+      return [node.value, ...leftVals, ...rightVals];
+    };
+
+    const preOrderVals = preOrder(this.#root);
+    return hasCallback ? undefined : preOrderVals;
+  }
+
+  postOrder(callback) {
+    if (!this.#root) return null;
+
+    const hasCallback = typeof callback === 'function';
+
+    const postOrder = (node) => {
+      if (!node) return [];
+
+      const leftVals = postOrder(node.left);
+      const rightVals = postOrder(node.right);
+      if (hasCallback) callback(node);
+
+      // left -> right -> root
+      return [...leftVals, ...rightVals, node.value];
+    };
+
+    const postOrderVals = postOrder(this.#root);
+    return hasCallback ? undefined : postOrderVals;
+  }
+
   isBalanced() {}
   rebalance() {}
   height() {}
@@ -183,7 +240,9 @@ const arr2 = [
 ];
 const tree = new BBST(arr2);
 
+tree.insert(62);
+tree.insert(64);
 tree.print();
-console.log(tree.levelOrder());
+console.log(tree.postOrder());
 
 export default BBST;
