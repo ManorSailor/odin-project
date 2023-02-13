@@ -8,32 +8,8 @@ class BBST {
     this.#root = this.buildTree([...new Set(arr.sort((a, b) => a - b))]);
   }
 
-  static isLeafNode(node = null) {
-    // Make sure node has no children
-    return !node?.left && !node?.right;
-  }
-
-  static isInternalNode(node = null) {
-    // make sure node has either left OR right child
-    return (node?.left && !node?.right) || (node?.right && !node?.left);
-  }
-
-  static childNodesOf(node = null) {
-    const children = [];
-    if (node.left) children.push(node.left);
-    if (node.right) children.push(node.right);
-    return children;
-  }
-
   get root() {
     return this.#root;
-  }
-
-  #init(node) {
-    if (!this.#root) {
-      this.#root = node;
-    }
-    return this;
   }
 
   clear() {
@@ -266,6 +242,30 @@ class BBST {
     if (node.left) {
       this.print(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
     }
+  }
+
+  #init(node) {
+    if (!this.#root) {
+      this.#root = node;
+    }
+    return this;
+  }
+
+  static isLeafNode(node = null) {
+    // Make sure node has no children
+    return !node?.left && !node?.right;
+  }
+
+  static isInternalNode(node = null) {
+    // make sure node has either left OR right child
+    return (node?.left && !node?.right) || (node?.right && !node?.left);
+  }
+
+  static childNodesOf(node = null) {
+    const children = [];
+    if (node.left) children.push(node.left);
+    if (node.right) children.push(node.right);
+    return children;
   }
 }
 
