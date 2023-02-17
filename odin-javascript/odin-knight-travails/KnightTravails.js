@@ -20,7 +20,22 @@ const Knight = (() => {
     }, []);
   };
 
-  
+  const travails = (start, end) => {
+    const Q = [start];
+
+    while (Q.length) {
+      const curPos = Q.shift();
+      const moves = generateMoves(curPos);
+
+      for (const move of moves) {
+        if (move[0] === end[0] && move[1] === end[1]) {
+          return true;
+        } else {
+          Q.push(move);
+        }
+      }
+    }
+  };
 
   return { travails };
 })();
