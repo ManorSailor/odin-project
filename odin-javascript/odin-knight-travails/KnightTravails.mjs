@@ -53,8 +53,22 @@ const Knight = (() => {
   return { travails };
 })();
 
-function knightMoves(start = [], end = []) {
-  return Knight.travails(new Cell(start), new Cell(end));
-}
+export default function knightMoves(start = [], end = []) {
+  if (!Array.isArray(start) || !Array.isArray(end))
+    return 'Provide coordinates as arrays!';
+  if (start.length !== 2 || end.length !== 2)
+    return 'Provide X & Y values for cells!';
+  if (!areCoordsValid(start) || !areCoordsValid(end))
+    return 'Invalid coordinates!';
 
-console.log(knightMoves([3, 3], [4, 3]));
+  const startCell = new Cell(start);
+  const endCell = new Cell(end);
+  const optimalPath = Knight.travails(startCell, endCell);
+
+  console.log(
+    `You made it in ${optimalPath.length - 1} moves! Here's your path:`
+  );
+  optimalPath.forEach((path) => console.log(path));
+
+  return optimalPath;
+}
