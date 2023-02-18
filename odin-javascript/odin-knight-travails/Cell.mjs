@@ -28,6 +28,10 @@ class Cell {
   get coordinates() {
     return [this.#x, this.#y];
   }
+
+  isEqualCell(cell) {
+    return this.#x === cell.x && this.#y === cell.y;
+  }
 }
 
 export default Cell;
