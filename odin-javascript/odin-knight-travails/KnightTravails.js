@@ -1,7 +1,7 @@
 const isMoveValid = ([x, y]) => x >= 0 && x <= 7 && y >= 0 && y <= 7;
 
 const Knight = (() => {
-  const generateMoves = ([x, y]) => {
+  const generateMoves = (parent) => {
     const moveOffsets = [
       [1, 2],
       [-1, -2],
@@ -14,8 +14,12 @@ const Knight = (() => {
     ];
 
     return moveOffsets.reduce((moves, [offsetX, offsetY]) => {
-      const move = [x + offsetX, y + offsetY];
-      if (isMoveValid(move)) moves.push(move);
+      // coord[0] is x, coord[1] is y
+      const move = [parent.coord[0] + offsetX, parent.coord[1] + offsetY];
+
+      if (isMoveValid(move)) {
+        moves.push({ parent, coord: move });
+      }
       return moves;
     }, []);
   };
