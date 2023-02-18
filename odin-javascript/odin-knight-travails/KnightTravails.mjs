@@ -47,4 +47,8 @@ const Knight = (() => {
   return { travails };
 })();
 
-console.log(Knight.travails([3, 3], [4, 3]));
+function knightMoves(start = [], end = []) {
+  return Knight.travails(new Cell(start), new Cell(end));
+}
+
+console.log(knightMoves([3, 3], [4, 3]));
