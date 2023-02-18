@@ -36,12 +36,18 @@ const Knight = (() => {
 
       for (const cell of cells) {
         if (cell.isEqualCell(end)) {
-          return true;
+          return pathFrom(cell);
         } else {
           Q.push(cell);
         }
       }
     }
+  };
+
+  const pathFrom = (cell) => {
+    if (!cell) return [];
+    const accCells = pathFrom(cell.originCell);
+    return [...accCells, cell.coordinates];
   };
 
   return { travails };
