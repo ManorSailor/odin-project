@@ -1,6 +1,6 @@
 import Cell from './Cell.mjs';
 
-const isMoveValid = ([x, y]) => x >= 0 && x <= 7 && y >= 0 && y <= 7;
+const areCoordsValid = ([x, y]) => x >= 0 && x <= 7 && y >= 0 && y <= 7;
 
 const Knight = (() => {
   const generateMoves = (originCell) => {
@@ -15,15 +15,15 @@ const Knight = (() => {
       [2, -1],
     ];
 
-    return moveOffsets.reduce((moves, [offsetX, offsetY]) => {
-      const move = [originCell.x + offsetX, originCell.y + offsetY];
+    return moveOffsets.reduce((cells, [offsetX, offsetY]) => {
+      const cellCoords = [originCell.x + offsetX, originCell.y + offsetY];
 
-      if (isMoveValid(move)) {
-        const cell = new Cell(move, originCell);
-        moves.push(cell);
+      if (areCoordsValid(cellCoords)) {
+        const cell = new Cell(cellCoords, originCell);
+        cells.push(cell);
       }
-      
-      return moves;
+
+      return cells;
     }, []);
   };
 
@@ -31,14 +31,14 @@ const Knight = (() => {
     const Q = [start];
 
     while (Q.length) {
-      const curPos = Q.shift();
-      const moves = generateMoves(curPos);
+      const curCell = Q.shift();
+      const cells = generateMoves(curCell);
 
-      for (const move of moves) {
-        if (move[0] === end[0] && move[1] === end[1]) {
+      for (const cell of cells) {
+        if (cell.isEqualCell(end)) {
           return true;
         } else {
-          Q.push(move);
+          Q.push(cell);
         }
       }
     }
