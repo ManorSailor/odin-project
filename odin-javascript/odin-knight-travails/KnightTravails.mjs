@@ -1,7 +1,9 @@
+import Cell from './Cell.mjs';
+
 const isMoveValid = ([x, y]) => x >= 0 && x <= 7 && y >= 0 && y <= 7;
 
 const Knight = (() => {
-  const generateMoves = (parent) => {
+  const generateMoves = (originCell) => {
     const moveOffsets = [
       [1, 2],
       [-1, -2],
@@ -14,12 +16,13 @@ const Knight = (() => {
     ];
 
     return moveOffsets.reduce((moves, [offsetX, offsetY]) => {
-      // coord[0] is x, coord[1] is y
-      const move = [parent.coord[0] + offsetX, parent.coord[1] + offsetY];
+      const move = [originCell.x + offsetX, originCell.y + offsetY];
 
       if (isMoveValid(move)) {
-        moves.push({ parent, coord: move });
+        const cell = new Cell(move, originCell);
+        moves.push(cell);
       }
+      
       return moves;
     }, []);
   };
