@@ -1,0 +1,51 @@
+/* ================ Globals ================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-clr: #ffffff;
+  --txt-clr: #ffffff;
+  --acc-clr: #51b573;
+  --bg-clr-alt: #292e36;
+  --error-clr: #ff0000;
+
+  --ff-text: 'Montserrat Alternates', sans-serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
+  --fs-xxl: 1.75rem;
+
+  --ff-100: 100;
+  --ff-400: 400;
+  --ff-600: 600;
+
+  --logo-size: 80px;
+  --border-radius: 6px;
+  --border: 1px solid grey;
+}
+
+::selection {
+  color: var(--txt-clr);
+  background-color: var(--acc-clr);
+}
+
+body {
+  height: 100vh;
+  font-size: var(--fs-md);
+  font-family: var(--ff-text);
+  background-color: var(--bg-clr-alt);
+  padding: 0 1rem;
+  overflow: hidden;
+  line-height: 1.15;
+}
