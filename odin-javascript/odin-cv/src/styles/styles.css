@@ -44,8 +44,11 @@ body {
   height: 100vh;
   font-size: var(--fs-md);
   font-family: var(--ff-text);
-  background-color: var(--bg-clr-alt);
-  padding: 0 1rem;
-  overflow: hidden;
+  background-color: var(--bg-clr);
   line-height: 1.15;
+}
+
+.app-header {
+  text-align: center;
+  font-size: var(--fs-xl);
 }
