@@ -10,10 +10,12 @@ class TabItem extends React.Component {
   };
 
   render() {
+    const { tab } = this.props;
+
     return (
       <li className="">
-        <button className="btn tab-btn">
-          <Icon icon={this.icons.personal} />
+        <button className="btn tab-btn" aria-label={`${tab} tab`}>
+          <Icon icon={this.icons[tab]} />
         </button>
       </li>
     );
