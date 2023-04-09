@@ -52,3 +52,9 @@ body {
   text-align: center;
   font-size: var(--fs-xl);
 }
+
+.tab-list {
+  gap: 1rem;
+  display: flex;
+  list-style: none;
+}
