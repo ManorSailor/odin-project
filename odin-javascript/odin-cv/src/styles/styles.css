@@ -79,13 +79,14 @@ textarea {
 }
 
 .main-container {
-  max-width: 1100px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
 .cv-container {
+  gap: 1.5rem;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 1rem;
 }
 
@@ -126,11 +127,16 @@ textarea {
   pointer-events: none;
 }
 
-.tab-form {
-  min-width: fit-content;
+.tab-form,
+.settings {
   padding: 1rem;
   border-radius: var(--border-radius);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.settings {
+  margin: 0 auto;
+  max-width: fit-content;
 }
 
 .form-title {
