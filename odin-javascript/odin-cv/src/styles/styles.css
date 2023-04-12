@@ -199,3 +199,87 @@ textarea {
   display: flex;
   align-items: center;
 }
+
+.cv-preview {
+  gap: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 3rem;
+}
+
+.personal-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.name-preview {
+  color: var(--acc-clr);
+  font-size: var(--fs-xxl);
+  font-weight: var(--fw-600);
+  margin-bottom: 0.125rem;
+}
+
+.title-preview {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-100);
+}
+
+.contact-preview-container {
+  gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-header {
+  font-size: var(--fs-lg);
+  color: var(--acc-clr);
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.job-details-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+.duration-preview-container {
+  gap: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.position-preview {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-100);
+}
+
+.course-preview,
+.email-preview,
+.phone-preview {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-100);
+}
+
+.company-name-preview,
+.university-name-preview {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-100);
+}
+
+.duration-preview {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-600);
+}
+
+.summary-preview {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-100);
+}
