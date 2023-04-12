@@ -24,16 +24,16 @@ class Tabs extends React.Component {
 
     switch (this.tabs[activeTab]) {
       case 'experience':
-        return <ExperienceTab />;
+        return <ExperienceTab {...this.props} />;
 
       case 'qualifications':
-        return <QualificationTab />;
+        return <QualificationTab {...this.props} />;
 
       case 'settings':
-        return <SettingsTab />;
+        return <SettingsTab {...this.props} />;
 
       default:
-        return <PersonalTab />;
+        return <PersonalTab {...this.props} />;
     }
   }
 

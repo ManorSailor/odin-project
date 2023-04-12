@@ -7,14 +7,37 @@ import Tabs from './components/Tabs';
 import CVPreview from './components/CVPreview';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = this.resetState();
+  }
+
+  resetState = () => ({
+    personal: {},
+    experience: [],
+    qualifications: [],
+  });
+
+  handleChange = (field, innerField, val) => {
+    this.setState({
+      [field]: {
+        ...this.state[field],
+        [innerField]: val,
+      },
+    });
+  };
+
   render() {
     return (
       <main className="main-container">
         <AppHeader />
 
         <div className="cv-container">
-          <Tabs />
-          <CVPreview />
+          <Tabs
+            handleChange={this.handleChange}
+            personal={this.state.personal}
+          />
+          <CVPreview {...this.state} />
         </div>
       </main>
     );
