@@ -201,7 +201,7 @@ textarea {
 }
 
 .cv-preview {
-  gap: 1.25rem;
+  gap: 1.5rem;
   display: flex;
   flex-direction: column;
   max-width: 500px;
@@ -209,31 +209,6 @@ textarea {
   border-radius: var(--border-radius);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   margin-top: 3rem;
-}
-
-.personal-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-
-.name-preview {
-  color: var(--acc-clr);
-  font-size: var(--fs-xxl);
-  font-weight: var(--fw-600);
-  margin-bottom: 0.125rem;
-}
-
-.title-preview {
-  font-size: var(--fs-md);
-  font-weight: var(--fw-100);
-}
-
-.contact-preview-container {
-  gap: 0.25rem;
-  display: flex;
-  flex-direction: column;
 }
 
 .preview-header {
@@ -261,9 +236,7 @@ textarea {
   font-weight: var(--fw-100);
 }
 
-.course-preview,
-.email-preview,
-.phone-preview {
+.course-preview {
   font-size: var(--fs-sm);
   font-weight: var(--fw-100);
 }
