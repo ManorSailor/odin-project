@@ -7,7 +7,14 @@ class PersonalTab extends React.Component {
 
   render() {
     const {
-      personal: { firstName, lastName, title, summary, email, phone },
+      personal: {
+        firstName = '',
+        lastName = '',
+        title = '',
+        summary = '',
+        email = '',
+        phone = '',
+      },
     } = this.props;
 
     return (
