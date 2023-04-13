@@ -107,7 +107,8 @@ textarea {
   margin-bottom: 1rem;
 }
 
-.tab-btn {
+.tab-btn,
+.action-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,10 +129,15 @@ textarea {
 }
 
 .tab-form,
-.settings {
+.settings,
+.info-item {
   padding: 1rem;
   border-radius: var(--border-radius);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tab-form {
+  margin-bottom: 1.25rem;
 }
 
 .settings {
@@ -282,4 +288,34 @@ textarea {
 .summary-preview {
   font-size: var(--fs-sm);
   font-weight: var(--fw-100);
+}
+
+.info-list {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+}
+
+.item-header {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-100);
+  letter-spacing: 0.5px;
+}
+
+.item-actions {
+  gap: 0.5rem;
+  display: flex;
+}
+
+.action-btn:hover,
+.action-btn:focus {
+  color: var(--bg-clr);
+  background-color: var(--acc-clr);
 }
