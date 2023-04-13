@@ -1,8 +1,10 @@
 import React from 'react';
-import { Icon } from '@iconify/react';
+import InfoItem from './InfoItem';
 
 class QualificationTab extends React.Component {
   render() {
+    const { qualificationList: list } = this.props;
+
     return (
       <>
         <form className="tab-form">
@@ -77,31 +79,9 @@ class QualificationTab extends React.Component {
         </form>
 
         <ul className="info-list">
-          <li className="info-item">
-            <span className="item-header">RobCo</span>
-
-            <div className="item-actions">
-              <button className="btn action-btn" title="Edit">
-                <Icon icon="ph:pencil-simple-thin" aria-hidden="true" />
-              </button>
-              <button className="btn action-btn" title="Delete">
-                <Icon icon="ph:trash-simple-light" aria-hidden="true" />
-              </button>
-            </div>
-          </li>
-
-          <li className="info-item">
-            <span className="item-header">RobCo</span>
-
-            <div className="item-actions">
-              <button className="btn action-btn" title="Edit">
-                <Icon icon="ph:pencil-simple-thin" aria-hidden="true" />
-              </button>
-              <button className="btn action-btn" title="Delete">
-                <Icon icon="ph:trash-simple-light" aria-hidden="true" />
-              </button>
-            </div>
-          </li>
+          {list.map((item, index) => (
+            <InfoItem key={index} title={item.degree} id={index} />
+          ))}
         </ul>
       </>
     );

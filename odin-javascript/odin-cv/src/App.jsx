@@ -14,8 +14,8 @@ class App extends React.Component {
 
   resetState = () => ({
     personal: {},
-    experience: [],
-    qualifications: [],
+    experienceList: [],
+    qualificationList: [],
   });
 
   handleChange = (field, innerField, val) => {
@@ -36,6 +36,8 @@ class App extends React.Component {
           <Tabs
             handleChange={this.handleChange}
             personal={this.state.personal}
+            experienceList={this.state.experienceList}
+            qualificationList={this.state.qualificationList}
           />
           <CVPreview {...this.state} />
         </div>

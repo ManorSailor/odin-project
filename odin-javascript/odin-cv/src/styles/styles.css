@@ -124,7 +124,8 @@ textarea {
   background-color: var(--acc-clr);
 }
 
-.tab-btn > * {
+.tab-btn > *,
+.action-btn > * {
   pointer-events: none;
 }
 
