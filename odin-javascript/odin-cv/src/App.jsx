@@ -14,6 +14,8 @@ class App extends React.Component {
 
   resetState = () => ({
     personal: {},
+    experience: {},
+    qualification: {},
     experienceList: [],
     qualificationList: [],
   });
@@ -36,6 +38,8 @@ class App extends React.Component {
           <Tabs
             handleChange={this.handleChange}
             personal={this.state.personal}
+            experience={this.state.experience}
+            qualification={this.state.qualification}
             experienceList={this.state.experienceList}
             qualificationList={this.state.qualificationList}
           />
