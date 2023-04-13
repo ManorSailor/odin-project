@@ -6,13 +6,13 @@ import QualificationPreview from './Previews/QualificationPreview';
 
 class CVPreview extends React.Component {
   render() {
-    const { personal } = this.props;
+    const { personal, experienceList, qualificationList } = this.props;
 
     return (
       <div className="cv-preview">
         <PersonalPreview {...personal} />
-        <ExperiencePreview />
-        <QualificationPreview />
+        <ExperiencePreview experienceList={experienceList} />
+        <QualificationPreview qualificationList={qualificationList} />
       </div>
     );
   }
