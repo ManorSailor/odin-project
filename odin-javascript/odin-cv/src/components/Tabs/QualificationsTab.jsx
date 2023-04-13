@@ -2,8 +2,22 @@ import React from 'react';
 import InfoItem from './InfoItem';
 
 class QualificationTab extends React.Component {
+  handleChange = (e) => {
+    this.props.handleChange('qualification', e.target.name, e.target.value);
+  };
+
   render() {
-    const { qualificationList: list } = this.props;
+    const {
+      qualificationList: list,
+      qualification: {
+        degree = '',
+        university = '',
+        location = '',
+        summary = '',
+        startYear = '',
+        endYear = '',
+      },
+    } = this.props;
 
     return (
       <>
@@ -13,7 +27,14 @@ class QualificationTab extends React.Component {
           <ul className="form-fields">
             <li className="">
               <label htmlFor="degree" className="">
-                <input type="text" name="degree" id="degree" placeholder=" " />
+                <input
+                  type="text"
+                  name="degree"
+                  id="degree"
+                  placeholder=" "
+                  value={degree}
+                  onChange={this.handleChange}
+                />
                 <span>Degree/Certification</span>
               </label>
             </li>
@@ -25,6 +46,8 @@ class QualificationTab extends React.Component {
                   name="university"
                   id="university"
                   placeholder=" "
+                  value={university}
+                  onChange={this.handleChange}
                 />
                 <span>University</span>
               </label>
@@ -37,6 +60,8 @@ class QualificationTab extends React.Component {
                   name="location"
                   id="location"
                   placeholder=" "
+                  value={location}
+                  onChange={this.handleChange}
                 />
                 <span>Location</span>
               </label>
@@ -48,6 +73,8 @@ class QualificationTab extends React.Component {
                   name="summary"
                   id="summary"
                   placeholder="Summary"
+                  value={summary}
+                  onChange={this.handleChange}
                 ></textarea>
               </label>
             </li>
@@ -59,6 +86,8 @@ class QualificationTab extends React.Component {
                   name="startYear"
                   id="start-year"
                   placeholder=" "
+                  value={startYear}
+                  onChange={this.handleChange}
                 />
                 <span>From (Year)</span>
               </label>
@@ -71,6 +100,8 @@ class QualificationTab extends React.Component {
                   name="endYear"
                   id="end-year"
                   placeholder=" "
+                  value={endYear}
+                  onChange={this.handleChange}
                 />
                 <span>To (Year)</span>
               </label>

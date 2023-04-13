@@ -2,8 +2,22 @@ import React from 'react';
 import InfoItem from './InfoItem';
 
 class ExperienceTab extends React.Component {
+  handleChange = (e) => {
+    this.props.handleChange('experience', e.target.name, e.target.value);
+  };
+
   render() {
-    const { experienceList: list } = this.props;
+    const {
+      experienceList: list,
+      experience: {
+        company = '',
+        position = '',
+        location = '',
+        summary = '',
+        startYear = '',
+        endYear = '',
+      },
+    } = this.props;
 
     return (
       <>
@@ -18,6 +32,8 @@ class ExperienceTab extends React.Component {
                   name="company"
                   id="company"
                   placeholder=" "
+                  value={company}
+                  onChange={this.handleChange}
                 />
                 <span>Company</span>
               </label>
@@ -30,6 +46,8 @@ class ExperienceTab extends React.Component {
                   name="position"
                   id="position"
                   placeholder=" "
+                  value={position}
+                  onChange={this.handleChange}
                 />
                 <span>Position</span>
               </label>
@@ -42,6 +60,8 @@ class ExperienceTab extends React.Component {
                   name="location"
                   id="location"
                   placeholder=" "
+                  value={location}
+                  onChange={this.handleChange}
                 />
                 <span>Location</span>
               </label>
@@ -53,6 +73,8 @@ class ExperienceTab extends React.Component {
                   name="summary"
                   id="summary"
                   placeholder="Summary"
+                  value={summary}
+                  onChange={this.handleChange}
                 ></textarea>
               </label>
             </li>
@@ -64,6 +86,8 @@ class ExperienceTab extends React.Component {
                   name="startYear"
                   id="start-year"
                   placeholder=" "
+                  value={startYear}
+                  onChange={this.handleChange}
                 />
                 <span>From (Year)</span>
               </label>
@@ -76,6 +100,8 @@ class ExperienceTab extends React.Component {
                   name="endYear"
                   id="end-year"
                   placeholder=" "
+                  value={endYear}
+                  onChange={this.handleChange}
                 />
                 <span>To (Year)</span>
               </label>
