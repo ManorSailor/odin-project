@@ -34,8 +34,23 @@ class QualificationTab extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState(this.initialState());
     this.props.handleSubmit('qualificationList', this.state.qualification);
+    this.setState(this.initialState());
+  };
+
+  editItem = (id) => {
+    const { qualificationList: list } = this.props;
+
+    this.setState({
+      isEditing: true,
+      qualification: structuredClone(list.find((item) => item.id === id)) ?? {},
+    });
+  };
+
+  updateItem = (e) => {
+    e.preventDefault();
+    this.props.updateList('qualificationList', this.state.qualification);
+    this.setState(this.initialState());
   };
 
   render() {
@@ -141,12 +156,23 @@ class QualificationTab extends React.Component {
             </li>
           </ul>
 
-          <button className="btn">{isEditing ? 'Update' : 'Add'}</button>
+          {isEditing ? (
+            <button className="btn" onClick={this.updateItem}>
+              Update
+            </button>
+          ) : (
+            <button className="btn">Add</button>
+          )}
         </form>
 
         <ul className="info-list">
           {list.map((item) => (
-            <InfoItem key={item.id} title={item.degree} id={item.id} />
+            <InfoItem
+              key={item.id}
+              title={item.degree}
+              id={item.id}
+              editItem={this.editItem}
+            />
           ))}
         </ul>
       </>

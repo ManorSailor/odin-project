@@ -33,6 +33,14 @@ class App extends React.Component {
     });
   };
 
+  updateList = (listName, updatedItem) => {
+    this.setState({
+      [listName]: this.state[listName].map((item) =>
+        item.id === updatedItem.id ? updatedItem : item
+      ),
+    });
+  };
+
   render() {
     return (
       <main className="main-container">
@@ -42,6 +50,7 @@ class App extends React.Component {
           <Tabs
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            updateList={this.updateList}
             personal={this.state.personal}
             experienceList={this.state.experienceList}
             qualificationList={this.state.qualificationList}

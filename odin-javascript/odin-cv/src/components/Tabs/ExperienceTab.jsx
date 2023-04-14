@@ -34,8 +34,23 @@ class ExperienceTab extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState(this.initialState());
     this.props.handleSubmit('experienceList', this.state.experience);
+    this.setState(this.initialState());
+  };
+
+  editItem = (id) => {
+    const { experienceList: list } = this.props;
+
+    this.setState({
+      isEditing: true,
+      experience: structuredClone(list.find((item) => item.id === id)) ?? {},
+    });
+  };
+
+  updateItem = (e) => {
+    e.preventDefault();
+    this.props.updateList('experienceList', this.state.experience);
+    this.setState(this.initialState());
   };
 
   render() {
@@ -134,12 +149,21 @@ class ExperienceTab extends React.Component {
             </li>
           </ul>
 
-          <button className="btn">{isEditing ? 'Update' : 'Add'}</button>
+          {isEditing ? (
+            <button className="btn" onClick={this.updateItem}>Update</button>
+          ) : (
+            <button className="btn">Add</button>
+          )}
         </form>
 
         <ul className="info-list">
           {list.map((item) => (
-            <InfoItem key={item.id} title={item.company} id={item.id} />
+            <InfoItem
+              key={item.id}
+              title={item.company}
+              id={item.id}
+              editItem={this.editItem}
+            />
           ))}
         </ul>
       </>

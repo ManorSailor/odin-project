@@ -208,6 +208,7 @@ textarea {
 }
 
 .cv-preview {
+  flex-grow: 1;
   gap: 1.25rem;
   display: flex;
   flex-direction: column;
