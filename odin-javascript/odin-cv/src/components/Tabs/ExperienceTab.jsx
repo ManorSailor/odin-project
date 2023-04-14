@@ -6,6 +6,11 @@ class ExperienceTab extends React.Component {
     this.props.handleChange('experience', e.target.name, e.target.value);
   };
 
+  handleSubmit = (e) => {
+    this.props.handleSubmit('experienceList', 'experience');
+    e.preventDefault();
+  }
+
   render() {
     const {
       experienceList: list,
@@ -21,7 +26,7 @@ class ExperienceTab extends React.Component {
 
     return (
       <>
-        <form className="tab-form">
+        <form className="tab-form" onSubmit={this.handleSubmit}>
           <h3 className="form-title">Experience</h3>
 
           <ul className="form-fields">
@@ -107,6 +112,8 @@ class ExperienceTab extends React.Component {
               </label>
             </li>
           </ul>
+
+          <button className="btn">Submit</button>
         </form>
 
         <ul className="info-list">

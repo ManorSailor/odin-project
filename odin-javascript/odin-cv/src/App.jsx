@@ -29,6 +29,14 @@ class App extends React.Component {
     });
   };
 
+  handleSubmit = (listName, fieldName) => {
+    this.setState((oldState) => ({
+      ...oldState,
+      [listName]: [...oldState[listName], oldState[fieldName]],
+      [fieldName]: {},
+    }));
+  };
+
   render() {
     return (
       <main className="main-container">
@@ -37,6 +45,7 @@ class App extends React.Component {
         <div className="cv-container">
           <Tabs
             handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
             personal={this.state.personal}
             experience={this.state.experience}
             qualification={this.state.qualification}

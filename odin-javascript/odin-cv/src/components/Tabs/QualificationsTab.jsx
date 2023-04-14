@@ -6,6 +6,11 @@ class QualificationTab extends React.Component {
     this.props.handleChange('qualification', e.target.name, e.target.value);
   };
 
+  handleSubmit = (e) => {
+    this.props.handleSubmit('qualificationList', 'qualification');
+    e.preventDefault();
+  };
+
   render() {
     const {
       qualificationList: list,
@@ -21,7 +26,7 @@ class QualificationTab extends React.Component {
 
     return (
       <>
-        <form className="tab-form">
+        <form className="tab-form" onSubmit={this.handleSubmit}>
           <h3 className="form-title">Qualifications</h3>
 
           <ul className="form-fields">
@@ -107,6 +112,8 @@ class QualificationTab extends React.Component {
               </label>
             </li>
           </ul>
+
+          <button className="btn">Submit</button>
         </form>
 
         <ul className="info-list">
