@@ -6,6 +6,10 @@ class InfoItem extends React.Component {
     this.props.editItem(e.target.dataset.id);
   };
 
+  deleteItem = (e) => {
+    this.props.deleteItem(e.target.dataset.id);
+  };
+
   render() {
     const { title, id } = this.props;
 
@@ -23,7 +27,12 @@ class InfoItem extends React.Component {
             <Icon icon="ph:pencil-simple-thin" aria-hidden="true" />
           </button>
 
-          <button className="btn action-btn" title="Delete" data-id={id}>
+          <button
+            className="btn action-btn"
+            title="Delete"
+            data-id={id}
+            onClick={this.deleteItem}
+          >
             <Icon icon="ph:trash-simple-light" aria-hidden="true" />
           </button>
         </div>

@@ -53,6 +53,17 @@ class QualificationTab extends React.Component {
     this.setState(this.initialState());
   };
 
+  deleteItem = (id) => {
+    this.setState({
+      isEditing: false,
+      qualification: {
+        ...this.state.qualification,
+        id: uniqid(),
+      },
+    });
+    this.props.filterList('qualificationList', id);
+  };
+
   render() {
     const { qualificationList: list } = this.props;
     const {
@@ -172,6 +183,7 @@ class QualificationTab extends React.Component {
               title={item.degree}
               id={item.id}
               editItem={this.editItem}
+              deleteItem={this.deleteItem}
             />
           ))}
         </ul>

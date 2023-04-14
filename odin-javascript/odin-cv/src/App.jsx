@@ -41,6 +41,12 @@ class App extends React.Component {
     });
   };
 
+  filterList = (listName, id) => {
+    this.setState({
+      [listName]: this.state[listName].filter((item) => item.id !== id),
+    });
+  };
+
   render() {
     return (
       <main className="main-container">
@@ -51,6 +57,7 @@ class App extends React.Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
             updateList={this.updateList}
+            filterList={this.filterList}
             personal={this.state.personal}
             experienceList={this.state.experienceList}
             qualificationList={this.state.qualificationList}

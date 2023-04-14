@@ -47,6 +47,17 @@ class ExperienceTab extends React.Component {
     });
   };
 
+  deleteItem = (id) => {
+    this.setState({
+      isEditing: false,
+      experience: {
+        ...this.state.experience,
+        id: uniqid(),
+      },
+    });
+    this.props.filterList('experienceList', id);
+  };
+
   updateItem = (e) => {
     e.preventDefault();
     this.props.updateList('experienceList', this.state.experience);
@@ -150,7 +161,9 @@ class ExperienceTab extends React.Component {
           </ul>
 
           {isEditing ? (
-            <button className="btn" onClick={this.updateItem}>Update</button>
+            <button className="btn" onClick={this.updateItem}>
+              Update
+            </button>
           ) : (
             <button className="btn">Add</button>
           )}
@@ -163,6 +176,7 @@ class ExperienceTab extends React.Component {
               title={item.company}
               id={item.id}
               editItem={this.editItem}
+              deleteItem={this.deleteItem}
             />
           ))}
         </ul>
