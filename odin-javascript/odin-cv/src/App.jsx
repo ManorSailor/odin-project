@@ -14,8 +14,6 @@ class App extends React.Component {
 
   resetState = () => ({
     personal: {},
-    experience: {},
-    qualification: {},
     experienceList: [],
     qualificationList: [],
   });
@@ -29,12 +27,10 @@ class App extends React.Component {
     });
   };
 
-  handleSubmit = (listName, fieldName) => {
-    this.setState((oldState) => ({
-      ...oldState,
-      [listName]: [...oldState[listName], oldState[fieldName]],
-      [fieldName]: {},
-    }));
+  handleSubmit = (listName, item) => {
+    this.setState({
+      [listName]: [...this.state[listName], item],
+    });
   };
 
   render() {
@@ -47,8 +43,6 @@ class App extends React.Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
             personal={this.state.personal}
-            experience={this.state.experience}
-            qualification={this.state.qualification}
             experienceList={this.state.experienceList}
             qualificationList={this.state.qualificationList}
           />

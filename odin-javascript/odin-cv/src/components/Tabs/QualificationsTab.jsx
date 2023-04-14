@@ -1,28 +1,56 @@
 import React from 'react';
 import InfoItem from './InfoItem';
+import uniqid from 'uniqid';
 
 class QualificationTab extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = this.initialState();
+  }
+
+  initialState = () => ({
+    isEditing: false,
+    qualification: {
+      id: uniqid(),
+      degree: '',
+      university: '',
+      location: '',
+      summary: '',
+      startYear: '',
+      endYear: '',
+    },
+  });
+
   handleChange = (e) => {
-    this.props.handleChange('qualification', e.target.name, e.target.value);
+    const { qualification } = this.state;
+
+    this.setState({
+      qualification: {
+        ...qualification,
+        [e.target.name]: e.target.value,
+      },
+    });
   };
 
   handleSubmit = (e) => {
-    this.props.handleSubmit('qualificationList', 'qualification');
     e.preventDefault();
+    this.setState(this.initialState());
+    this.props.handleSubmit('qualificationList', this.state.qualification);
   };
 
   render() {
+    const { qualificationList: list } = this.props;
     const {
-      qualificationList: list,
+      isEditing,
       qualification: {
-        degree = '',
-        university = '',
-        location = '',
-        summary = '',
-        startYear = '',
-        endYear = '',
+        degree,
+        university,
+        location,
+        summary,
+        startYear,
+        endYear,
       },
-    } = this.props;
+    } = this.state;
 
     return (
       <>
@@ -113,12 +141,12 @@ class QualificationTab extends React.Component {
             </li>
           </ul>
 
-          <button className="btn">Submit</button>
+          <button className="btn">{isEditing ? 'Update' : 'Add'}</button>
         </form>
 
         <ul className="info-list">
-          {list.map((item, index) => (
-            <InfoItem key={index} title={item.degree} id={index} />
+          {list.map((item) => (
+            <InfoItem key={item.id} title={item.degree} id={item.id} />
           ))}
         </ul>
       </>

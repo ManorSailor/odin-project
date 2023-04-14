@@ -104,8 +104,6 @@ class PersonalTab extends React.Component {
             </label>
           </li>
         </ul>
-
-        <button className="btn form-btn">Submit</button>
       </form>
     );
   }
