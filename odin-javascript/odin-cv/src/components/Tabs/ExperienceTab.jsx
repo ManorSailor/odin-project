@@ -1,188 +1,173 @@
-import React from 'react';
+import { useState } from 'react';
 import InfoItem from './InfoItem';
 import uniqid from 'uniqid';
 
-class ExperienceTab extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = this.initialState();
-  }
+const initialState = () => ({
+  id: uniqid(),
+  company: '',
+  position: '',
+  location: '',
+  summary: '',
+  startYear: '',
+  endYear: '',
+});
 
-  initialState = () => ({
-    isEditing: false,
-    experience: {
+function ExperienceTab({
+  experienceList: list,
+  updateList,
+  filterList,
+  handleSubmit: passSubmit,
+}) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [experience, setExperience] = useState(initialState());
+
+  const handleChange = (e) => {
+    setExperience({
+      ...experience,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    passSubmit('experienceList', experience);
+    setExperience(initialState());
+  };
+
+  const editItem = (id) => {
+    const experience =
+      structuredClone(list.find((item) => item.id === id)) ?? {};
+
+    setIsEditing(true);
+    setExperience(experience);
+  };
+
+  const deleteItem = (id) => {
+    setIsEditing(false);
+    setExperience({
+      ...experience,
       id: uniqid(),
-      company: '',
-      position: '',
-      location: '',
-      summary: '',
-      startYear: '',
-      endYear: '',
-    },
-  });
-
-  handleChange = (e) => {
-    const { experience } = this.state;
-
-    this.setState({
-      experience: {
-        ...experience,
-        [e.target.name]: e.target.value,
-      },
     });
+    filterList('experienceList', id);
   };
 
-  handleSubmit = (e) => {
+  const updateItem = (e) => {
     e.preventDefault();
-    this.props.handleSubmit('experienceList', this.state.experience);
-    this.setState(this.initialState());
+    updateList('experienceList', experience);
+    setExperience(initialState());
   };
 
-  editItem = (id) => {
-    const { experienceList: list } = this.props;
+  return (
+    <>
+      <form className="tab-form" onSubmit={handleSubmit}>
+        <h3 className="form-title">Experience</h3>
 
-    this.setState({
-      isEditing: true,
-      experience: structuredClone(list.find((item) => item.id === id)) ?? {},
-    });
-  };
+        <ul className="form-fields">
+          <li className="">
+            <label htmlFor="company" className="">
+              <input
+                type="text"
+                name="company"
+                id="company"
+                placeholder=" "
+                value={experience.company}
+                onChange={handleChange}
+              />
+              <span>Company</span>
+            </label>
+          </li>
 
-  deleteItem = (id) => {
-    this.setState({
-      isEditing: false,
-      experience: {
-        ...this.state.experience,
-        id: uniqid(),
-      },
-    });
-    this.props.filterList('experienceList', id);
-  };
+          <li className="">
+            <label htmlFor="position" className="">
+              <input
+                type="text"
+                name="position"
+                id="position"
+                placeholder=" "
+                value={experience.position}
+                onChange={handleChange}
+              />
+              <span>Position</span>
+            </label>
+          </li>
 
-  updateItem = (e) => {
-    e.preventDefault();
-    this.props.updateList('experienceList', this.state.experience);
-    this.setState(this.initialState());
-  };
+          <li className="">
+            <label htmlFor="location" className="">
+              <input
+                type="text"
+                name="location"
+                id="location"
+                placeholder=" "
+                value={experience.location}
+                onChange={handleChange}
+              />
+              <span>Location</span>
+            </label>
+          </li>
 
-  render() {
-    const { experienceList: list } = this.props;
-    const {
-      isEditing,
-      experience: { company, position, location, summary, startYear, endYear },
-    } = this.state;
+          <li className="">
+            <label htmlFor="summary" className="">
+              <textarea
+                name="summary"
+                id="summary"
+                placeholder="Summary"
+                value={experience.summary}
+                onChange={handleChange}
+              ></textarea>
+            </label>
+          </li>
 
-    return (
-      <>
-        <form className="tab-form" onSubmit={this.handleSubmit}>
-          <h3 className="form-title">Experience</h3>
+          <li className="">
+            <label htmlFor="start-year" className="">
+              <input
+                type="text"
+                name="startYear"
+                id="start-year"
+                placeholder=" "
+                value={experience.startYear}
+                onChange={handleChange}
+              />
+              <span>From (Year)</span>
+            </label>
+          </li>
 
-          <ul className="form-fields">
-            <li className="">
-              <label htmlFor="company" className="">
-                <input
-                  type="text"
-                  name="company"
-                  id="company"
-                  placeholder=" "
-                  value={company}
-                  onChange={this.handleChange}
-                />
-                <span>Company</span>
-              </label>
-            </li>
-
-            <li className="">
-              <label htmlFor="position" className="">
-                <input
-                  type="text"
-                  name="position"
-                  id="position"
-                  placeholder=" "
-                  value={position}
-                  onChange={this.handleChange}
-                />
-                <span>Position</span>
-              </label>
-            </li>
-
-            <li className="">
-              <label htmlFor="location" className="">
-                <input
-                  type="text"
-                  name="location"
-                  id="location"
-                  placeholder=" "
-                  value={location}
-                  onChange={this.handleChange}
-                />
-                <span>Location</span>
-              </label>
-            </li>
-
-            <li className="">
-              <label htmlFor="summary" className="">
-                <textarea
-                  name="summary"
-                  id="summary"
-                  placeholder="Summary"
-                  value={summary}
-                  onChange={this.handleChange}
-                ></textarea>
-              </label>
-            </li>
-
-            <li className="">
-              <label htmlFor="start-year" className="">
-                <input
-                  type="text"
-                  name="startYear"
-                  id="start-year"
-                  placeholder=" "
-                  value={startYear}
-                  onChange={this.handleChange}
-                />
-                <span>From (Year)</span>
-              </label>
-            </li>
-
-            <li className="">
-              <label htmlFor="end-year" className="">
-                <input
-                  type="text"
-                  name="endYear"
-                  id="end-year"
-                  placeholder=" "
-                  value={endYear}
-                  onChange={this.handleChange}
-                />
-                <span>To (Year)</span>
-              </label>
-            </li>
-          </ul>
-
-          {isEditing ? (
-            <button className="btn" onClick={this.updateItem}>
-              Update
-            </button>
-          ) : (
-            <button className="btn">Add</button>
-          )}
-        </form>
-
-        <ul className="info-list">
-          {list.map((item) => (
-            <InfoItem
-              key={item.id}
-              title={item.company}
-              id={item.id}
-              editItem={this.editItem}
-              deleteItem={this.deleteItem}
-            />
-          ))}
+          <li className="">
+            <label htmlFor="end-year" className="">
+              <input
+                type="text"
+                name="endYear"
+                id="end-year"
+                placeholder=" "
+                value={experience.endYear}
+                onChange={handleChange}
+              />
+              <span>To (Year)</span>
+            </label>
+          </li>
         </ul>
-      </>
-    );
-  }
+
+        {isEditing ? (
+          <button className="btn" onClick={updateItem}>
+            Update
+          </button>
+        ) : (
+          <button className="btn">Add</button>
+        )}
+      </form>
+
+      <ul className="info-list">
+        {list.map((item) => (
+          <InfoItem
+            key={item.id}
+            title={item.company}
+            id={item.id}
+            editItem={editItem}
+            deleteItem={deleteItem}
+          />
+        ))}
+      </ul>
+    </>
+  );
 }
 
 export default ExperienceTab;

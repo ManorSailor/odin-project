@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 
 import TabList from './TabList/TabList';
 
@@ -7,49 +7,35 @@ import ExperienceTab from './Tabs/ExperienceTab';
 import QualificationTab from './Tabs/QualificationsTab';
 import SettingsTab from './Tabs/SettingsTab';
 
-class Tabs extends React.Component {
-  tabs = ['personal', 'experience', 'qualifications', 'settings'];
-  state = {
-    activeTab: 0,
-  };
+const tabs = ['personal', 'experience', 'qualifications', 'settings'];
 
-  switchTab = (id) => {
-    this.setState({
-      activeTab: id,
-    });
-  };
+function Tabs(props) {
+  const [activeTabID, setActiveTabID] = useState(0);
 
-  get activeTab() {
-    const { activeTab } = this.state;
+  const switchTab = (id) => setActiveTabID(id);
 
-    switch (this.tabs[activeTab]) {
+  const getActiveTab = () => {
+    switch (tabs[activeTabID]) {
       case 'experience':
-        return <ExperienceTab {...this.props} />;
+        return <ExperienceTab {...props} />;
 
       case 'qualifications':
-        return <QualificationTab {...this.props} />;
+        return <QualificationTab {...props} />;
 
       case 'settings':
-        return <SettingsTab {...this.props} />;
+        return <SettingsTab {...props} />;
 
       default:
-        return <PersonalTab {...this.props} />;
+        return <PersonalTab {...props} />;
     }
-  }
+  };
 
-  render() {
-    return (
-      <section className="tabs-container">
-        <TabList
-          tabs={this.tabs}
-          activeTab={this.state.activeTab}
-          onTabClick={this.switchTab}
-        />
-
-        {this.activeTab}
-      </section>
-    );
-  }
+  return (
+    <section className="tabs-container">
+      <TabList tabs={tabs} activeTab={activeTabID} onTabClick={switchTab} />
+      {getActiveTab()}
+    </section>
+  );
 }
 
 export default Tabs;
