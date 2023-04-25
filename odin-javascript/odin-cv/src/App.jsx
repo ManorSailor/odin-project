@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 
 import './styles/styles.css';
 
@@ -6,67 +6,66 @@ import AppHeader from './components/AppHeader';
 import Tabs from './components/Tabs';
 import CVPreview from './components/CVPreview';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = this.resetState();
-  }
+const initialState = () => ({
+  personal: {},
+  experienceList: [],
+  qualificationList: [],
+});
 
-  resetState = () => ({
-    personal: {},
-    experienceList: [],
-    qualificationList: [],
-  });
+function App() {
+  const [state, setState] = useState(initialState());
 
-  handleChange = (field, innerField, val) => {
-    this.setState({
+  const handleChange = (field, innerField, val) => {
+    setState({
+      ...state,
       [field]: {
-        ...this.state[field],
+        ...state[field],
         [innerField]: val,
       },
     });
   };
 
-  handleSubmit = (listName, item) => {
-    this.setState({
-      [listName]: [...this.state[listName], item],
+  const handleSubmit = (listName, item) => {
+    setState({
+      ...state,
+      [listName]: [...state[listName], item],
     });
   };
 
-  updateList = (listName, updatedItem) => {
-    this.setState({
-      [listName]: this.state[listName].map((item) =>
+  const updateList = (listName, updatedItem) => {
+    setState({
+      ...state,
+      [listName]: state[listName].map((item) =>
         item.id === updatedItem.id ? updatedItem : item
       ),
     });
   };
 
-  filterList = (listName, id) => {
-    this.setState({
-      [listName]: this.state[listName].filter((item) => item.id !== id),
+  const filterList = (listName, id) => {
+    setState({
+      ...state,
+      [listName]: state[listName].filter((item) => item.id !== id),
     });
   };
 
-  render() {
-    return (
-      <main className="main-container">
-        <AppHeader />
+  return (
+    <main className="main-container">
+      <AppHeader />
 
-        <div className="cv-container">
-          <Tabs
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-            updateList={this.updateList}
-            filterList={this.filterList}
-            personal={this.state.personal}
-            experienceList={this.state.experienceList}
-            qualificationList={this.state.qualificationList}
-          />
-          <CVPreview {...this.state} />
-        </div>
-      </main>
-    );
-  }
+      <div className="cv-container">
+        <Tabs
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          updateList={updateList}
+          filterList={filterList}
+          personal={state.personal}
+          experienceList={state.experienceList}
+          qualificationList={state.qualificationList}
+        />
+        <CVPreview {...state} />
+      </div>
+    </main>
+  );
 }
 
 export default App;
