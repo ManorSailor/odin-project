@@ -54,6 +54,7 @@ function ExperienceTab({
   const updateItem = (e) => {
     e.preventDefault();
     updateList('experienceList', experience);
+    setIsEditing(false);
     setExperience(initialState());
   };
 

@@ -45,6 +45,7 @@ function QualificationTab({
   const updateItem = (e) => {
     e.preventDefault();
     updateList('qualificationList', qualification);
+    setIsEditing(false);
     setQualification(initialState());
   };
 
