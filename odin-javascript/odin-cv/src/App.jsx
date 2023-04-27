@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useArray } from './hooks/useArray';
 
 import './styles/styles.css';
 
@@ -6,14 +7,10 @@ import AppHeader from './components/AppHeader';
 import Tabs from './components/Tabs';
 import CVPreview from './components/CVPreview';
 
-const initialState = () => ({
-  experienceList: [],
-  qualificationList: [],
-});
-
 function App() {
-  const [state, setState] = useState(initialState());
   const [personalInfo, setPersonalInfo] = useState({});
+  const [experienceList, expListAPI] = useArray();
+  const [qualificationList, quaListAPI] = useArray();
 
   const onPersonalInfoChange = (field, val) => {
     setPersonalInfo({
@@ -23,26 +20,24 @@ function App() {
   };
 
   const handleSubmit = (listName, item) => {
-    setState({
-      ...state,
-      [listName]: [...state[listName], item],
-    });
+    listName === 'experienceList' ? expListAPI.add(item) : quaListAPI.add(item);
   };
 
   const updateList = (listName, updatedItem) => {
-    setState({
-      ...state,
-      [listName]: state[listName].map((item) =>
-        item.id === updatedItem.id ? updatedItem : item
-      ),
-    });
+    const updaterCb = (item) =>
+      item.id === updatedItem.id ? updatedItem : item;
+
+    listName === 'experienceList'
+      ? expListAPI.update(updaterCb)
+      : quaListAPI.update(updaterCb);
   };
 
   const filterList = (listName, id) => {
-    setState({
-      ...state,
-      [listName]: state[listName].filter((item) => item.id !== id),
-    });
+    const filterCb = (item) => item.id !== id;
+
+    listName === 'experienceList'
+      ? expListAPI.filter(filterCb)
+      : quaListAPI.filter(filterCb);
   };
 
   return (
@@ -56,10 +51,11 @@ function App() {
           updateList={updateList}
           filterList={filterList}
           personalInfo={personalInfo}
-          experienceList={state.experienceList}
-          qualificationList={state.qualificationList}
+          experienceList={experienceList}
+          qualificationList={qualificationList}
         />
-        <CVPreview {...{ state, personalInfo }} />
+
+        <CVPreview {...{ experienceList, qualificationList, personalInfo }} />
       </div>
     </main>
   );
