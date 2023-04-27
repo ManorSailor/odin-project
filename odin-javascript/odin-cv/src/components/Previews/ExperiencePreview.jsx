@@ -1,4 +1,9 @@
-export default function ExperiencePreview({ experienceList: list }) {
+import { useContext } from 'react';
+import { ExperienceContext } from '../../context/ExperienceProvider';
+
+export default function ExperiencePreview() {
+  const { list } = useContext(ExperienceContext);
+
   return (
     <section className="experience-preview">
       <h3 className="preview-header">Work Experience</h3>

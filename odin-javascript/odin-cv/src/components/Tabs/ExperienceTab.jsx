@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { ExperienceContext } from '../../context/ExperienceProvider';
+
 import InfoItem from './InfoItem';
 import uniqid from 'uniqid';
 
@@ -12,14 +14,11 @@ const initialState = () => ({
   endYear: '',
 });
 
-function ExperienceTab({
-  experienceList: list,
-  updateList,
-  filterList,
-  handleSubmit: passSubmit,
-}) {
+function ExperienceTab() {
   const [isEditing, setIsEditing] = useState(false);
   const [experience, setExperience] = useState(initialState());
+  const { list, updateList, filterList, addItem } =
+    useContext(ExperienceContext);
 
   const handleChange = (e) => {
     setExperience({
@@ -30,7 +29,7 @@ function ExperienceTab({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    passSubmit('experienceList', experience);
+    addItem(experience);
     setExperience(initialState());
   };
 
@@ -48,12 +47,12 @@ function ExperienceTab({
       ...experience,
       id: uniqid(),
     });
-    filterList('experienceList', id);
+    filterList(id);
   };
 
   const updateItem = (e) => {
     e.preventDefault();
-    updateList('experienceList', experience);
+    updateList(experience);
     setIsEditing(false);
     setExperience(initialState());
   };

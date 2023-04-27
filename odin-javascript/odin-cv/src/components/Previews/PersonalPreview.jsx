@@ -1,11 +1,18 @@
-export default function PersonalPreview({
-  firstName = '',
-  lastName = '',
-  title = '',
-  summary = '',
-  email = '',
-  phone = '',
-}) {
+import { useContext } from 'react';
+import { PersonalInfoContext } from '../../context/PersonalInfoProvider';
+
+export default function PersonalPreview() {
+  const {
+    personalInfo: {
+      firstName = '',
+      lastName = '',
+      title = '',
+      summary = '',
+      email = '',
+      phone = '',
+    },
+  } = useContext(PersonalInfoContext);
+
   return (
     <section className="personal-preview">
       <div className="personal-container">

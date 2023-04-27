@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { QualificationContext } from '../../context/QualificationProvider';
 import InfoItem from './InfoItem';
 import uniqid from 'uniqid';
 
@@ -12,14 +13,11 @@ const initialState = () => ({
   endYear: '',
 });
 
-function QualificationTab({
-  qualificationList: list,
-  updateList,
-  filterList,
-  handleSubmit: passSubmit,
-}) {
+function QualificationTab() {
   const [isEditing, setIsEditing] = useState(false);
   const [qualification, setQualification] = useState(initialState());
+  const { list, updateList, filterList, addItem } =
+    useContext(QualificationContext);
 
   const handleChange = (e) => {
     setQualification({
@@ -30,7 +28,7 @@ function QualificationTab({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    passSubmit('qualificationList', qualification);
+    addItem(qualification);
     setQualification(initialState());
   };
 
@@ -44,7 +42,7 @@ function QualificationTab({
 
   const updateItem = (e) => {
     e.preventDefault();
-    updateList('qualificationList', qualification);
+    updateList(qualification);
     setIsEditing(false);
     setQualification(initialState());
   };
@@ -55,7 +53,7 @@ function QualificationTab({
       ...qualification,
       id: uniqid(),
     });
-    filterList('qualificationList', id);
+    filterList(id);
   };
 
   return (

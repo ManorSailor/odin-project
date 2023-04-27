@@ -1,4 +1,9 @@
-export default function QualificationPreview({ qualificationList: list }) {
+import { useContext } from 'react';
+import { QualificationContext } from '../../context/QualificationProvider';
+
+export default function QualificationPreview() {
+  const { list } = useContext(QualificationContext);
+
   return (
     <section className="qualifications-preview">
       <h3 className="preview-header">Qualifications</h3>

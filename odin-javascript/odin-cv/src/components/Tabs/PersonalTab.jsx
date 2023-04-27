@@ -1,14 +1,19 @@
-export default function PersonalTab({
-  personalInfo: {
-    firstName = '',
-    lastName = '',
-    title = '',
-    summary = '',
-    email = '',
-    phone = '',
-  },
-  onPersonalInfoChange,
-}) {
+import { useContext } from 'react';
+import { PersonalInfoContext } from '../../context/PersonalInfoProvider';
+
+export default function PersonalTab() {
+  const {
+    personalInfo: {
+      firstName = '',
+      lastName = '',
+      title = '',
+      summary = '',
+      email = '',
+      phone = '',
+    },
+    onPersonalInfoChange,
+  } = useContext(PersonalInfoContext);
+
   const handleChange = (e) => {
     onPersonalInfoChange(e.target.name, e.target.value);
   };
