@@ -7,21 +7,18 @@ import Tabs from './components/Tabs';
 import CVPreview from './components/CVPreview';
 
 const initialState = () => ({
-  personal: {},
   experienceList: [],
   qualificationList: [],
 });
 
 function App() {
   const [state, setState] = useState(initialState());
+  const [personalInfo, setPersonalInfo] = useState({});
 
-  const handleChange = (field, innerField, val) => {
-    setState({
-      ...state,
-      [field]: {
-        ...state[field],
-        [innerField]: val,
-      },
+  const onPersonalInfoChange = (field, val) => {
+    setPersonalInfo({
+      ...personalInfo,
+      [field]: val,
     });
   };
 
@@ -54,15 +51,15 @@ function App() {
 
       <div className="cv-container">
         <Tabs
-          handleChange={handleChange}
+          onPersonalInfoChange={onPersonalInfoChange}
           handleSubmit={handleSubmit}
           updateList={updateList}
           filterList={filterList}
-          personal={state.personal}
+          personalInfo={personalInfo}
           experienceList={state.experienceList}
           qualificationList={state.qualificationList}
         />
-        <CVPreview {...state} />
+        <CVPreview {...{ state, personalInfo }} />
       </div>
     </main>
   );

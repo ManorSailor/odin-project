@@ -2,10 +2,13 @@ import PersonalPreview from './Previews/PersonalPreview';
 import ExperiencePreview from './Previews/ExperiencePreview';
 import QualificationPreview from './Previews/QualificationPreview';
 
-function CVPreview({ personal, experienceList, qualificationList }) {
+function CVPreview({
+  personalInfo,
+  state: { experienceList, qualificationList },
+}) {
   return (
     <div className="cv-preview">
-      <PersonalPreview {...personal} />
+      <PersonalPreview {...personalInfo} />
       <ExperiencePreview experienceList={experienceList} />
       <QualificationPreview qualificationList={qualificationList} />
     </div>

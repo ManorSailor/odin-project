@@ -1,5 +1,5 @@
 export default function PersonalTab({
-  personal: {
+  personalInfo: {
     firstName = '',
     lastName = '',
     title = '',
@@ -7,10 +7,10 @@ export default function PersonalTab({
     email = '',
     phone = '',
   },
-  handleChange: passChange,
+  onPersonalInfoChange,
 }) {
   const handleChange = (e) => {
-    passChange('personal', e.target.name, e.target.value);
+    onPersonalInfoChange(e.target.name, e.target.value);
   };
 
   return (
