@@ -17,16 +17,16 @@ function Tabs(props) {
   const getActiveTab = () => {
     switch (tabs[activeTabID]) {
       case 'experience':
-        return <ExperienceTab {...props} />;
+        return <ExperienceTab />;
 
       case 'qualifications':
-        return <QualificationTab {...props} />;
+        return <QualificationTab />;
 
       case 'settings':
-        return <SettingsTab {...props} />;
+        return <SettingsTab />;
 
       default:
-        return <PersonalTab {...props} />;
+        return <PersonalTab />;
     }
   };
 

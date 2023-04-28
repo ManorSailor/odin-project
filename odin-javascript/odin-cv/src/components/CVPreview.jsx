@@ -2,12 +2,12 @@ import PersonalPreview from './Previews/PersonalPreview';
 import ExperiencePreview from './Previews/ExperiencePreview';
 import QualificationPreview from './Previews/QualificationPreview';
 
-function CVPreview({ personalInfo, experienceList, qualificationList }) {
+function CVPreview() {
   return (
     <div className="cv-preview">
-      <PersonalPreview {...personalInfo} />
-      <ExperiencePreview experienceList={experienceList} />
-      <QualificationPreview qualificationList={qualificationList} />
+      <PersonalPreview />
+      <ExperiencePreview />
+      <QualificationPreview />
     </div>
   );
 }
