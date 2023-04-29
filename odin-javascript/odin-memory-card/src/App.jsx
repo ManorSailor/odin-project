@@ -1,5 +1,7 @@
+import AppHeader from "./components/AppHeader";
+
 function App() {
-  return <div className="btn btn-outline">Hello</div>;
+  return <AppHeader />;
 }
 
 export default App;
