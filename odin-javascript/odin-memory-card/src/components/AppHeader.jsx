@@ -2,7 +2,7 @@ import Scoreboard from "./Scoreboard";
 
 function AppHeader() {
   return (
-    <div className="navbar justify-between">
+    <div className="navbar bg-base-200 justify-between">
       <a href="/" className="btn btn-ghost normal-case text-xl">
         Memory Card
       </a>
