@@ -1,5 +1,6 @@
 import AppHeader from "./components/AppHeader";
 import Scoreboard from "./components/Scoreboard";
+import MainWrapper from "./components/MainWrapper";
 import CardList from "./components/CardList/CardList";
 
 function App() {
@@ -8,7 +9,9 @@ function App() {
       <AppHeader>
         <Scoreboard />
       </AppHeader>
-      <CardList />
+      <MainWrapper>
+        <CardList />
+      </MainWrapper>
     </>
   );
 }
