@@ -1,4 +1,5 @@
-/* eslint-disable react/prop-types */
+import PropType from "prop-types";
+
 function AppHeader({ children }) {
   return (
     <div className="navbar bg-base-100 justify-between">
@@ -9,5 +10,12 @@ function AppHeader({ children }) {
     </div>
   );
 }
+
+AppHeader.propTypes = {
+  children: PropType.oneOfType([
+    PropType.element,
+    PropType.arrayOf(PropType.element),
+  ]).isRequired,
+};
 
 export default AppHeader;

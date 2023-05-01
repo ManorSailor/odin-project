@@ -1,4 +1,5 @@
-/* eslint-disable react/prop-types */
+import PropType from "prop-types";
+
 function Scoreboard({ score: { current, best } }) {
   return (
     <div className="stats bg-base-300 shadow">
@@ -13,5 +14,12 @@ function Scoreboard({ score: { current, best } }) {
     </div>
   );
 }
+
+Scoreboard.propTypes = {
+  score: PropType.shape({
+    current: PropType.number.isRequired,
+    best: PropType.number.isRequired,
+  }).isRequired,
+};
 
 export default Scoreboard;

@@ -1,5 +1,6 @@
+import PropType from "prop-types";
+
 /* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/prop-types */
 import Card from "./Card";
 
 function CardList({ cards, onCardClick }) {
@@ -13,5 +14,10 @@ function CardList({ cards, onCardClick }) {
     </ul>
   );
 }
+
+CardList.propTypes = {
+  cards: PropType.arrayOf(PropType.objectOf(PropType.string)).isRequired,
+  onCardClick: PropType.func.isRequired,
+};
 
 export default CardList;
