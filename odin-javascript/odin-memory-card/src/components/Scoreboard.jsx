@@ -1,4 +1,4 @@
-import PropType from "prop-types";
+import { shape, number } from "prop-types";
 
 function Scoreboard({ score: { current, best } }) {
   return (
@@ -16,9 +16,9 @@ function Scoreboard({ score: { current, best } }) {
 }
 
 Scoreboard.propTypes = {
-  score: PropType.shape({
-    current: PropType.number.isRequired,
-    best: PropType.number.isRequired,
+  score: shape({
+    current: number.isRequired,
+    best: number.isRequired,
   }).isRequired,
 };
 

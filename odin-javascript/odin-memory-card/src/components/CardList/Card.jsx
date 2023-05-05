@@ -1,4 +1,4 @@
-import PropType from "prop-types";
+import { string, func } from "prop-types";
 
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -19,10 +19,10 @@ function Card({ id, img, title, onCardClick }) {
 }
 
 Card.propTypes = {
-  id: PropType.string.isRequired,
-  img: PropType.string.isRequired,
-  title: PropType.string.isRequired,
-  onCardClick: PropType.func.isRequired,
+  id: string.isRequired,
+  img: string.isRequired,
+  title: string.isRequired,
+  onCardClick: func.isRequired,
 };
 
 export default Card;

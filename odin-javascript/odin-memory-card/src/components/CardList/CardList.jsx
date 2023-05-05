@@ -1,4 +1,4 @@
-import PropType from "prop-types";
+import { arrayOf, objectOf, string, func } from "prop-types";
 
 /* eslint-disable react/jsx-props-no-spreading */
 import Card from "./Card";
@@ -16,8 +16,8 @@ function CardList({ cards, onCardClick }) {
 }
 
 CardList.propTypes = {
-  cards: PropType.arrayOf(PropType.objectOf(PropType.string)).isRequired,
-  onCardClick: PropType.func.isRequired,
+  cards: arrayOf(objectOf(string)).isRequired,
+  onCardClick: func.isRequired,
 };
 
 export default CardList;

@@ -1,4 +1,4 @@
-import PropType from "prop-types";
+import { oneOfType, arrayOf, element } from "prop-types";
 
 function AppHeader({ children }) {
   return (
@@ -12,10 +12,7 @@ function AppHeader({ children }) {
 }
 
 AppHeader.propTypes = {
-  children: PropType.oneOfType([
-    PropType.element,
-    PropType.arrayOf(PropType.element),
-  ]).isRequired,
+  children: oneOfType([element, arrayOf(element)]).isRequired,
 };
 
 export default AppHeader;
